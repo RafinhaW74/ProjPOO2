@@ -1,4 +1,4 @@
-package Model;
+package com.mycompany.tentandoprojetopoo2.Model;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -14,14 +14,14 @@ public class Importador extends Usuario{
     private String rua;
     private String bairro;
     private int numero; 
-    private int cep;
+    private String cep;
 
     public Importador() {
         super();
     }
     
-    public Importador(String rua, String bairro, int numero, int cep, String nome, String login, String senha) {
-        super(nome, login, senha);
+    public Importador(String rua, String bairro, int numero, String cep, String nome, String senha) {
+        super(nome, senha);
         this.rua = rua;
         this.bairro = bairro;
         this.numero = numero;
@@ -52,11 +52,11 @@ public class Importador extends Usuario{
         this.numero = numero;
     }
 
-    public int getCep() {
+    public String getCep() {
         return cep;
     }
 
-    public void setCep(int cep) {
+    public void setCep(String cep) {
         this.cep = cep;
     }
     

@@ -1,4 +1,4 @@
-package Model;
+package com.mycompany.tentandoprojetopoo2.Model;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -12,16 +12,17 @@ package Model;
  */
 public class Usuario {
     private String nome;
-    private String login;
     private String senha;
+    private boolean Estado = true;
 
     public Usuario() {
+        this.Estado = true;
     }
     
-    public Usuario(String nome, String login, String senha) {
+    public Usuario(String nome, String senha) {
         this.nome = nome;
-        this.login = login;
         this.senha = senha;
+        this.Estado = true;
     }
 
     public String getNome() {
@@ -32,14 +33,6 @@ public class Usuario {
         this.nome = nome;
     }
 
-    public String getLogin() {
-        return login;
-    }
-
-    public void setLogin(String login) {
-        this.login = login;
-    }
-
     public String getSenha() {
         return senha;
     }
@@ -47,6 +40,16 @@ public class Usuario {
     public void setSenha(String senha) {
         this.senha = senha;
     }
+
+    public boolean isEstado() {
+        return Estado;
+    }
+
+    public void setEstado(boolean Estado) {
+        this.Estado = Estado;
+    }
+    
+    
     
     
 }

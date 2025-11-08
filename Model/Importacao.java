@@ -1,4 +1,4 @@
-package Model;
+package com.mycompany.tentandoprojetopoo2.Model;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -14,27 +14,34 @@ import java.util.List;
  * @author rafin
  */
 public class Importacao {
-    private String estado;
+    private String situacao;
     private int numero; 
     private Date previsao;
-    private List<Produtos> produtos;
+    private Produtos produtos;
+    private Pessoa_importadora importador;
+    private Empresa_importadora empresa;
+    private boolean Estado = true;
 
     public Importacao() {
+        this.Estado = true;
     }
 
-    public Importacao(String estado, int numero, Date previsao, List<Produtos> produtos) {
-        this.estado = estado;
+    public Importacao(String situacao, int numero, Date previsao, Produtos produtos, Pessoa_importadora importador, Empresa_importadora empresa) {
+        this.situacao = situacao;
         this.numero = numero;
         this.previsao = previsao;
         this.produtos = produtos;
+        this.importador = importador;
+        this.empresa = empresa;
+        this.Estado = true;
     }
 
-    public String getEstado() {
-        return estado;
+    public String situacao() {
+        return situacao;
     }
 
-    public void setEstado(String estado) {
-        this.estado = estado;
+    public void setSituacao(String situacao) {
+        this.situacao = situacao;
     }
 
     public int getNumero() {
@@ -53,13 +60,38 @@ public class Importacao {
         this.previsao = previsao;
     }
 
-    public List<Produtos> getProdutos() {
+    public Produtos getProdutos() {
         return produtos;
     }
 
-    public void setProdutos(List<Produtos> produtos) {
+    public void setProdutos(Produtos produtos) {
         this.produtos = produtos;
     }
+
+    public Pessoa_importadora getImportador() {
+        return importador;
+    }
+
+    public void setImportador(Pessoa_importadora importador) {
+        this.importador = importador;
+    }
+
+    public Empresa_importadora getEmpresa() {
+        return empresa;
+    }
+
+    public void setEmpresa(Empresa_importadora empresa) {
+        this.empresa = empresa;
+    }
+
+    public boolean isEstado() {
+        return Estado;
+    }
+
+    public void setEstado(boolean Estado) {
+        this.Estado = Estado;
+    }
+
     
     
 }

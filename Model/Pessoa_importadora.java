@@ -1,4 +1,4 @@
-package Model;
+package com.mycompany.tentandoprojetopoo2.Model;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -14,15 +14,15 @@ import java.util.Date;
  */
 public class Pessoa_importadora extends Importador{
     private Date data_nascimento;
-    private int RG;
-    private int CPF;
+    private String RG;
+    private String CPF;
 
     public Pessoa_importadora() {
         super();
     }
     
-    public Pessoa_importadora(Date data_nascimento, int RG, int CPF, String rua, String bairro, int numero, int cep, String nome, String login, String senha) {
-        super(rua, bairro, numero, cep, nome, login, senha);
+    public Pessoa_importadora(Date data_nascimento, String RG, String CPF, String rua, String bairro, int numero, String cep, String nome, String senha) {
+        super(rua, bairro, numero, cep, nome, senha);
         this.data_nascimento = data_nascimento;
         this.RG = RG;
         this.CPF = CPF;
@@ -37,19 +37,19 @@ public class Pessoa_importadora extends Importador{
         this.data_nascimento = data_nascimento;
     }
 
-    public int getRG() {
+    public String getRG() {
         return RG;
     }
 
-    public void setRG(int RG) {
+    public void setRG(String RG) {
         this.RG = RG;
     }
 
-    public int getCPF() {
+    public String getCPF() {
         return CPF;
     }
 
-    public void setCPF(int CPF) {
+    public void setCPF(String CPF) {
         this.CPF = CPF;
     }
     

@@ -1,4 +1,4 @@
-package Model;
+package com.mycompany.tentandoprojetopoo2.Model;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -11,22 +11,32 @@ package Model;
  * @author rafin
  */
 public class Alfandegario extends Usuario{
-    private int CPF;
+    private String CPF;
+    private String SIAPE;
 
     public Alfandegario() {
+        super();
     }
 
-    public Alfandegario(int CPF) {
+    public Alfandegario(String CPF, String SIAPE) {
         this.CPF = CPF;
+        this.SIAPE = SIAPE;
     }
 
-    public int getCPF() {
+    public String getCPF() {
         return CPF;
     }
 
-    public void setCPF(int CPF) {
+    public void setCPF(String CPF) {
         this.CPF = CPF;
     }
-    
+
+    public String getSIAPE() {
+        return SIAPE;
+    }
+
+    public void setSIAPE(String SIAPE) {
+        this.SIAPE = SIAPE;
+    }
     
 }

@@ -1,4 +1,4 @@
-package Model;
+package com.mycompany.tentandoprojetopoo2.Model;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -16,13 +16,16 @@ public class Produtos {
     private float altura;
     private float comprimento;
     private String descricao;
-    private int LI;
+    private String LI;
     private String fabricante;
+    private int quantidade;
+    private boolean Estado = true;
 
     public Produtos() {
+        this.Estado = true;
     }
 
-    public Produtos(int numero, float largura, float altura, float comprimento, String descricao, int LI, String fabricante) {
+    public Produtos(int numero, float largura, float altura, float comprimento, String descricao, String LI, String fabricante, int quantidade) {
         this.numero = numero;
         this.largura = largura;
         this.altura = altura;
@@ -30,6 +33,8 @@ public class Produtos {
         this.descricao = descricao;
         this.LI = LI;
         this.fabricante = fabricante;
+        this.Estado = true;
+        this.quantidade = quantidade;
     }
 
     public int getNumero() {
@@ -72,11 +77,11 @@ public class Produtos {
         this.descricao = descricao;
     }
 
-    public int getLI() {
+    public String getLI() {
         return LI;
     }
 
-    public void setLI(int LI) {
+    public void setLI(String LI) {
         this.LI = LI;
     }
 
@@ -86,6 +91,22 @@ public class Produtos {
 
     public void setFabricante(String fabricante) {
         this.fabricante = fabricante;
+    }
+
+    public boolean isEstado() {
+        return Estado;
+    }
+
+    public void setEstado(boolean Estado) {
+        this.Estado = Estado;
+    }
+
+    public int getQuantidade() {
+        return quantidade;
+    }
+
+    public void setQuantidade(int quantidade) {
+        this.quantidade = quantidade;
     }
     
     
