@@ -2,6 +2,7 @@ module org.openjfx.poo {
     requires javafx.controls;
     requires javafx.fxml;
     requires java.sql;
+    requires java.base;
 
     opens org.openjfx.poo to javafx.fxml;
     exports org.openjfx.poo;
