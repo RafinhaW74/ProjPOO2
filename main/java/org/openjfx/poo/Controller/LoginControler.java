@@ -6,7 +6,15 @@ package org.openjfx.poo.Controller;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.RadioButton;
+import javafx.scene.control.TextField;
+import javafx.scene.control.ToggleGroup;
 
 /**
  * FXML Controller class
@@ -15,6 +23,23 @@ import javafx.fxml.Initializable;
  */
 public class LoginControler implements Initializable {
 
+    @FXML
+    private Label rtTitle;
+    @FXML
+    private ToggleGroup userType;
+    @FXML
+    private RadioButton rbUser;
+    @FXML
+    private RadioButton rbAdmin;
+    @FXML
+    private PasswordField tfPassword;
+    @FXML
+    private TextField tfIdentificator;
+    @FXML
+    private Button btnSubmit;
+    @FXML
+    private Button btnRegister;
+
     /**
      * Initializes the controller class.
      */
@@ -22,5 +47,13 @@ public class LoginControler implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }    
+
+    @FXML
+    private void login(ActionEvent event) {
+    }
+
+    @FXML
+    private void register(ActionEvent event) {
+    }
     
 }
