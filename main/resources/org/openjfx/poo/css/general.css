@@ -1,0 +1,10 @@
+*{
+    -fx-font-family: "Berlin Sans FB";
+    
+}
+
+.label {
+    
+    -fx-font-size: 50;
+}
+

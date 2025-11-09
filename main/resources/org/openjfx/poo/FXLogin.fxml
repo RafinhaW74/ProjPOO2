@@ -1,11 +1,91 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import com.gluonhq.charm.glisten.control.TextField?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.openjfx.poo.Controller.LoginControler">
-    
+
+<AnchorPane id="AnchorPane" minHeight="400.0" minWidth="400.0" prefHeight="550.0" prefWidth="800.0" stylesheets="@css/general.css" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/25" fx:controller="org.openjfx.poo.Controller.LoginControler">
+   <children>
+      <ScrollPane fitToHeight="true" fitToWidth="true" layoutX="143.0" layoutY="108.0" minViewportHeight="450.0" minViewportWidth="450.0" prefHeight="200.0" prefViewportHeight="450.0" prefViewportWidth="800.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <content>
+            <StackPane>
+               <children>
+                  <VBox prefHeight="200.0" prefWidth="100.0">
+                     <children>
+                        <StackPane minHeight="60.0" minWidth="600.0">
+                           <children>
+                              <Label fx:id="rtTitle" alignment="CENTER" contentDisplay="CENTER" text="Login">
+                                 <font>
+                                    <Font name="Berlin Sans FB" size="52.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </StackPane>
+                        <StackPane prefHeight="150.0" prefWidth="200.0" stylesheets="@css/forms.css">
+                           <children>
+                              <GridPane alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="140.0" prefWidth="700.0" styleClass="gridPane">
+                                <columnConstraints>
+                                  <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="387.0" minWidth="10.0" percentWidth="20.0" prefWidth="382.0" />
+                                  <ColumnConstraints halignment="CENTER" maxWidth="568.0" minWidth="10.0" percentWidth="30.0" prefWidth="376.0" />
+                                </columnConstraints>
+                                <rowConstraints>
+                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                </rowConstraints>
+                                 <children>
+                                    <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                       <children>
+                                          <RadioButton mnemonicParsing="false" selected="true" text="usuario">
+                                             <toggleGroup>
+                                                <ToggleGroup fx:id="userType" />
+                                             </toggleGroup>
+                                          </RadioButton>
+                                          <RadioButton mnemonicParsing="false" text="RadioButton" toggleGroup="$userType" />
+                                       </children>
+                                    </HBox>
+                                    <Label text="CPF/CNPJ:">
+                                       <font>
+                                          <Font size="13.0" />
+                                       </font>
+                                    </Label>
+                                    <Label text="Senha:" GridPane.rowIndex="1" />
+                                    <Label text="Tipo:" GridPane.rowIndex="2" />
+                                    <PasswordField GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
+                                    <TextField GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+                                 </children>
+                                 <StackPane.margin>
+                                    <Insets />
+                                 </StackPane.margin>
+                              </GridPane>
+                           </children>
+                           <VBox.margin>
+                              <Insets top="40.0" />
+                           </VBox.margin>
+                        </StackPane>
+                        <StackPane prefHeight="150.0" prefWidth="200.0" />
+                        <StackPane prefHeight="150.0" prefWidth="200.0" />
+                     </children>
+                  </VBox>
+               </children>
+               <padding>
+                  <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+               </padding>
+            </StackPane>
+         </content>
+      </ScrollPane>
+   </children>
 </AnchorPane>
