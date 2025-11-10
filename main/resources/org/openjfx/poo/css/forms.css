@@ -11,7 +11,7 @@
 
 }
 .radio-button .radio {
-        -fx-background-color: #cccccc;       
+    -fx-background-color: #cccccc;       
 
 }
 
@@ -25,11 +25,42 @@
     -fx-font-size: 20px; 
 }
 
-
-
 .text-field {
     -fx-background-color: #cccccc;
     -fx-border-radius: 6;
     -fx-background-radius: 6;
+    -fx-prompt-text-fill: #363636;
+    -fx-border-color: #616161;
+}
+
+.text-field:focused  {
+    -fx-background-color: #bbbbbb; 
+    -fx-border-color: #000000;            
+    -fx-effect: dropshadow(three-pass-box, rgba(74,144,226,0.4), 5, 0, 0, 0);
+    -fx-text-fill: #000; 
+}
+
+.text-area {
+    -fx-background-color: #cccccc;
+    -fx-border-radius: 6;
+    -fx-background-radius: 6;
     -fx-prompt-text-fill: #888;
+    -fx-border-color: #616161;
+}
+
+.text-area .content {
+    -fx-background-color: #cccccc;
+    -fx-background-radius: 0;
+}
+
+.text-area:focused .content {
+    -fx-background-color: #bbbbbb; 
+    -fx-text-fill: #000; 
+}
+
+.text-area:focused {
+    -fx-background-color: #bbbbbb; 
+    -fx-border-color: #000000;            
+    -fx-effect: dropshadow(three-pass-box, rgba(74,144,226,0.4), 5, 0, 0, 0);
+    -fx-text-fill: #000; 
 }
