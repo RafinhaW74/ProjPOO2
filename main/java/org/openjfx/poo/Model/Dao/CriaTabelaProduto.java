@@ -22,7 +22,7 @@ public class CriaTabelaProduto {
            + "Altura DECIMAL(10,2) NOT NULL, "
            + "Descricao TEXT NOT NULL, "
            + "LI VARCHAR(50), "
-           + "Fabricante VARCHAR(100) NOT NULL, "
+           + "Fabricante VARCHAR(255) NOT NULL, "
            + "Quantidade INT, "
            + "Estado BOOLEAN DEFAULT TRUE"
            + ")";

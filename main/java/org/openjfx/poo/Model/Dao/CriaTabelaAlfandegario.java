@@ -12,7 +12,7 @@ public class CriaTabelaAlfandegario {
     
     public static void criaTabelaAlfandegarioBD(){
         String sql = "CREATE TABLE IF NOT EXISTS Alfandegario ("
-           + "Nome VARCHAR(100) NOT NULL, "
+           + "Nome VARCHAR(255) NOT NULL, "
            + "CPF CHAR(11) NOT NULL UNIQUE, "
            + "SIAPE CHAR(7) NOT NULL UNIQUE, "
            + "Senha VARCHAR(50) NOT NULL, "

@@ -11,10 +11,10 @@ import java.sql.PreparedStatement;
 public class CriaTabelaPessoa_importadora {
     public static void criaTabelaPessoa_importadoraBD(){
         String sql = "CREATE TABLE IF NOT EXISTS Pessoa_importadora ("
-           + "Nome VARCHAR(100) NOT NULL, "
-           + "Senha VARCHAR(100) NOT NULL, "
-           + "Bairro VARCHAR(100), "
-           + "Rua VARCHAR(100), "
+           + "Nome VARCHAR(255) NOT NULL, "
+           + "Senha VARCHAR(255) NOT NULL, "
+           + "Bairro VARCHAR(255), "
+           + "Rua VARCHAR(255), "
            + "Numero INT, "
            + "CEP CHAR(8), "
            + "Data_Nascimento DATE NOT NULL, "

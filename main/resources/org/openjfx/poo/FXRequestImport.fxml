@@ -75,9 +75,10 @@
                                               <RowConstraints maxHeight="174.0" minHeight="0.0" prefHeight="45.0" vgrow="SOMETIMES" />
                                               <RowConstraints maxHeight="274.0" minHeight="10.0" prefHeight="236.0" vgrow="SOMETIMES" />
                                               <RowConstraints maxHeight="84.0" minHeight="10.0" prefHeight="84.0" vgrow="SOMETIMES" />
-                                                <RowConstraints maxHeight="47.0" minHeight="6.0" prefHeight="47.0" vgrow="SOMETIMES" />
-                                                <RowConstraints maxHeight="87.0" minHeight="10.0" prefHeight="56.0" vgrow="SOMETIMES" />
-                                                <RowConstraints maxHeight="105.0" minHeight="10.0" prefHeight="65.0" vgrow="SOMETIMES" />
+                                                <RowConstraints maxHeight="84.0" minHeight="10.0" prefHeight="49.0" vgrow="SOMETIMES" />
+                                                <RowConstraints maxHeight="50.0" minHeight="6.0" prefHeight="50.0" vgrow="SOMETIMES" />
+                                                <RowConstraints maxHeight="87.0" minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES" />
+                                                <RowConstraints maxHeight="105.0" minHeight="10.0" prefHeight="49.0" vgrow="SOMETIMES" />
                                             </rowConstraints>
                                              <children>
                                                 <Label text="Nome:" />
@@ -109,11 +110,11 @@
                                                    </GridPane.margin>
                                                 </TextArea>
                                                 <TextField fx:id="tfName" GridPane.columnIndex="1" />
-                                                <TextField fx:id="tfManufacturer" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                                                <TextField fx:id="tfManufacturer" GridPane.columnIndex="1" GridPane.rowIndex="4" />
                                                 <Label text="Nome:" />
-                                                <Label text="Fabricante:" GridPane.rowIndex="3" />
-                                                <Label text="Restrito:" GridPane.rowIndex="4" />
-                                                <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="50.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                                                <Label text="Fabricante:" GridPane.rowIndex="4" />
+                                                <Label text="Restrito:" GridPane.rowIndex="5" />
+                                                <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="50.0" GridPane.columnIndex="1" GridPane.rowIndex="5">
                                                    <children>
                                                       <RadioButton fx:id="rbYes" mnemonicParsing="false" text="sim">
                                                          <toggleGroup>
@@ -123,8 +124,10 @@
                                                       <RadioButton fx:id="rbNot" mnemonicParsing="false" text="não" toggleGroup="$tgRestricted" />
                                                    </children>
                                                 </HBox>
-                                                <TextField fx:id="tfLI" visible="false" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-                                                <Label fx:id="lbLI" text="licença de importação" visible="false" GridPane.rowIndex="5" />
+                                                <TextField fx:id="tfLI" visible="false" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                                                <Label fx:id="lbLI" text="licença de importação" visible="false" GridPane.rowIndex="6" />
+                                                <Label text="Peso:" GridPane.rowIndex="3" />
+                                                <TextField fx:id="tfWeight" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                                              </children>
                                           </GridPane>
                                           <StackPane prefHeight="93.0" prefWidth="958.0">
@@ -145,7 +148,7 @@
                         </HBox>
                      </children>
                      <padding>
-                        <Insets bottom="40.0" left="40.0" right="40.0" top="40.0" />
+                        <Insets bottom="40.0" left="40.0" right="40.0" />
                      </padding>
                   </StackPane>
                </children>

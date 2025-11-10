@@ -32,7 +32,7 @@ public class Conexao {
     public Conexao()throws ClassNotFoundException{        
         DATABASE = "ProjetoPOO2";
         USER = "root";
-        PASSWORD = "#sP@d094$8oIf23";
+        PASSWORD = "";
         PORT = "3306";
         HOST= "localhost";
         URL = "jdbc:mysql://"+HOST+":"+PORT+"/"+DATABASE;
