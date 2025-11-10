@@ -33,3 +33,13 @@
     -fx-background-color: derive(#d6d3d3, -40%); 
     -fx-background-color: #cccbcb;
 }
+
+.menu .label{
+    -fx-font-size: 20px;
+}
+
+
+
+.menu-item .label{
+    -fx-font-size: 15px;
+}
