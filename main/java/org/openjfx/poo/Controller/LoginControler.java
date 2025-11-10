@@ -6,6 +6,7 @@ package org.openjfx.poo.Controller;
 
 import de.mkammerer.argon2.Argon2;
 import de.mkammerer.argon2.Argon2Factory;
+import java.io.IOException;
 import java.net.URL;
 import org.openjfx.poo.Model.*;
 import org.openjfx.poo.Model.Dao.*;
@@ -23,6 +24,7 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
+import org.openjfx.poo.App;
 /**
  * FXML Controller class
  *
@@ -86,7 +88,12 @@ public class LoginControler implements Initializable {
                     return;
                 }
                 if(argon2.verify(empresa.getSenha(), senha)){
-                    //trocar para tela do importador
+                    try{
+                        App.setRoot("FXImportador");
+                    }catch (IOException erro) {
+                        System.out.println(erro);
+                        Alertas.mostrarAlerta("Erro carregar", "Erro ao carregar a tela do importador.", AlertType.ERROR);
+                    }
                 }else{
                     Alertas.mostrarAlerta("Erro de Login", "Senha incorreta.", AlertType.ERROR);
                 }
@@ -97,7 +104,12 @@ public class LoginControler implements Initializable {
                     return;
                 }
                 if(argon2.verify(pessoa.getSenha(), senha)){
-                    //trocar para tela do importador
+                    try{
+                        App.setRoot("FXImportador");
+                    }catch (IOException erro) {
+                        System.out.println(erro);
+                        Alertas.mostrarAlerta("Erro carregar", "Erro ao carregar a tela do importador.", AlertType.ERROR);
+                    }
                 }else{
                     Alertas.mostrarAlerta("Erro de Login", "Senha incorreta.", AlertType.ERROR);
                 }
@@ -114,6 +126,7 @@ public class LoginControler implements Initializable {
                 Alertas.mostrarAlerta("Erro de Login", "Senha incorreta.", AlertType.ERROR);
             }
         }
+        
 
     }
 
