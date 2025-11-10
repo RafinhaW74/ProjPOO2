@@ -9,7 +9,7 @@ import java.sql.ResultSet;
 public class BuscaAlfandegario {
 
     public static Alfandegario buscaAlfandegarioBD(String CPF) {
-        Alfandegario a = new Alfandegario();
+        Alfandegario a = null;
         String sql = "SELECT * FROM Alfandegario WHERE CPF = ?";
 
         try {
@@ -18,6 +18,7 @@ public class BuscaAlfandegario {
             st.setString(1, CPF);
             ResultSet rs = st.executeQuery();
             if (rs.next()) {
+                a = new Alfandegario();
                 a.setCPF(rs.getString("CPF"));
                 a.setSIAPE(rs.getString("SIAPE"));
                 a.setNome(rs.getString("Nome"));

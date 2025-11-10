@@ -4,7 +4,13 @@
  */
 package org.openjfx.poo.Controller;
 
+import de.mkammerer.argon2.Argon2;
+import de.mkammerer.argon2.Argon2Factory;
 import java.net.URL;
+import org.openjfx.poo.Model.*;
+import org.openjfx.poo.Model.Dao.*;
+import org.openjfx.poo.View.Alertas;
+import javafx.scene.control.Alert.AlertType;
 
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -63,6 +69,52 @@ public class LoginControler implements Initializable {
 
     @FXML
     private void login(ActionEvent event) {
+        String identificador = tfIdentificator.getText();
+        String senha = tfPassword.getText();
+        
+        if (identificador.isEmpty() || senha.isEmpty()) {
+            Alertas.mostrarAlerta("Erro de Login", "Os campos não podem estar vazios.", AlertType.ERROR);
+            return;
+        }
+        
+        Argon2 argon2 = Argon2Factory.create();
+        if (rbUser.isSelected()) {
+            if(identificador.length() > 11){
+                Empresa_importadora empresa = BuscaEmpresa.buscaEmpresa_importadoraBD(identificador);
+                if(empresa == null){
+                    Alertas.mostrarAlerta("Erro de Login", "Empresa não encontrada.", AlertType.WARNING);
+                    return;
+                }
+                if(argon2.verify(empresa.getSenha(), senha)){
+                    //trocar para tela do alfandegario
+                }else{
+                    Alertas.mostrarAlerta("Erro de Login", "Senha incorreta.", AlertType.ERROR);
+                }
+            }else{
+                Pessoa_importadora pessoa = BuscaPessoa_importadora.buscaPessoa_importadoraBD(identificador);
+                if(pessoa == null){
+                    Alertas.mostrarAlerta("Erro de Login", "Usuário não encontrado.", AlertType.WARNING);
+                    return;
+                }
+                if(argon2.verify(pessoa.getSenha(), senha)){
+                    //trocar para tela do alfandegario
+                }else{
+                    Alertas.mostrarAlerta("Erro de Login", "Senha incorreta.", AlertType.ERROR);
+                }
+            }
+        } else if (rbAdmin.isSelected()) {
+            Alfandegario alfandegario = BuscaAlfandegario.buscaAlfandegarioBD(identificador);
+            if(alfandegario == null){
+                Alertas.mostrarAlerta("Erro de Login", "Administrador não encontrado.", AlertType.WARNING);
+                return;
+            }
+            if(argon2.verify(alfandegario.getSenha(), senha)){
+                //trocar para tela do alfandegario
+            }else{
+                Alertas.mostrarAlerta("Erro de Login", "Senha incorreta.", AlertType.ERROR);
+            }
+        }
+
     }
 
     @FXML

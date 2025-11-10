@@ -16,7 +16,7 @@ public class BuscaImportacao {
     
     
     public static Importacao buscaImportacaoBD(int Numero) {
-        Importacao a = new Importacao();
+        Importacao a = null;
         
         String sql = "SELECT * FROM Importacao WHERE Numero = ?";
 
@@ -26,6 +26,7 @@ public class BuscaImportacao {
             st.setInt(1, Numero);
             ResultSet rs = st.executeQuery();
             if (rs.next()) {
+                a = new Importacao();
                 a.setSituacao(rs.getString("Situacao"));
                 a.setNumero(rs.getInt("Numero"));
                 a.setPrevisao(rs.getDate("Previsao"));
