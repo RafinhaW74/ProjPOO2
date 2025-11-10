@@ -11,13 +11,13 @@ import java.sql.PreparedStatement;
  * @author rafin
  */
 public class AlterarEmpresa {
-    public static void alteraEmpresaBD(String CNPJ_busca, String Nome, String Senha, String Bairro, String Rua, String Numero, String CEP, String Razao_Social, String CNPJ, String Habilitacao){
-        String sql = "UPDATE Empresa SET Nome = ?,Senha = ?, Bairro = ?, Rua = ?, Numero = ?, CEP = ?, Razao_Social = ?, CNPJ = ?, Habilitacao = ? WHERE CNPJ = ?";
+    public static void alteraEmpresaBD(String CNPJ_busca, String Nome, String Senha, String Bairro, String Rua, String Numero, String CEP, String CNPJ, String Habilitacao){
+        String sql = "UPDATE Empresa SET Nome = ?,Senha = ?, Bairro = ?, Rua = ?, Numero = ?, CEP = ?, CNPJ = ?, Habilitacao = ? WHERE CNPJ = ?";
         
         try{
             Conexao connection = new Conexao();
             PreparedStatement st = connection.get_prepare(sql);
-            connection.set_param(new Object[]{Nome, Senha, Bairro, Rua, Numero, CEP, Razao_Social, CNPJ, Habilitacao, CNPJ_busca});
+            connection.set_param(new Object[]{Nome, Senha, Bairro, Rua, Numero, CEP, CNPJ, Habilitacao, CNPJ_busca});
             st.execute();
             connection.close();
 

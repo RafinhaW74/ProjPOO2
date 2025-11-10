@@ -20,6 +20,7 @@ public class CriaTabelaImportacao {
         + "CPF_Importador CHAR(11) NULL, "
         + "CNPJ_Importador CHAR(14) NULL, "
         + "Estado BOOLEAN DEFAULT TRUE, "
+        + "Atualizacao DATE NOT NULL, "
         + "FOREIGN KEY (NumeroProduto) REFERENCES Produto(Numero), "
         + "FOREIGN KEY (CPF_Importador) REFERENCES Pessoa_importadora(CPF), "
         + "FOREIGN KEY (CNPJ_Importador) REFERENCES Empresa(CNPJ), "

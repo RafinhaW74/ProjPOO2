@@ -12,9 +12,11 @@ package org.openjfx.poo.Model;
  */
 public class Produtos {
     private int numero;
+    private String nome;
     private float largura;
     private float altura;
     private float comprimento;
+    private float peso;
     private String descricao;
     private String LI;
     private String fabricante;
@@ -25,7 +27,7 @@ public class Produtos {
         this.Estado = true;
     }
 
-    public Produtos(int numero, float largura, float altura, float comprimento, String descricao, String LI, String fabricante, int quantidade) {
+    public Produtos(int numero, float largura, float altura, float comprimento, String descricao, String LI, String fabricante, int quantidade, float peso, String nome) {
         this.numero = numero;
         this.largura = largura;
         this.altura = altura;
@@ -35,6 +37,8 @@ public class Produtos {
         this.fabricante = fabricante;
         this.Estado = true;
         this.quantidade = quantidade;
+        this.peso = peso;
+        this.nome = nome;
     }
 
     public int getNumero() {
@@ -108,6 +112,23 @@ public class Produtos {
     public void setQuantidade(int quantidade) {
         this.quantidade = quantidade;
     }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public float getPeso() {
+        return peso;
+    }
+
+    public void setPeso(float peso) {
+        this.peso = peso;
+    }
+    
     
     
 }
