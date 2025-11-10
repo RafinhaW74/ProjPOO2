@@ -42,8 +42,8 @@ public class App extends Application {
 
     public static void main(String[] args) {
         //CriaTodasTabelas.CriaTodasTabelasBD();
-        PopulaBDteste.populaBD();
-        //launch(args);
+        //PopulaBDteste.populaBD();
+        launch(args);
         //List<Importacao> listaImportacoes = ListaImportacaoPessoa.listaImportacoesPessoaBD("123456");
         //for (Importacao importacao : listaImportacoes) {
             //System.out.println("Nome: " + importacao.getProdutos().getNome());

@@ -13,10 +13,10 @@ import java.sql.PreparedStatement;
 public class CriaTabelaEmpresa {
     public static void criaTabelaEmpresaBD(){
         String sql = "CREATE TABLE IF NOT EXISTS Empresa ("
-           + "Nome VARCHAR(100) NOT NULL, "
-           + "Senha VARCHAR(100) NOT NULL, "
-           + "Bairro VARCHAR(100), "
-           + "Rua VARCHAR(100), "
+           + "Nome VARCHAR(255) NOT NULL, "
+           + "Senha VARCHAR(255) NOT NULL, "
+           + "Bairro VARCHAR(255), "
+           + "Rua VARCHAR(255), "
            + "Numero INT, "
            + "CEP CHAR(8), "
            + "CNPJ CHAR(14) NOT NULL UNIQUE, "

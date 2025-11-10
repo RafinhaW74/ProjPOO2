@@ -68,6 +68,8 @@ public class RequestImportController implements Initializable {
     private Button btnRegister;
     @FXML
     private RadioButton rbYes;
+    @FXML
+    private TextField tfWeight;
 
     /**
      * Initializes the controller class.
