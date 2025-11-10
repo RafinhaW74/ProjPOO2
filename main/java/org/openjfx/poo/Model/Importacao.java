@@ -36,7 +36,7 @@ public class Importacao {
         this.Estado = true;
     }
 
-    public String situacao() {
+    public String getSituacao() {
         return situacao;
     }
 

@@ -1,10 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 
@@ -29,8 +34,33 @@
                            </items>
                         </Menu>
                     </menus>
+                     <cursor>
+                        <Cursor fx:constant="DEFAULT" />
+                     </cursor>
+                     <padding>
+                        <Insets left="40.0" />
+                     </padding>
                   </MenuBar>
-                  <StackPane prefHeight="150.0" prefWidth="1298.0" VBox.vgrow="ALWAYS" />
+                  <StackPane prefHeight="150.0" prefWidth="1298.0" VBox.vgrow="ALWAYS">
+                     <children>
+                        <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" StackPane.alignment="CENTER">
+                           <children>
+                              <StackPane prefHeight="598.0" prefWidth="563.0">
+                                 <children>
+                                    <ListView fx:id="lvImports" maxWidth="1000.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="598.0" prefWidth="560.0" stylesheets="@css/list.css" />
+                                 </children>
+                              </StackPane>
+                              <StackPane alignment="BOTTOM_RIGHT" minWidth="150.0" prefHeight="150.0" prefWidth="200.0" HBox.hgrow="ALWAYS">
+                                 <children>
+                                    <Button fx:id="btnLogout" mnemonicParsing="false" onAction="#logout" prefHeight="40.0" prefWidth="100.0" styleClass="btnLogout" stylesheets="@css/btn.css" text="Logout" />
+                                 </children>
+                              </StackPane>
+                           </children>
+                        </HBox>
+                     </children>
+                     <padding>
+                        <Insets bottom="40.0" left="40.0" right="40.0" top="40.0" />
+                     </padding></StackPane>
                </children>
             </VBox>
          </content>

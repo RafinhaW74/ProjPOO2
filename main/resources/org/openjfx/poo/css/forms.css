@@ -19,31 +19,12 @@
     -fx-font-size: 25px; 
 }
 
-.button {
-    -fx-background-color: #d6d3d3;
-    -fx-background-radius: 8;        
-    -fx-border-radius: 8;
-    -fx-padding: 8 16 8 16;
-    
-    -fx-font-weight:600;
-}
 
 .btRegister{
     
     -fx-font-size: 20px; 
 }
 
-.button:hover {
-    -fx-background-color: derive(#d6d3d3, -20%); 
-    -fx-scale-x: 1.08;   
-    -fx-scale-y: 1.08; 
-    
-}
-
-.button:pressed {
-    -fx-background-color: derive(#d6d3d3, -40%); 
-    -fx-background-color: #cccbcb;
-}
 
 
 .text-field {
