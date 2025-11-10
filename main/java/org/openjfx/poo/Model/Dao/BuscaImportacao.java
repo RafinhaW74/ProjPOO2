@@ -34,6 +34,7 @@ public class BuscaImportacao {
                 a.setImportador(BuscaPessoa_importadora.buscaPessoa_importadoraBD(rs.getString("CPF_Importador")));
                 a.setProdutos(BuscaProdutos.buscaProdutosBD(rs.getInt("NumeroProduto")));
                 a.setEmpresa(BuscaEmpresa.buscaEmpresa_importadoraBD(rs.getString("CNPJ_Importador")));
+                a.setAtualizacao(rs.getDate("Atualizacao"));
             }
 
             rs.close();

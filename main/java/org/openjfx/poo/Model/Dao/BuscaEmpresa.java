@@ -25,7 +25,6 @@ public class BuscaEmpresa {
             if (rs.next()) {
                 a = new Empresa_importadora();
                 a.setCNPJ(rs.getString("CNPJ"));
-                a.setRazao_social(rs.getString("Razao_social"));
                 a.setNome(rs.getString("Nome"));
                 a.setSenha(rs.getString("Senha"));
                 a.setEstado(rs.getBoolean("Estado"));

@@ -26,7 +26,7 @@ public class App extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-        scene = new Scene(loadFXML("FXRequestImport"), 1300, 730);
+        scene = new Scene(loadFXML("FXLogin"), 1300, 730);
         stage.setScene(scene);
         stage.show();
     }
@@ -39,16 +39,13 @@ public class App extends Application {
         FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(fxml + ".fxml"));
         return fxmlLoader.load();
     }
+     
 
     public static void main(String[] args) {
         //CriaTodasTabelas.CriaTodasTabelasBD();
-        PopulaBDteste.populaBD();
-        //launch(args);
-        //List<Importacao> listaImportacoes = ListaImportacaoPessoa.listaImportacoesPessoaBD("123456");
-        //for (Importacao importacao : listaImportacoes) {
-            //System.out.println("Nome: " + importacao.getProdutos().getNome());
-        //}  
-        //Importacao imp = B
+        //PopulaBDteste.populaBD();
+        launch(args);
+
         
     }
 

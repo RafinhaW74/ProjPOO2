@@ -58,6 +58,18 @@ public class ImportadorController implements Initializable {
     /**
      * Initializes the controller class.
      */
+    public static String identificador;
+ 
+
+    public static String getIdentificador() {
+        return identificador;
+    }
+    
+    public static void setIdentificador(String identificador) {
+        ImportadorController.identificador = identificador;
+    }
+    
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         
@@ -92,7 +104,12 @@ public class ImportadorController implements Initializable {
         ObservableList<Importacao> listImportacao = FXCollections.observableArrayList();
         lvImports.setItems(listImportacao);
         
-        listImportacao.addAll(ListaImportacaoPessoa.listaImportacoesPessoaBD("123789"));
+        if(identificador.length() > 11){
+            listImportacao.addAll(ListaImportacaoEmpresa.listaImportacoesEmpresaBD(identificador));
+        }else{
+            listImportacao.addAll(ListaImportacaoPessoa.listaImportacoesPessoaBD(identificador));
+        }
+        
         
         lvImports.getSelectionModel().selectedItemProperty().addListener((obs, oldVal, newVal) -> {
             System.out.println("Selecionado: " + newVal);

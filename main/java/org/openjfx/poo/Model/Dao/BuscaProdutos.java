@@ -33,6 +33,8 @@ public class BuscaProdutos {
                 a.setLI(rs.getString("LI"));
                 a.setDescricao(rs.getString("Descricao"));
                 a.setFabricante(rs.getString("Fabricante"));
+                a.setNome(rs.getString("Nome"));
+                a.setPeso(rs.getFloat("Peso"));
             }
 
             rs.close();

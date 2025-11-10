@@ -90,6 +90,7 @@ public class LoginControler implements Initializable {
                 if(argon2.verify(empresa.getSenha(), senha)){
                     try{
                         App.setRoot("FXImportador");
+                        ImportadorController.setIdentificador(identificador);
                     }catch (IOException erro) {
                         System.out.println(erro);
                         Alertas.mostrarAlerta("Erro carregar", "Erro ao carregar a tela do importador.", AlertType.ERROR);
@@ -106,6 +107,7 @@ public class LoginControler implements Initializable {
                 if(argon2.verify(pessoa.getSenha(), senha)){
                     try{
                         App.setRoot("FXImportador");
+                        ImportadorController.setIdentificador(identificador);
                     }catch (IOException erro) {
                         System.out.println(erro);
                         Alertas.mostrarAlerta("Erro carregar", "Erro ao carregar a tela do importador.", AlertType.ERROR);
