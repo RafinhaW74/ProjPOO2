@@ -7,7 +7,11 @@
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
@@ -17,7 +21,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" minHeight="400.0" minWidth="400.0" prefHeight="730.0" prefWidth="1300.0" stylesheets="@css/general.css" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.openjfx.poo.Controller.LoginControler">
+<AnchorPane id="AnchorPane" minHeight="400.0" minWidth="400.0" prefHeight="730.0" prefWidth="1300.0" stylesheets="@css/general.css" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.openjfx.poo.Controller.RequestImportController">
    <children>
       <ScrollPane fitToHeight="true" fitToWidth="true" layoutX="143.0" layoutY="108.0" minViewportHeight="450.0" minViewportWidth="450.0" prefHeight="200.0" prefViewportHeight="450.0" prefViewportWidth="800.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <content>
@@ -49,11 +53,11 @@
                      <children>
                         <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" StackPane.alignment="CENTER">
                            <children>
-                              <StackPane prefHeight="598.0" prefWidth="959.0">
+                              <StackPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0">
                                  <children>
                                     <VBox prefHeight="200.0" prefWidth="100.0" StackPane.alignment="CENTER">
                                        <children>
-                                          <StackPane prefHeight="61.0" prefWidth="959.0">
+                                          <StackPane minHeight="-Infinity" prefHeight="60.0" prefWidth="959.0">
                                              <children>
                                                 <Label styleClass="title" text="Formulario de solicitação de importação">
                                                    <font>
@@ -62,23 +66,72 @@
                                                 </Label>
                                              </children>
                                           </StackPane>
-                                          <GridPane stylesheets="@css/forms.css" VBox.vgrow="ALWAYS">
+                                          <GridPane alignment="CENTER" stylesheets="@css/forms.css" VBox.vgrow="ALWAYS">
                                             <columnConstraints>
-                                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                              <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="474.0" minWidth="10.0" prefWidth="233.0" />
+                                              <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="725.0" minWidth="10.0" prefWidth="725.0" />
                                             </columnConstraints>
                                             <rowConstraints>
-                                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                              <RowConstraints maxHeight="174.0" minHeight="0.0" prefHeight="45.0" vgrow="SOMETIMES" />
+                                              <RowConstraints maxHeight="274.0" minHeight="10.0" prefHeight="236.0" vgrow="SOMETIMES" />
+                                              <RowConstraints maxHeight="84.0" minHeight="10.0" prefHeight="84.0" vgrow="SOMETIMES" />
+                                                <RowConstraints maxHeight="47.0" minHeight="6.0" prefHeight="47.0" vgrow="SOMETIMES" />
+                                                <RowConstraints maxHeight="87.0" minHeight="10.0" prefHeight="56.0" vgrow="SOMETIMES" />
+                                                <RowConstraints maxHeight="105.0" minHeight="10.0" prefHeight="65.0" vgrow="SOMETIMES" />
                                             </rowConstraints>
                                              <children>
-                                                <Label text="Label" />
-                                                <Label text="Label" GridPane.rowIndex="2" />
-                                                <Label text="Label" GridPane.rowIndex="1" />
+                                                <Label text="Nome:" />
+                                                <Label text="Dimensão:" GridPane.rowIndex="2" />
+                                                <Label text="Descrição:" GridPane.rowIndex="1" />
+                                                <GridPane hgap="15.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                                  <columnConstraints>
+                                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="177.0" minWidth="10.0" percentWidth="20.0" prefWidth="58.0" />
+                                                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="322.0" minWidth="10.0" percentWidth="30.0" prefWidth="307.0" />
+                                                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="181.0" minWidth="10.0" percentWidth="20.0" prefWidth="163.0" />
+                                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="30.0" prefWidth="100.0" />
+                                                  </columnConstraints>
+                                                  <rowConstraints>
+                                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                  </rowConstraints>
+                                                   <children>
+                                                      <Label text="Altura:" />
+                                                      <Label text="Comprimento:" GridPane.columnIndex="2" />
+                                                      <Label text="Largura:" GridPane.rowIndex="1" />
+                                                      <TextField fx:id="tfHeight" prefHeight="22.0" prefWidth="219.0" GridPane.columnIndex="1" />
+                                                      <TextField fx:id="tfLength" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                                      <TextField fx:id="tfWidth" GridPane.columnIndex="3" />
+                                                   </children>
+                                                </GridPane>
+                                                <TextArea fx:id="taDescription" prefHeight="200.0" prefWidth="200.0" styleClass="taDescription" stylesheets="@css/forms.css" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                                   <GridPane.margin>
+                                                      <Insets />
+                                                   </GridPane.margin>
+                                                </TextArea>
+                                                <TextField fx:id="tfName" GridPane.columnIndex="1" />
+                                                <TextField fx:id="tfManufacturer" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                                                <Label text="Nome:" />
+                                                <Label text="Fabricante:" GridPane.rowIndex="3" />
+                                                <Label text="Restrito:" GridPane.rowIndex="4" />
+                                                <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="50.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                                                   <children>
+                                                      <RadioButton fx:id="rbYes" mnemonicParsing="false" text="sim">
+                                                         <toggleGroup>
+                                                            <ToggleGroup fx:id="tgRestricted" />
+                                                         </toggleGroup>
+                                                      </RadioButton>
+                                                      <RadioButton fx:id="rbNot" mnemonicParsing="false" text="não" toggleGroup="$tgRestricted" />
+                                                   </children>
+                                                </HBox>
+                                                <TextField fx:id="tfLI" visible="false" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                                                <Label fx:id="lbLI" text="licença de importação" visible="false" GridPane.rowIndex="5" />
                                              </children>
                                           </GridPane>
+                                          <StackPane prefHeight="93.0" prefWidth="958.0">
+                                             <children>
+                                                <Button fx:id="btnRegister" mnemonicParsing="false" onAction="#btnRegisterAction" styleClass="btSubmit" stylesheets="@css/forms.css" text="Registrar" />
+                                             </children>
+                                          </StackPane>
                                        </children>
                                     </VBox>
                                  </children>
