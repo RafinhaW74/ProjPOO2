@@ -39,15 +39,14 @@ public class App extends Application {
     public static void main(String[] args) {
 
         
-        String senha = "minhaSenhaSecreta123";
+        String senha = "Senha";
 
         Argon2 argon2 = Argon2Factory.create();
-        String hash;
-        hash = argon2.hash(2, 65536, 2, senha);
-        System.out.println("HAsH: "+ hash);
+        String hash = argon2.hash(2, 65536, 2, senha);
+
 
         boolean isMatch = argon2.verify(hash, senha);
-        System.out.println("combinou: "+ isMatch);
+
     }
 
 }
