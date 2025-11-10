@@ -37,9 +37,6 @@ public class App extends Application {
     }
 
     public static void main(String[] args) {
-        //launch();
-        
-        //AlterarImportacao.alteraImportacaoBD(1, "2030-09-30", 1, "123", null, "2000-07-12");
 
         
         String senha = "minhaSenhaSecreta123";
