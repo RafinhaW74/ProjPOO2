@@ -11,7 +11,7 @@ import de.mkammerer.argon2.Argon2Factory;
  *
  * @author rafin
  */
-public class populaBDteste {
+public class PopulaBDteste {
     public static void populaBD(){
         String senha = "Senha";
         Argon2 argon2 = Argon2Factory.create();

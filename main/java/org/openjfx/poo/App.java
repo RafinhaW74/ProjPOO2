@@ -37,15 +37,10 @@ public class App extends Application {
     }
 
     public static void main(String[] args) {
+        CriaTodasTabelas.CriaTodasTabelasBD();
+        PopulaBDteste.populaBD();
         launch(args);
         
-        String senha = "Senha";
-
-        Argon2 argon2 = Argon2Factory.create();
-        String hash = argon2.hash(2, 65536, 2, senha);
-
-
-        boolean isMatch = argon2.verify(hash, senha);
 
     }
 

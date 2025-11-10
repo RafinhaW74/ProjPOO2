@@ -86,7 +86,7 @@ public class LoginControler implements Initializable {
                     return;
                 }
                 if(argon2.verify(empresa.getSenha(), senha)){
-                    //trocar para tela do alfandegario
+                    //trocar para tela do importador
                 }else{
                     Alertas.mostrarAlerta("Erro de Login", "Senha incorreta.", AlertType.ERROR);
                 }
@@ -97,7 +97,7 @@ public class LoginControler implements Initializable {
                     return;
                 }
                 if(argon2.verify(pessoa.getSenha(), senha)){
-                    //trocar para tela do alfandegario
+                    //trocar para tela do importador
                 }else{
                     Alertas.mostrarAlerta("Erro de Login", "Senha incorreta.", AlertType.ERROR);
                 }
