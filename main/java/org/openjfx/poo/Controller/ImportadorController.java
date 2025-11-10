@@ -4,6 +4,9 @@
  */
 package org.openjfx.poo.Controller;
 
+import org.openjfx.poo.Model.Dao.ListaImportacaoPessoa;
+import org.openjfx.poo.Model.Dao.ListaImportacaoEmpresa;
+
 import java.net.URL;
 import java.sql.Date;
 import java.util.ResourceBundle;
@@ -85,77 +88,11 @@ public class ImportadorController implements Initializable {
                 }
             }
         });
-        Produtos produto = new Produtos(
-            1003, 
-            200.0f, 
-            150.0f, 
-            100.0f, 
-            "Máquina de Café Industrial", 
-            "LI-2024003", 
-            "Philips", 
-            10, 
-            15.8f, 
-            "Máquina de Café"
-        );
-        
-        // Criar pessoa importadora 3
-        Pessoa_importadora pessoa = new Pessoa_importadora(
-            new Date(2000,10,01), // data nascimento
-            "11.223.344-5", // RG
-            "111.222.333-44", // CPF
-            "Av. Brasil", // rua
-            "Jardim América", // bairro
-            321, // numero
-            "98765-432", // cep
-            "Carlos Oliveira", // nome
-            "senha789" // senha
-        );
-        
-        // Criar empresa importadora 3
-        Empresa_importadora empresa = new Empresa_importadora(
-            "Café & Cia Importação", // razao social
-            "11.223.344/0001-55", // CNPJ
-            "Rua das Palmeiras", // rua
-            "Jardins", // bairro
-            654, // numero
-            "01452-000", // cep
-            "Café & Cia", // nome
-            "empresa789", // senha
-            "HAB-003" // habilitacao
-        );
-        
-        
-        Importacao importacao1 = new Importacao(
-            "REJEITADA", // situacao
-            2024003, // numero
-            new Date(System.currentTimeMillis() + 86400000L * 10), // previsao (10 dias)
-            produto,
-            pessoa,
-            null
-        );
-        
-        Importacao importacao2 = new Importacao(
-            "Aprovada", // situacao
-            2024003, // numero
-            new Date(System.currentTimeMillis() + 86400000L * 10), // previsao (10 dias)
-            produto,
-            pessoa,
-            null
-        );
-        
-        Importacao importacao3 = new Importacao(
-            "Em analise", // situacao
-            2024003, // numero
-            new Date(System.currentTimeMillis() + 86400000L * 10), // previsao (10 dias)
-            produto,
-            pessoa,
-            null
-        );
         
         ObservableList<Importacao> listImportacao = FXCollections.observableArrayList();
         lvImports.setItems(listImportacao);
         
-        listImportacao.addAll(importacao1,importacao2,importacao3);
+        listImportacao.addAll(ListaImportacaoPessoa.listaImportacoesPessoaBD("123789"));
         
         lvImports.getSelectionModel().selectedItemProperty().addListener((obs, oldVal, newVal) -> {
             System.out.println("Selecionado: " + newVal);

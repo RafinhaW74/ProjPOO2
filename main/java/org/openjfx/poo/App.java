@@ -13,6 +13,10 @@ import org.openjfx.poo.Model.Dao.*;
 import de.mkammerer.argon2.Argon2;
 import de.mkammerer.argon2.Argon2Factory;
 
+import java.util.List;
+import org.openjfx.poo.Model.*;
+import org.openjfx.poo.Model.Dao.*;
+
 /**
  * JavaFX App
  */
@@ -37,11 +41,15 @@ public class App extends Application {
     }
 
     public static void main(String[] args) {
-        CriaTodasTabelas.CriaTodasTabelasBD();
+        //CriaTodasTabelas.CriaTodasTabelasBD();
         PopulaBDteste.populaBD();
-        launch(args);
+        //launch(args);
+        //List<Importacao> listaImportacoes = ListaImportacaoPessoa.listaImportacoesPessoaBD("123456");
+        //for (Importacao importacao : listaImportacoes) {
+            //System.out.println("Nome: " + importacao.getProdutos().getNome());
+        //}  
+        //Importacao imp = B
         
-
     }
 
 }
