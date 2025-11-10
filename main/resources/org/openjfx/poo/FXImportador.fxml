@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane id="AnchorPane" minHeight="400.0" minWidth="400.0" prefHeight="730.0" prefWidth="1300.0" stylesheets="@css/general.css" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.openjfx.poo.Controller.LoginControler">
+   <children>
+      <ScrollPane fitToHeight="true" fitToWidth="true" layoutX="143.0" layoutY="108.0" minViewportHeight="450.0" minViewportWidth="450.0" prefHeight="200.0" prefViewportHeight="450.0" prefViewportWidth="800.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <content>
+            <VBox prefHeight="200.0" prefWidth="100.0">
+               <children>
+                  <MenuBar fx:id="menuBar" minHeight="50.0">
+                    <menus>
+                      <Menu fx:id="mnName" mnemonicParsing="false" onAction="#User" text="Nome do Importador gonsalves da silva" />
+                      <Menu fx:id="mnRequestImport" mnemonicParsing="false" text="Importação">
+                           <items>
+                              <MenuItem fx:id="miRequest" mnemonicParsing="false" onAction="#RequestImport" text="Solicitar" />
+                              <MenuItem fx:id="miView" mnemonicParsing="false" onAction="#viewImport" text="Visualizar" />
+                           </items>
+                      </Menu>
+                        <Menu fx:id="mnViewPending" mnemonicParsing="false" onAction="#viewPending" text="Pedencias">
+                           <items>
+                              <MenuItem fx:id="miViewPending" mnemonicParsing="false" onAction="#viewPending" text="Visualiar" />
+                           </items>
+                        </Menu>
+                    </menus>
+                  </MenuBar>
+                  <StackPane prefHeight="150.0" prefWidth="1298.0" VBox.vgrow="ALWAYS" />
+               </children>
+            </VBox>
+         </content>
+      </ScrollPane>
+   </children>
+</AnchorPane>

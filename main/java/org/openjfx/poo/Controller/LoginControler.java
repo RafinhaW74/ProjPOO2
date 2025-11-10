@@ -11,6 +11,9 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.Menu;
+import javafx.scene.control.MenuBar;
+import javafx.scene.control.MenuItem;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
@@ -24,21 +27,19 @@ import javafx.scene.control.ToggleGroup;
 public class LoginControler implements Initializable {
 
     @FXML
-    private Label rtTitle;
+    private Menu mnName;
     @FXML
-    private ToggleGroup userType;
+    private Menu mnRequestImport;
     @FXML
-    private RadioButton rbUser;
+    private Menu mnViewimport;
     @FXML
-    private RadioButton rbAdmin;
+    private Menu mnViewPending;
     @FXML
-    private PasswordField tfPassword;
+    private Label lable;
     @FXML
-    private TextField tfIdentificator;
+    private MenuBar menuBar;
     @FXML
-    private Button btnSubmit;
-    @FXML
-    private Button btnRegister;
+    private MenuItem miName;
 
     /**
      * Initializes the controller class.
@@ -49,11 +50,26 @@ public class LoginControler implements Initializable {
     }    
 
     @FXML
-    private void login(ActionEvent event) {
+    private void User(ActionEvent event) {
     }
 
     @FXML
-    private void register(ActionEvent event) {
+    private void RequestImport(ActionEvent event) {
+    }
+
+    @FXML
+    private void viewimport(ActionEvent event) {
+        lable.setText("algo");
+    }
+
+    @FXML
+    private void viewPending(ActionEvent event) {
+        lable.setText(" outro algo");
+    }
+
+    @FXML
+    private void user(ActionEvent event) {
+        lable.setText(" outro algo");
     }
     
 }
