@@ -18,7 +18,7 @@ public class App extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-        scene = new Scene(loadFXML("FXLogin"), 640, 480);
+        scene = new Scene(loadFXML("FXImportador"), 640, 480);
         stage.setScene(scene);
         stage.show();
     }
@@ -33,9 +33,15 @@ public class App extends Application {
     }
 
     public static void main(String[] args) {
+<<<<<<< HEAD
         //launch();
         CriaTodasTabelas.CriaTodasTabelasBD();
         populaBDteste.populaBD();
+=======
+        launch();
+        
+        //AlterarImportacao.alteraImportacaoBD(1, "2030-09-30", 1, "123", null, "2000-07-12");
+>>>>>>> origin/main
 
         
 

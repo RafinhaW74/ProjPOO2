@@ -1,0 +1,60 @@
+/* ===========================
+   Estilo geral do ListView
+   =========================== */
+.list-view {
+    -fx-background-color: #f9f9fb;           /* fundo leve */
+    -fx-border-color: #d0d0d0;               /* borda sutil */
+    -fx-border-radius: 8px;
+    -fx-background-radius: 8px;
+    -fx-padding: 4px;
+}
+
+/* Barra de rolagem mais discreta */
+.list-view .scroll-bar:vertical {
+    -fx-padding: 2px;
+}
+.list-view .thumb {
+    -fx-background-color: #c4c4c4;
+    -fx-background-radius: 4px;
+}
+.list-view .thumb:hover {
+    -fx-background-color: #a0a0a0;
+}
+
+/* ===========================
+   Estilo das células
+   =========================== */
+.list-cell {
+    -fx-background-color: transparent;
+    -fx-padding: 3px 6px;
+    -fx-alignment: center-left;
+
+    -fx-border-color: transparent transparent #dcdcdc transparent;
+    -fx-border-width: 0 0 1px 0;
+}
+
+
+.list-cell:odd {
+    -fx-background-color: #f1f1f3;
+}
+
+
+.list-cell:hover {
+    -fx-background-color: #e6eaff;
+}
+
+
+.list-cell:selected {
+    -fx-background-color: #80b0ff;  /* azul */
+    -fx-text-fill: white;
+}
+
+
+.listName {
+    -fx-font-size: 14px;
+}
+
+.listSituation {
+    -fx-font-size: 13 px;
+    -fx-text-fill: #666;
+}

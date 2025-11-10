@@ -30,7 +30,7 @@
                      <children>
                         <StackPane minHeight="60.0" minWidth="400.0">
                            <children>
-                              <Label fx:id="rtTitle" alignment="CENTER" contentDisplay="CENTER" text="Login">
+                              <Label fx:id="rtTitle" alignment="CENTER" contentDisplay="CENTER" styleClass="title" text="Login">
                                  <font>
                                     <Font name="Berlin Sans FB" size="52.0" />
                                  </font>
