@@ -27,7 +27,7 @@ public class App extends Application {
         stage.show();
     }
 
-    static void setRoot(String fxml) throws IOException {
+    public static void setRoot(String fxml) throws IOException {
         scene.setRoot(loadFXML(fxml));
     }
 
@@ -37,17 +37,11 @@ public class App extends Application {
     }
 
     public static void main(String[] args) {
+        CriaTodasTabelas.CriaTodasTabelasBD();
+        PopulaBDteste.populaBD();
         launch(args);
         
-        String senha = "minhaSenhaSecreta123";
 
-        Argon2 argon2 = Argon2Factory.create();
-        String hash;
-        hash = argon2.hash(2, 65536, 2, senha);
-        System.out.println("HAsH: "+ hash);
-
-        boolean isMatch = argon2.verify(hash, senha);
-        System.out.println("combinou: "+ isMatch);
     }
 
 }

@@ -14,7 +14,7 @@ import java.sql.ResultSet;
  */
 public class BuscaProdutos {
     public static Produtos buscaProdutosBD(int Numero) {
-        Produtos a = new Produtos();
+        Produtos a = null;
         String sql = "SELECT * FROM Produto WHERE Numero = ?";
 
         try {
@@ -23,6 +23,7 @@ public class BuscaProdutos {
             st.setInt(1, Numero );
             ResultSet rs = st.executeQuery();
             if (rs.next()) {
+                a = new Produtos();
                 a.setEstado(rs.getBoolean("Estado"));
                 a.setNumero(rs.getInt("Numero"));
                 a.setLargura(rs.getFloat("Largura"));

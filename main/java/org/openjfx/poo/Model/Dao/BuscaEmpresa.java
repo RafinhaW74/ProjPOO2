@@ -14,7 +14,7 @@ import java.sql.ResultSet;
  */
 public class BuscaEmpresa {
     public static Empresa_importadora buscaEmpresa_importadoraBD(String CNPJ) {
-        Empresa_importadora a = new Empresa_importadora();
+        Empresa_importadora a = null;
         String sql = "SELECT * FROM Empresa WHERE CNPJ = ?";
 
         try {
@@ -23,6 +23,7 @@ public class BuscaEmpresa {
             st.setString(1, CNPJ );
             ResultSet rs = st.executeQuery();
             if (rs.next()) {
+                a = new Empresa_importadora();
                 a.setCNPJ(rs.getString("CNPJ"));
                 a.setRazao_social(rs.getString("Razao_social"));
                 a.setNome(rs.getString("Nome"));

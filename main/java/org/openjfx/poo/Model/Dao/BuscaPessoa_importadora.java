@@ -14,7 +14,7 @@ import java.sql.ResultSet;
  */
 public class BuscaPessoa_importadora {
     public static Pessoa_importadora buscaPessoa_importadoraBD(String CPF) {
-        Pessoa_importadora a = new Pessoa_importadora();
+        Pessoa_importadora a = null;
         String sql = "SELECT * FROM Pessoa_importadora WHERE CPF = ?";
 
         try {
@@ -23,6 +23,7 @@ public class BuscaPessoa_importadora {
             st.setString(1, CPF );
             ResultSet rs = st.executeQuery();
             if (rs.next()) {
+                a = new Pessoa_importadora();
                 a.setCPF(rs.getString("CPF"));
                 a.setRG(rs.getString("RG"));
                 a.setNome(rs.getString("Nome"));
