@@ -4,6 +4,7 @@
  */
 package org.openjfx.poo.Model.Dao;
 
+import java.sql.Date;
 import java.sql.PreparedStatement;
 
 /**
@@ -11,13 +12,13 @@ import java.sql.PreparedStatement;
  * @author rafin
  */
 public class AlterarImportacao {
-    public static void alteraImportacaoBD(int Numero, String Previsao, int NumeroProduto, String CPF_Importador, String CNPJ_Importador){
-        String sql = "UPDATE Importacao SET Previsao = ?, NumeroProduto = ?, CPF_Importador = ?, CNPJ_Importador = ? WHERE Numero = ?";
+    public static void alteraImportacaoBD(int Numero, String Previsao, int NumeroProduto, String CPF_Importador, String CNPJ_Importador, String atualizacao){
+        String sql = "UPDATE Importacao SET Previsao = ?, NumeroProduto = ?, CPF_Importador = ?, CNPJ_Importador = ?, Atualizacao = ? WHERE Numero = ?";
         
         try{
             Conexao connection = new Conexao();
             PreparedStatement st = connection.get_prepare(sql);
-            connection.set_param(new Object[]{Previsao, NumeroProduto, CPF_Importador, CNPJ_Importador, Numero});
+            connection.set_param(new Object[]{Date.valueOf(Previsao), NumeroProduto, CPF_Importador, CNPJ_Importador, Date.valueOf(atualizacao), Numero});
             st.execute();
             connection.close();
 

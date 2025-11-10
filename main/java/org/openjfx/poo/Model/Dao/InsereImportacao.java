@@ -12,14 +12,14 @@ import java.sql.PreparedStatement;
  * @author rafin
  */
 public class InsereImportacao {
-    public static void insereImportacaoBD(String Previsao, int NumeroProduto, String CPF_Importador, String CNPJ_Importador){
-        String sql = "INSERT INTO Importacao (Previsao, NumeroProduto, CPF_Importador, CNPJ_Importador) "
-           + "VALUES (?, ?, ?, ?)";
+    public static void insereImportacaoBD(String Previsao, int NumeroProduto, String CPF_Importador, String CNPJ_Importador, String atualizacao){
+        String sql = "INSERT INTO Importacao (Previsao, NumeroProduto, CPF_Importador, CNPJ_Importador, Atualizacao) "
+           + "VALUES (?, ?, ?, ?, ?)";
         
         try{
             Conexao connection = new Conexao();
             PreparedStatement st = connection.get_prepare(sql);
-            connection.set_param(new Object[]{Date.valueOf(Previsao), NumeroProduto, CPF_Importador, CNPJ_Importador});
+            connection.set_param(new Object[]{Date.valueOf(Previsao), NumeroProduto, CPF_Importador, CNPJ_Importador, Date.valueOf(atualizacao)});
             st.execute();
             connection.close();
 

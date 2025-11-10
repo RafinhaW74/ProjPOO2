@@ -19,7 +19,6 @@ public class CriaTabelaEmpresa {
            + "Rua VARCHAR(100), "
            + "Numero INT, "
            + "CEP CHAR(8), "
-           + "Razao_Social VARCHAR(150) NOT NULL, "
            + "CNPJ CHAR(14) NOT NULL UNIQUE, "
            + "Habilitacao VARCHAR(50), "
            + "Estado BOOLEAN DEFAULT TRUE, "

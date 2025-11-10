@@ -11,13 +11,13 @@ import java.sql.PreparedStatement;
  * @author rafin
  */
 public class InsereProduto {
-    public static void insereProdutoBD(float Largura, float Comprimento, float Altura, String Descricao, String LI, String Fabricante, int quantidade){
-        String sql = "INSERT INTO Produto(Largura, Comprimento, Altura, Descricao, LI, Fabricante, Quantidade) VALUES(?,?,?,?,?,?,?)";
+    public static void insereProdutoBD(float Largura, float Comprimento, float Altura, String Descricao, String LI, String Fabricante, int quantidade, float peso, String nome){
+        String sql = "INSERT INTO Produto(Largura, Comprimento, Altura, Descricao, LI, Fabricante, Quantidade, Nome, Peso) VALUES(?,?,?,?,?,?,?,?,?)";
         
         try{
             Conexao connection = new Conexao();
             PreparedStatement st = connection.get_prepare(sql);
-            connection.set_param(new Object[]{Largura, Comprimento, Altura, Descricao, LI, Fabricante, quantidade});
+            connection.set_param(new Object[]{Largura, Comprimento, Altura, Descricao, LI, Fabricante, quantidade, nome, peso});
             st.execute();
             connection.close();
 
