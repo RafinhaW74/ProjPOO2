@@ -1,3 +1,7 @@
 .btnLogout{
     -fx-font-size: 20px; 
 }
+
+.btn-description{
+    -fx-font-size: 25px; 
+}
