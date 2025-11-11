@@ -12,6 +12,11 @@
     -fx-font-size: 50;
 }
 
+.sub-title{
+    -fx-font-size: 40;
+    -fx-font-family: "";
+}
+
 
 .button {
     -fx-background-color: #d6d3d3;

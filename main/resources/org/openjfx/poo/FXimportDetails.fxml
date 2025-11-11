@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" minHeight="400.0" minWidth="400.0" prefHeight="730.0" prefWidth="1300.0" stylesheets="@css/general.css" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.openjfx.poo.Controller.importDetailsController">
+   <children>
+      <ScrollPane fitToHeight="true" fitToWidth="true" layoutX="143.0" layoutY="108.0" minViewportHeight="450.0" minViewportWidth="450.0" prefHeight="200.0" prefViewportHeight="450.0" prefViewportWidth="800.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <content>
+            <VBox prefHeight="200.0" prefWidth="100.0">
+               <children>
+                  <MenuBar fx:id="menuBar" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="40.0">
+                     <menus>
+                        <Menu fx:id="mnName" mnemonicParsing="false" onAction="#User" text="Nome do Importador gonsalves da silva" />
+                        <Menu fx:id="mnRequestImport" mnemonicParsing="false" text="Importação">
+                           <items>
+                              <MenuItem fx:id="miRequest" mnemonicParsing="false" onAction="#RequestImport" text="Solicitar" />
+                              <MenuItem fx:id="miView" mnemonicParsing="false" onAction="#viewImport" text="Visualizar" />
+                           </items>
+                        </Menu>
+                        <Menu fx:id="mnViewPending" mnemonicParsing="false" onAction="#viewPending" text="Pedencias">
+                           <items>
+                              <MenuItem fx:id="miViewPending" mnemonicParsing="false" onAction="#viewPending" text="Visualiar" />
+                           </items>
+                        </Menu>
+                     </menus>
+                     <cursor>
+                        <Cursor fx:constant="DEFAULT" />
+                     </cursor>
+                     <padding>
+                        <Insets left="10.0" top="4.0" />
+                     </padding>
+                  </MenuBar>
+                  <StackPane prefHeight="150.0" prefWidth="1298.0" VBox.vgrow="ALWAYS">
+                     <children>
+                        <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" StackPane.alignment="CENTER">
+                           <children>
+                              <StackPane minHeight="600.0" minWidth="900.0" prefHeight="600.0" prefWidth="1400.0">
+                                 <children>
+                                    <VBox alignment="CENTER" maxHeight="900.0" minHeight="500.0" minWidth="900.0" prefHeight="650.0" prefWidth="1400.0" StackPane.alignment="CENTER">
+                                       <children>
+                                          <StackPane maxHeight="-Infinity" minHeight="-Infinity" prefHeight="40.0" prefWidth="900.0">
+                                             <children>
+                                                <Label styleClass="sub-title" text="Importador">
+                                                   <StackPane.margin>
+                                                      <Insets bottom="10.0" />
+                                                   </StackPane.margin>
+                                                </Label>
+                                             </children>
+                                          </StackPane>
+                                          <GridPane alignment="CENTER" prefHeight="90.0" prefWidth="881.0">
+                                            <columnConstraints>
+                                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="150.0" minWidth="150.0" prefWidth="150.0" />
+                                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="600.0" minWidth="250.0" prefWidth="250.0" />
+                                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="150.0" minWidth="150.0" prefWidth="150.0" />
+                                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="600.0" minWidth="250.0" prefWidth="250.0" />
+                                            </columnConstraints>
+                                            <rowConstraints>
+                                                <RowConstraints minHeight="45.0" percentHeight="50.0" prefHeight="40.0" vgrow="SOMETIMES" />
+                                              <RowConstraints minHeight="45.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                            </rowConstraints>
+                                             <children>
+                                                <Label text="Numero:" />
+                                                <Label fx:id="rtNumerImport" text="N" GridPane.columnIndex="1" />
+                                                <Label text="Estado:" GridPane.columnIndex="2" />
+                                                <Label fx:id="rtStatusImport" text="P" GridPane.columnIndex="3" />
+                                                <Label text="Nome:" GridPane.rowIndex="1" />
+                                                <Label fx:id="rtNameImporter" text="Nome" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                                <Label text="CPF/CNPJ:" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                                                <Label fx:id="rtIDImporter" text="ID" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+                                             </children>
+                                          </GridPane>
+                                          <Separator prefWidth="200.0">
+                                             <VBox.margin>
+                                                <Insets bottom="10.0" top="10.0" />
+                                             </VBox.margin>
+                                          </Separator>
+                                          <StackPane maxHeight="-Infinity" minHeight="-Infinity" prefHeight="40.0" prefWidth="200.0">
+                                             <children>
+                                                <Label styleClass="sub-title" text="Produto">
+                                                   <font>
+                                                      <Font name="Blackadder ITC" size="12.0" />
+                                                   </font></Label>
+                                             </children>
+                                             <VBox.margin>
+                                                <Insets bottom="10.0" />
+                                             </VBox.margin>
+                                          </StackPane>
+                                          <GridPane alignment="CENTER">
+                                             <columnConstraints>
+                                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="150.0" minWidth="150.0" prefWidth="150.0" />
+                                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="600.0" minWidth="250.0" prefWidth="250.0" />
+                                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="150.0" minWidth="150.0" prefWidth="150.0" />
+                                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="600.0" minWidth="250.0" prefWidth="250.0" />
+                                             </columnConstraints>
+                                             <rowConstraints>
+                                                <RowConstraints minHeight="45.0" prefHeight="40.0" vgrow="SOMETIMES" />
+                                                <RowConstraints minHeight="45.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                <RowConstraints minHeight="45.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                <RowConstraints minHeight="45.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                             </rowConstraints>
+                                             <children>
+                                                <Label text="Nome:" />
+                                                <Label fx:id="rtProductName" text="N" GridPane.columnIndex="1" />
+                                                <Label text="Fabricante:" GridPane.columnIndex="2" />
+                                                <Label fx:id="rtProductManufacturer" text="P" GridPane.columnIndex="3" />
+                                                <Label text="Altura:" GridPane.rowIndex="1" />
+                                                <Label fx:id="rtProductHeight" text="D" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                                <Label text="Comprimento:" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                                                <Label fx:id="rtProductLength" text="ID" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+                                                <Label text="Largura:" GridPane.rowIndex="2" />
+                                                <Label fx:id="rtProductWidth" text="L" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                                                <Label text="Peso:" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                                                <Label fx:id="rtProductWeight" text="Pe" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+                                                <Label text="Restrito:" GridPane.rowIndex="3" />
+                                                <Label fx:id="rtProductRestricted" text="rt" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                                                <Label text="LI:" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+                                                <Label fx:id="rtProductLI" text="l" GridPane.columnIndex="3" GridPane.rowIndex="3" />
+                                             </children>
+                                          </GridPane>
+                                          <HBox alignment="CENTER" maxHeight="300.0" minHeight="150.0" prefHeight="100.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+                                             <children>
+                                                <StackPane alignment="CENTER_LEFT" maxHeight="300.0" maxWidth="-Infinity" minHeight="100.0" minWidth="-Infinity" prefHeight="250.0" prefWidth="180.0">
+                                                   <children>
+                                                      <Label text="Descrição:" />
+                                                   </children>
+                                                </StackPane>
+                                                <Label fx:id="rtProductDescription" maxHeight="300.0" prefHeight="250.0" prefWidth="1400.0" text="Des" textAlignment="JUSTIFY" HBox.hgrow="ALWAYS" />
+                                             </children>
+                                          </HBox>
+                                       </children>
+                                       <padding>
+                                          <Insets top="30.0" />
+                                       </padding>
+                                    </VBox>
+                                 </children>
+                              </StackPane>
+                              <StackPane minWidth="300.0" prefHeight="648.0" prefWidth="287.0" HBox.hgrow="ALWAYS">
+                                 <children>
+                                    <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
+                                       <children>
+                                          <StackPane prefHeight="150.0" prefWidth="200.0">
+                                             <children>
+                                                <Label text="Label" />
+                                             </children>
+                                          </StackPane>
+                                          <StackPane prefHeight="150.0" prefWidth="200.0">
+                                             <children>
+                                                <Button mnemonicParsing="false" styleClass="btn-description" stylesheets="@css/btn.css" />
+                                             </children>
+                                          </StackPane>
+                                          <StackPane prefHeight="150.0" prefWidth="200.0">
+                                             <children>
+                                                <Button mnemonicParsing="false" styleClass="btn-description" stylesheets="@css/btn.css" text="Button" />
+                                             </children>
+                                          </StackPane>
+                                          <Button mnemonicParsing="false" styleClass="btn-description" stylesheets="@css/btn.css" text="Button" />
+                                          <StackPane prefHeight="150.0" prefWidth="200.0" />
+                                       </children>
+                                    </VBox>
+                                 </children>
+                              </StackPane>
+                           </children>
+                        </HBox>
+                     </children>
+                     <padding>
+                        <Insets bottom="40.0" left="40.0" right="40.0" />
+                     </padding>
+                  </StackPane>
+               </children>
+            </VBox>
+         </content>
+      </ScrollPane>
+   </children>
+</AnchorPane>
