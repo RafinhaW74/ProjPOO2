@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.String?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
@@ -9,6 +10,8 @@
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
@@ -46,7 +49,7 @@
                         <Insets left="10.0" top="4.0" />
                      </padding>
                   </MenuBar>
-                  <StackPane prefHeight="150.0" prefWidth="1298.0" VBox.vgrow="ALWAYS">
+                  <StackPane prefHeight="150.0" prefWidth="1298.0" stylesheets="@css/forms.css" VBox.vgrow="ALWAYS">
                      <children>
                         <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" StackPane.alignment="CENTER">
                            <children>
@@ -63,11 +66,11 @@
                                                 </Label>
                                              </children>
                                           </StackPane>
-                                          <GridPane alignment="CENTER" prefHeight="90.0" prefWidth="881.0">
+                                          <GridPane alignment="CENTER" hgap="10.0" prefHeight="90.0" prefWidth="881.0">
                                             <columnConstraints>
-                                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="150.0" minWidth="150.0" prefWidth="150.0" />
+                                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="130.0" minWidth="130.0" prefWidth="130.0" />
                                                 <ColumnConstraints hgrow="SOMETIMES" maxWidth="600.0" minWidth="250.0" prefWidth="250.0" />
-                                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="150.0" minWidth="150.0" prefWidth="150.0" />
+                                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="130.0" minWidth="130.0" prefWidth="130.0" />
                                               <ColumnConstraints hgrow="SOMETIMES" maxWidth="600.0" minWidth="250.0" prefWidth="250.0" />
                                             </columnConstraints>
                                             <rowConstraints>
@@ -76,13 +79,13 @@
                                             </rowConstraints>
                                              <children>
                                                 <Label text="Numero:" />
-                                                <Label fx:id="rtNumerImport" text="N" GridPane.columnIndex="1" />
                                                 <Label text="Estado:" GridPane.columnIndex="2" />
-                                                <Label fx:id="rtStatusImport" text="P" GridPane.columnIndex="3" />
                                                 <Label text="Nome:" GridPane.rowIndex="1" />
-                                                <Label fx:id="rtNameImporter" text="Nome" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                                                 <Label text="CPF/CNPJ:" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-                                                <Label fx:id="rtIDImporter" text="ID" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+                                                <TextField fx:id="tfImportNumber" styleClass="plain-content" GridPane.columnIndex="1" />
+                                                <TextField fx:id="tfImporterName" styleClass="plain-content" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                                <TextField fx:id="tfImportStatus" styleClass="plain-content" GridPane.columnIndex="3" />
+                                                <TextField fx:id="tfImporterID" styleClass="plain-content" GridPane.columnIndex="3" GridPane.rowIndex="1" />
                                              </children>
                                           </GridPane>
                                           <Separator prefWidth="200.0">
@@ -101,11 +104,11 @@
                                                 <Insets bottom="10.0" />
                                              </VBox.margin>
                                           </StackPane>
-                                          <GridPane alignment="CENTER">
+                                          <GridPane alignment="CENTER" hgap="10.0">
                                              <columnConstraints>
-                                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="150.0" minWidth="150.0" prefWidth="150.0" />
+                                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="130.0" minWidth="130.0" prefWidth="130.0" />
                                                 <ColumnConstraints hgrow="SOMETIMES" maxWidth="600.0" minWidth="250.0" prefWidth="250.0" />
-                                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="150.0" minWidth="150.0" prefWidth="150.0" />
+                                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="130.0" minWidth="130.0" prefWidth="130.0" />
                                                 <ColumnConstraints hgrow="SOMETIMES" maxWidth="600.0" minWidth="250.0" prefWidth="250.0" />
                                              </columnConstraints>
                                              <rowConstraints>
@@ -116,31 +119,35 @@
                                              </rowConstraints>
                                              <children>
                                                 <Label text="Nome:" />
-                                                <Label fx:id="rtProductName" text="N" GridPane.columnIndex="1" />
                                                 <Label text="Fabricante:" GridPane.columnIndex="2" />
-                                                <Label fx:id="rtProductManufacturer" text="P" GridPane.columnIndex="3" />
                                                 <Label text="Altura:" GridPane.rowIndex="1" />
-                                                <Label fx:id="rtProductHeight" text="D" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                                                 <Label text="Comprimento:" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-                                                <Label fx:id="rtProductLength" text="ID" GridPane.columnIndex="3" GridPane.rowIndex="1" />
                                                 <Label text="Largura:" GridPane.rowIndex="2" />
-                                                <Label fx:id="rtProductWidth" text="L" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                                                 <Label text="Peso:" GridPane.columnIndex="2" GridPane.rowIndex="2" />
-                                                <Label fx:id="rtProductWeight" text="Pe" GridPane.columnIndex="3" GridPane.rowIndex="2" />
                                                 <Label text="Restrito:" GridPane.rowIndex="3" />
-                                                <Label fx:id="rtProductRestricted" text="rt" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                                                 <Label text="LI:" GridPane.columnIndex="2" GridPane.rowIndex="3" />
-                                                <Label fx:id="rtProductLI" text="l" GridPane.columnIndex="3" GridPane.rowIndex="3" />
+                                                <TextField fx:id="tfProductName" styleClass="plain-content" GridPane.columnIndex="1" />
+                                                <TextField fx:id="tfProductHeight" styleClass="plain-content" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                                <TextField fx:id="tfProductwidth" styleClass="plain-content" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                                                <TextField fx:id="tfProductRestricted" styleClass="plain-content" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                                                <TextField fx:id="tfProductManufacturer" styleClass="plain-content" GridPane.columnIndex="3" />
+                                                <TextField fx:id="tfProdutcLength" styleClass="plain-content" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+                                                <TextField fx:id="tfProductwiegth" styleClass="plain-content" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+                                                <TextField fx:id="tfProductLI" styleClass="plain-content" GridPane.columnIndex="3" GridPane.rowIndex="3" />
                                              </children>
                                           </GridPane>
                                           <HBox alignment="CENTER" maxHeight="300.0" minHeight="150.0" prefHeight="100.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
                                              <children>
-                                                <StackPane alignment="CENTER_LEFT" maxHeight="300.0" maxWidth="-Infinity" minHeight="100.0" minWidth="-Infinity" prefHeight="250.0" prefWidth="180.0">
+                                                <StackPane alignment="CENTER_LEFT" maxHeight="300.0" maxWidth="-Infinity" minHeight="100.0" minWidth="-Infinity" prefHeight="250.0" prefWidth="130.0">
                                                    <children>
                                                       <Label text="Descrição:" />
                                                    </children>
                                                 </StackPane>
-                                                <Label fx:id="rtProductDescription" maxHeight="300.0" prefHeight="250.0" prefWidth="1400.0" text="Des" textAlignment="JUSTIFY" HBox.hgrow="ALWAYS" />
+                                                <StackPane prefHeight="150.0" prefWidth="200.0" HBox.hgrow="ALWAYS">
+                                                   <children>
+                                                      <TextArea fx:id="taProductDescription" prefHeight="200.0" prefWidth="200.0" styleClass="plain-content" />
+                                                   </children>
+                                                </StackPane>
                                              </children>
                                           </HBox>
                                        </children>
@@ -150,27 +157,38 @@
                                     </VBox>
                                  </children>
                               </StackPane>
-                              <StackPane minWidth="300.0" prefHeight="648.0" prefWidth="287.0" HBox.hgrow="ALWAYS">
+                              <StackPane minWidth="300.0" prefHeight="648.0" prefWidth="300.0" HBox.hgrow="ALWAYS">
                                  <children>
-                                    <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
+                                    <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0">
                                        <children>
-                                          <StackPane prefHeight="150.0" prefWidth="200.0">
+                                          <StackPane minHeight="200.0" minWidth="300.0" prefHeight="150.0" prefWidth="40.0">
+                                             <VBox.margin>
+                                                <Insets top="40.0" />
+                                             </VBox.margin>
                                              <children>
-                                                <Label text="Label" />
+                                                <TextArea fx:id="taImportPendig" prefHeight="200.0" prefWidth="200.0" stylesheets="@css/box.css" text="Descrição da penddencia  bla blabla blabla blabla blabla blabla blabla blabla blabla blabla blabla blabla blabla blabla blabla bla bla blabla bla bla blabla bla vbla blavbla blav vv  Descrição da penddencia  bla blabla blabla blabla blabla blabla blabla blabla blabla blabla blabla blabla blabla blabla blabla bla bla blabla bla bla blabla bla vbla blavbla blav vv  Descrição da penddencia  bla blabla blabla blabla blabla blabla blabla blabla blabla blabla blabla blabla blabla blabla blabla bla bla blabla bla bla blabla bla vbla blavbla blav vv  Descrição da penddencia  bla blabla blabla blabla blabla blabla blabla blabla blabla blabla blabla blabla blabla blabla blabla bla bla blabla bla bla blabla bla vbla blavbla blav vv  v Descrição da penddencia  bla blabla blabla blabla blabla blabla blabla blabla blabla blabla blabla blabla blabla blabla blabla bla bla blabla bla bla blabla bla vbla blavbla blav vv  v  Descrição da penddencia  bla blabla blabla blabla blabla blabla blabla blabla blabla blabla blabla blabla blabla blabla blabla bla bla blabla bla bla blabla bla vbla blavbla blav vv v" wrapText="true">
+                                                   <styleClass>
+                                                      <String fx:value="plain-content" />
+                                                      <String fx:value="information-pending" />
+                                                   </styleClass>
+                                                </TextArea>
                                              </children>
                                           </StackPane>
-                                          <StackPane prefHeight="150.0" prefWidth="200.0">
+                                          <StackPane maxHeight="250.0" minHeight="-Infinity" prefHeight="90.0" prefWidth="300.0" VBox.vgrow="ALWAYS">
                                              <children>
-                                                <Button mnemonicParsing="false" styleClass="btn-description" stylesheets="@css/btn.css" />
+                                                <Button fx:id="btnPending" mnemonicParsing="false" onAction="#btnPendingAction" styleClass="btn-description" stylesheets="@css/btn.css" text="Ação Pendnete" />
                                              </children>
                                           </StackPane>
-                                          <StackPane prefHeight="150.0" prefWidth="200.0">
+                                          <StackPane maxHeight="250.0" minHeight="-Infinity" prefHeight="90.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
                                              <children>
-                                                <Button mnemonicParsing="false" styleClass="btn-description" stylesheets="@css/btn.css" text="Button" />
+                                                <Button fx:id="btnAlter" mnemonicParsing="false" onAction="#btnAlter" styleClass="btn-description" stylesheets="@css/btn.css" text="Atualizarr" />
                                              </children>
                                           </StackPane>
-                                          <Button mnemonicParsing="false" styleClass="btn-description" stylesheets="@css/btn.css" text="Button" />
-                                          <StackPane prefHeight="150.0" prefWidth="200.0" />
+                                          <StackPane maxHeight="250.0" minHeight="-Infinity" prefHeight="90.0" prefWidth="300.0" VBox.vgrow="ALWAYS">
+                                             <children>
+                                                <Button fx:id="btnDelet" mnemonicParsing="false" onAction="#btnDeletAction" styleClass="btn-description" stylesheets="@css/btn.css" text="Excluir" />
+                                             </children>
+                                          </StackPane>
                                        </children>
                                     </VBox>
                                  </children>
