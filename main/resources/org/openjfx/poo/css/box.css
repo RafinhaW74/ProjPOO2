@@ -1,0 +1,9 @@
+.information-pending{
+    -fx-border-color: black;
+    -fx-border-radius: 5px;
+    -fx-border-width: 1px;
+
+    -fx-padding: 10px;
+
+    -fx-font-size:20px;
+} 

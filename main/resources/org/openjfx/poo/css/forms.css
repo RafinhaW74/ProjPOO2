@@ -44,7 +44,7 @@
     -fx-background-color: #cccccc;
     -fx-border-radius: 6;
     -fx-background-radius: 6;
-    -fx-prompt-text-fill: #888;
+    -fx-prompt-text-fill: #4b4b4b;
     -fx-border-color: #616161;
 }
 
@@ -63,4 +63,35 @@
     -fx-border-color: #000000;            
     -fx-effect: dropshadow(three-pass-box, rgba(74,144,226,0.4), 5, 0, 0, 0);
     -fx-text-fill: #000; 
+}
+
+
+.plain-content {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+    -fx-background-insets: 0;
+    -fx-background-radius: 0;
+    -fx-border-radius: 0;
+    -fx-padding: 0;
+    -fx-text-fill: #000000;
+    -fx-font-size: 20px;
+    -fx-cursor: default;
+
+    -fx-prompt-text-fill: #000;
+}
+
+.plain-content .content {
+    -fx-background-color: transparent;
+}
+
+.plain-content:focused {
+    -fx-background-color: transparent;
+    -fx-faint-focus-color: transparent;
+    -fx-focus-color: transparent;
+    -fx-border-color: transparent;
+    
+}
+
+.sub-title{
+    -fx-font-size: 35;
 }
