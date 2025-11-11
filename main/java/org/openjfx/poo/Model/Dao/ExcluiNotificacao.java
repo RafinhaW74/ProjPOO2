@@ -10,22 +10,13 @@ import java.sql.PreparedStatement;
  *
  * @author rafin
  */
-public class CriaTabelaNotificacoes {
-    public static void criaTabelaNotificacoesBD(){
-        String sql = "CREATE TABLE IF NOT EXISTS Notificacao ("
-        + "id INT AUTO_INCREMENT PRIMARY KEY, "
-        + "tipo VARCHAR(50) NOT NULL, "
-        + "descricao TEXT, "
-        + "Resolvido BOOLEAN DEFAULT FALSE, "
-        + "Estado BOOLEAN DEFAULT TRUE, "
-        + "Criacao DATETIME DEFAULT CURRENT_TIMESTAMP, "
-        + "numeroImportacao INT, "
-        + "FOREIGN KEY (numeroImportacao) REFERENCES Importacao(Numero)"
-        + ")";
-        
+public class ExcluiNotificacao {
+    public static void ExcluiEmpresaBD(int iD){
+        String sql = "UPDATE Notificacao SET Estado = FALSE WHERE id = ?";
         try{
             Conexao connection = new Conexao();
             PreparedStatement st = connection.get_prepare(sql);
+            connection.set_param(new Object[]{iD});
             st.execute();
             connection.close();
         }catch(Exception erro){

@@ -15,5 +15,6 @@ public class CriaTodasTabelas {
         CriaTabelaProduto.criaTabelaProdutoBD();
         CriaTabelaEmpresa.criaTabelaEmpresaBD();
         CriaTabelaImportacao.criaTabelaImportacaoBD();
+        CriaTabelaNotificacoes.criaTabelaNotificacoesBD();
     }
 }

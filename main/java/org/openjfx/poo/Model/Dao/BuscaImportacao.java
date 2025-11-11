@@ -5,6 +5,7 @@
 package org.openjfx.poo.Model.Dao;
 
 import org.openjfx.poo.Model.Importacao;
+import org.openjfx.poo.Model.Dao.BuscaListaNotificacoes;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
@@ -35,6 +36,7 @@ public class BuscaImportacao {
                 a.setProdutos(BuscaProdutos.buscaProdutosBD(rs.getInt("NumeroProduto")));
                 a.setEmpresa(BuscaEmpresa.buscaEmpresa_importadoraBD(rs.getString("CNPJ_Importador")));
                 a.setAtualizacao(rs.getDate("Atualizacao"));
+                a.setNotificacoes(BuscaListaNotificacoes.BuscaListaNotificacoesBD(Numero));
             }
 
             rs.close();

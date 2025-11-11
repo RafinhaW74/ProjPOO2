@@ -21,13 +21,14 @@ public class Importacao {
     private Produtos produtos;
     private Pessoa_importadora importador;
     private Empresa_importadora empresa;
+    private List<Notificacoes> notificacoes;
     private boolean Estado = true;
 
     public Importacao() {
         this.Estado = true;
     }
 
-    public Importacao(String situacao, int numero, Date previsao, Produtos produtos, Pessoa_importadora importador, Empresa_importadora empresa, Date atualizacao) {
+    public Importacao(String situacao, int numero, Date previsao, Produtos produtos, Pessoa_importadora importador, Empresa_importadora empresa, Date atualizacao, List<Notificacoes> notificacoes) {
         this.situacao = situacao;
         this.numero = numero;
         this.previsao = previsao;
@@ -36,6 +37,7 @@ public class Importacao {
         this.empresa = empresa;
         this.Estado = true;
         this.atualizacao = atualizacao;
+        this.notificacoes = notificacoes;
     }
 
     public String getSituacao() {
@@ -101,6 +103,15 @@ public class Importacao {
     public void setAtualizacao(Date atualizacao) {
         this.atualizacao = atualizacao;
     }
+
+    public List<Notificacoes> getNotificacoes() {
+        return notificacoes;
+    }
+
+    public void setNotificacoes(List<Notificacoes> notificacoes) {
+        this.notificacoes = notificacoes;
+    }
+    
 
     
     
