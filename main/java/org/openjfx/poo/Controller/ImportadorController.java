@@ -112,7 +112,7 @@ public class ImportadorController implements Initializable {
             listImportacao.addAll(ListaImportacaoEmpresa.listaImportacoesEmpresaBD(identificador));
         }
         
-        
+        //isso que é chamado quando clicla em um produto do listaaa
         lvImports.getSelectionModel().selectedItemProperty().addListener((obs, oldVal, newVal) -> {
             System.out.println("Selecionado: " + newVal.getProdutos().getNome());
         });

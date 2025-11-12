@@ -118,7 +118,10 @@ public class AlfandegarioController implements Initializable {
         lvImports.setItems(listImportacao);
         
        
-        
+        //isso que é chamado quando clicla em um produto do listaaa
+        lvImports.getSelectionModel().selectedItemProperty().addListener((obs, oldVal, newVal) -> {
+            System.out.println("Selecionado: " + newVal.getProdutos().getNome());
+        });
     }    
 
     @FXML
