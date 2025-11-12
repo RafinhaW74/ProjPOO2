@@ -114,7 +114,7 @@ public class ImportadorController implements Initializable {
         
         
         lvImports.getSelectionModel().selectedItemProperty().addListener((obs, oldVal, newVal) -> {
-            System.out.println("Selecionado: " + newVal);
+            System.out.println("Selecionado: " + newVal.getProdutos().getNome());
         });
     }    
 

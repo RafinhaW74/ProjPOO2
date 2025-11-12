@@ -45,8 +45,6 @@ public class App extends Application {
         //CriaTodasTabelas.CriaTodasTabelasBD();
         //PopulaBDteste.populaBD();
         launch(args);
-
-        
     }
 
 }
