@@ -65,6 +65,7 @@
                                                       <StackPane maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="400.0" prefHeight="30.0" prefWidth="200.0">
                                                          <children>
                                                             <Label styleClass="sub-title" text="Buscar importação por:" />
+                                                            <Label layoutX="144.0" layoutY="5.0" styleClass="sub-title" text="Buscar importação por:" />
                                                          </children>
                                                       </StackPane>
                                                       <StackPane prefHeight="140.0" prefWidth="200.0">
@@ -77,7 +78,7 @@
                                                                      </toggleGroup>
                                                                   </RadioButton>
                                                                   <RadioButton fx:id="rbIDImport" mnemonicParsing="false" text="Numero da importação" toggleGroup="$rbSearch" />
-                                                                  <RadioButton fx:id="rbDate" mnemonicParsing="false" text="Data" toggleGroup="$rbSearch" />
+                                                                  <RadioButton fx:id="rbSituation" mnemonicParsing="false" text="Situação" toggleGroup="$rbSearch" />
                                                                </children>
                                                             </VBox>
                                                          </children>

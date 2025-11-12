@@ -5,7 +5,6 @@
 package org.openjfx.poo.Model.Dao;
 
 import org.openjfx.poo.Model.Importacao;
-import org.openjfx.poo.Model.Dao.BuscaListaNotificacoes;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
@@ -13,7 +12,7 @@ import java.sql.ResultSet;
  *
  * @author rafin
  */
-public class BuscaImportacao {
+public class BuscaImportacaoID {
     
     
     public static Importacao buscaImportacaoBD(int Numero) {

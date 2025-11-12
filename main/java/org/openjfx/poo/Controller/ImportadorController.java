@@ -24,6 +24,8 @@ import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
 import javafx.scene.layout.VBox;
+import org.openjfx.poo.Model.Dao.BuscaEmpresa;
+import org.openjfx.poo.Model.Dao.BuscaPessoa_importadora;
 import org.openjfx.poo.Model.Empresa_importadora;
 import org.openjfx.poo.Model.Importacao;
 import org.openjfx.poo.Model.Pessoa_importadora;
@@ -58,20 +60,20 @@ public class ImportadorController implements Initializable {
     /**
      * Initializes the controller class.
      */
-    public static String identificador;
- 
-
-    public static String getIdentificador() {
-        return identificador;
-    }
-    
-    public static void setIdentificador(String identificador) {
-        ImportadorController.identificador = identificador;
-    }
+    private  boolean pessoa;
+    private String identificador;
     
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        identificador = LoginControler.getIdentificadorGeral();
+        if(identificador.length() > 11){
+            pessoa = false;
+            mnName.setText(BuscaEmpresa.buscaEmpresa_importadoraBD(identificador).getNome());
+        }else{
+            pessoa = true;
+            mnName.setText(BuscaPessoa_importadora.buscaPessoa_importadoraBD(identificador).getNome());
+        }
         
         lvImports.setCellFactory(param -> new ListCell<Importacao>(){
             private final Label nomeLabel = new Label();
@@ -104,10 +106,10 @@ public class ImportadorController implements Initializable {
         ObservableList<Importacao> listImportacao = FXCollections.observableArrayList();
         lvImports.setItems(listImportacao);
         
-        if(identificador.length() > 11){
-            listImportacao.addAll(ListaImportacaoEmpresa.listaImportacoesEmpresaBD(identificador));
-        }else{
+        if(pessoa){
             listImportacao.addAll(ListaImportacaoPessoa.listaImportacoesPessoaBD(identificador));
+        }else{
+            listImportacao.addAll(ListaImportacaoEmpresa.listaImportacoesEmpresaBD(identificador));
         }
         
         

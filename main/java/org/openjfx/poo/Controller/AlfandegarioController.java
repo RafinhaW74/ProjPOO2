@@ -5,10 +5,12 @@
 package org.openjfx.poo.Controller;
 
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.Menu;
@@ -17,6 +19,15 @@ import javafx.scene.control.MenuItem;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
+import javafx.scene.control.Toggle;
+
+
+import org.openjfx.poo.Model.Dao.BuscaAlfandegario;
+import org.openjfx.poo.Model.Dao.BuscaImportacaoID;
+import org.openjfx.poo.Model.Dao.ListaImportacaoEmpresa;
+import org.openjfx.poo.Model.Dao.ListaImportacaoPessoa;
+import org.openjfx.poo.Model.Importacao;
+import org.openjfx.poo.View.Alertas;
 
 /**
  * FXML Controller class
@@ -50,18 +61,25 @@ public class AlfandegarioController implements Initializable {
     @FXML
     private RadioButton rbIDImport;
     @FXML
-    private RadioButton rbDate;
-    @FXML
     private TextField tfSearch;
     @FXML
     private Button btnSearch;
+    @FXML
+    private RadioButton rbSituation;
 
     /**
      * Initializes the controller class.
      */
+    private String identificador;
+
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        identificador = LoginControler.getIdentificadorGeral();
+        mnName.setText(BuscaAlfandegario.buscaAlfandegarioBD(identificador).getNome());
+        
+       
+        
     }    
 
     @FXML
@@ -86,6 +104,32 @@ public class AlfandegarioController implements Initializable {
 
     @FXML
     private void ntnSearchAction(ActionEvent event) {
+        if(rbSituation.isSelected()){
+            
+        }else if(rbIDImporter.isSelected()){
+                List<Importacao> lista;
+            if(tfSearch.getText().length() > 11){
+                lista = ListaImportacaoEmpresa.listaImportacoesEmpresaBD(tfSearch.getText());
+            }else{
+                lista = ListaImportacaoPessoa.listaImportacoesPessoaBD(tfSearch.getText());
+            }
+            if(lista.isEmpty()){
+                Alertas.mostrarAlerta("Erro busca", "Nada encontrado.", Alert.AlertType.WARNING);
+            }else{
+                //apresentar a lista de importacoes
+            }
+            
+        }else if(rbIDImport.isSelected()){
+            try{
+                BuscaImportacaoID.buscaImportacaoBD(Integer.parseInt(tfSearch.getText()));
+                //apresentar a importacao na tela
+            }catch(NumberFormatException e){
+                System.out.println(e);
+                Alertas.mostrarAlerta("Erro busca", "O valor digitado deve ser numérico.", Alert.AlertType.ERROR);
+            }
+        }else{
+            Alertas.mostrarAlerta("Erro busca", "Nenhuma opção de busca selecionada.", Alert.AlertType.WARNING);
+        }
     }
     
 }

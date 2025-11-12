@@ -10,6 +10,7 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
+
 /**
  *
  * @author rafin
@@ -43,6 +44,9 @@ public class ListaImportacaoEmpresa {
 
         } catch (Exception erro) {
             System.out.println(erro);
+        }
+        if(lista.isEmpty()){
+            return null;
         }
 
         return lista;

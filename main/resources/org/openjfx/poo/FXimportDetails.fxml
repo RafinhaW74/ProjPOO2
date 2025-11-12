@@ -176,12 +176,12 @@
                                           </StackPane>
                                           <StackPane maxHeight="250.0" minHeight="-Infinity" prefHeight="90.0" prefWidth="300.0" VBox.vgrow="ALWAYS">
                                              <children>
-                                                <Button fx:id="btnPending" mnemonicParsing="false" onAction="#btnPendingAction" styleClass="btn-description" stylesheets="@css/btn.css" text="Ação Pendnete" />
+                                                <Button fx:id="btnPending" mnemonicParsing="false" onAction="#btnPendingAction" styleClass="btn-description" stylesheets="@css/btn.css" text="Ação Pendente" />
                                              </children>
                                           </StackPane>
                                           <StackPane maxHeight="250.0" minHeight="-Infinity" prefHeight="90.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
                                              <children>
-                                                <Button fx:id="btnAlter" mnemonicParsing="false" onAction="#btnAlter" styleClass="btn-description" stylesheets="@css/btn.css" text="Atualizarr" />
+                                                <Button fx:id="btnAlter" mnemonicParsing="false" onAction="#btnAlter" styleClass="btn-description" stylesheets="@css/btn.css" text="Atualizar" />
                                              </children>
                                           </StackPane>
                                           <StackPane maxHeight="250.0" minHeight="-Infinity" prefHeight="90.0" prefWidth="300.0" VBox.vgrow="ALWAYS">

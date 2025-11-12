@@ -54,6 +54,21 @@ public class LoginControler implements Initializable {
         /**
      * Initializes the controller class.
      */
+    
+    public static String identificadorGeral;
+
+    public static String getIdentificadorGeral() {
+        return identificadorGeral;
+    }
+
+    public static void setIdentificadorGeral(String identificadorGeral) {
+        LoginControler.identificadorGeral = identificadorGeral;
+    }
+
+  
+ 
+
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
@@ -89,8 +104,8 @@ public class LoginControler implements Initializable {
                 }
                 if(argon2.verify(empresa.getSenha(), senha)){
                     try{
+                        LoginControler.setIdentificadorGeral(identificador);
                         App.setRoot("FXImportador");
-                        ImportadorController.setIdentificador(identificador);
                     }catch (IOException erro) {
                         System.out.println(erro);
                         Alertas.mostrarAlerta("Erro carregar", "Erro ao carregar a tela do importador.", AlertType.ERROR);
@@ -106,8 +121,8 @@ public class LoginControler implements Initializable {
                 }
                 if(argon2.verify(pessoa.getSenha(), senha)){
                     try{
+                        LoginControler.setIdentificadorGeral(identificador);
                         App.setRoot("FXImportador");
-                        ImportadorController.setIdentificador(identificador);
                     }catch (IOException erro) {
                         System.out.println(erro);
                         Alertas.mostrarAlerta("Erro carregar", "Erro ao carregar a tela do importador.", AlertType.ERROR);
@@ -123,7 +138,14 @@ public class LoginControler implements Initializable {
                 return;
             }
             if(argon2.verify(alfandegario.getSenha(), senha)){
-                //trocar para tela do alfandegario
+                try{
+                        LoginControler.setIdentificadorGeral(identificador);
+                        App.setRoot("FXAlfandegario");
+                        
+                    }catch (IOException erro) {
+                        System.out.println(erro);
+                        Alertas.mostrarAlerta("Erro carregar", "Erro ao carregar a tela do ADM.", AlertType.ERROR);
+                    }
             }else{
                 Alertas.mostrarAlerta("Erro de Login", "Senha incorreta.", AlertType.ERROR);
             }
