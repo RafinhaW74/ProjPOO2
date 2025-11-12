@@ -12,6 +12,7 @@
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleButton?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
@@ -168,8 +169,8 @@
                                              <children>
                                                 <TextArea fx:id="taImportPendig" prefHeight="200.0" prefWidth="200.0" stylesheets="@css/box.css" wrapText="true">
                                                    <styleClass>
-                                                      <String fx:value="plain-content" />
                                                       <String fx:value="information-pending" />
+                                                      <String fx:value="plain-content" />
                                                    </styleClass>
                                                 </TextArea>
                                              </children>
@@ -181,7 +182,7 @@
                                           </StackPane>
                                           <StackPane maxHeight="250.0" minHeight="-Infinity" prefHeight="90.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
                                              <children>
-                                                <Button fx:id="btnAlter" mnemonicParsing="false" onAction="#btnAlter" styleClass="btn-description" stylesheets="@css/btn.css" text="Atualizar" />
+                                                <ToggleButton fx:id="tbAlter" mnemonicParsing="false" onAction="#tbAlterAction" styleClass="btn-description" stylesheets="@css/btn.css" text="Atualizar" />
                                              </children>
                                           </StackPane>
                                           <StackPane maxHeight="250.0" minHeight="-Infinity" prefHeight="90.0" prefWidth="300.0" VBox.vgrow="ALWAYS">

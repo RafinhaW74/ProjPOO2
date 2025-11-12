@@ -6,6 +6,11 @@ package org.openjfx.poo.Controller;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+
+import org.openjfx.poo.Model.Importacao;
+import org.openjfx.poo.Model.Produtos;
+import org.openjfx.poo.Model.Dao.BuscaImportacaoID;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -17,6 +22,7 @@ import javafx.scene.control.MenuItem;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.control.ToggleButton;
 import javafx.scene.control.ToggleGroup;
 
 /**
@@ -70,17 +76,24 @@ public class ImportDetailsController implements Initializable {
     private TextArea taImportPendig;
     @FXML
     private Button btnPending;
-    @FXML
-    private Button btnAlter;
+
     @FXML
     private Button btnDelet;
+    @FXML
+    private ToggleButton tbAlter;
 
-    /**
-     * Initializes the controller class.
-     */
+    private Importacao importacao;
+    private boolean pending;
+    private 
+    
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        importacao = BuscaImportacaoID.buscaImportacaoBD(1);
+        
+        setImportacao(importacao);
+
+        if()
     }    
 
     @FXML
@@ -104,11 +117,73 @@ public class ImportDetailsController implements Initializable {
     }
 
     @FXML
-    private void btnAlter(ActionEvent event) {
+    private void btnDeletAction(ActionEvent event) {
     }
 
     @FXML
-    private void btnDeletAction(ActionEvent event) {
+    private void tbAlterAction(ActionEvent event) {
+        if(tbAlter.isSelected()){
+            tfImportNumber.getStyleClass().add("plain-content");
+            tfImporterName.getStyleClass().add("plain-content");
+            tfImportStatus.getStyleClass().add("plain-content");
+            tfImporterID.getStyleClass().add("plain-content");
+            tfProductName.getStyleClass().add("plain-content");
+            tfProductHeight.getStyleClass().add("plain-content");
+            tfProductwidth.getStyleClass().add("plain-content");
+            tfProductRestricted.getStyleClass().add("plain-content");
+            tfProductManufacturer.getStyleClass().add("plain-content");
+            tfProdutcLength.getStyleClass().add("plain-content");
+            tfProductwiegth.getStyleClass().add("plain-content");
+            tfProductLI.getStyleClass().add("plain-content");
+            taProductDescription.getStyleClass().add("plain-content");
+            
+            tbAlter.setText("Editar");
+
+        }else{
+            tfImportNumber.getStyleClass().remove("plain-content");
+            tfImporterName.getStyleClass().remove("plain-content");
+            tfImportStatus.getStyleClass().remove("plain-content");
+            tfImporterID.getStyleClass().remove("plain-content");
+            tfProductName.getStyleClass().remove("plain-content");
+            tfProductHeight.getStyleClass().remove("plain-content");
+            tfProductwidth.getStyleClass().remove("plain-content");
+            tfProductRestricted.getStyleClass().remove("plain-content");
+            tfProductManufacturer.getStyleClass().remove("plain-content");
+            tfProdutcLength.getStyleClass().remove("plain-content");
+            tfProductwiegth.getStyleClass().remove("plain-content");
+            tfProductLI.getStyleClass().remove("plain-content");
+            taProductDescription.getStyleClass().remove("plain-content");
+            
+            tbAlter.setText("Salvar");
+        }
+    }
+
+    public void setImportacao(Importacao importacao) {
+        if (importacao == null) return;
+
+        // Campos principais da importação
+        tfImportNumber.setText(String.valueOf(importacao.getNumero()));
+        tfImportStatus.setText(importacao.getSituacao());
+
+        // Importador (pessoa física/jurídica)
+        if (importacao.getImportador() != null) {
+            tfImporterName.setText(importacao.getImportador().getNome());
+            tfImporterID.setText(String.valueOf(importacao.getImportador().getCPF())); 
+        } else {
+            tfImporterName.setText(importacao.getEmpresa().getNome());
+            tfImporterID.setText(importacao.getEmpresa().getCNPJ());
+        }
+
+        tfProductName.setText(importacao.getProdutos().getNome());
+        tfProductHeight.setText(String.valueOf(importacao.getProdutos().getAltura()));
+        tfProductwidth.setText(String.valueOf(importacao.getProdutos().getLargura()));
+        tfProdutcLength.setText(String.valueOf(importacao.getProdutos().getComprimento()));
+        tfProductwiegth.setText(String.valueOf(importacao.getProdutos().getPeso()));
+        tfProductLI.setText(importacao.getProdutos().getLI());
+        tfProductManufacturer.setText(importacao.getProdutos().getFabricante());
+        tfProductRestricted.setText(importacao.getProdutos().isEstado() ? "Ativo" : "Inativo");
+        taProductDescription.setText(importacao.getProdutos().getDescricao());
+        
     }
     
 }
