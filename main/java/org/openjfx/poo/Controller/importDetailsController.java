@@ -84,7 +84,7 @@ public class ImportDetailsController implements Initializable {
 
     private Importacao importacao;
     private boolean pending;
-    private 
+     
     
 
     @Override
@@ -93,7 +93,7 @@ public class ImportDetailsController implements Initializable {
         
         setImportacao(importacao);
 
-        if()
+        
     }    
 
     @FXML
