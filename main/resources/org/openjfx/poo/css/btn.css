@@ -5,3 +5,10 @@
 .btn-description{
     -fx-font-size: 25px; 
 }
+
+.btnViewPassword{
+    -fx-padding: 4px; 
+    -fx-background-radius: 30px;
+    -fx-border-color: #000000;
+    -fx-border-radius:30px;
+}

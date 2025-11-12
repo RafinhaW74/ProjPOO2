@@ -10,12 +10,11 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.RadioButton;
-import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
 
@@ -24,7 +23,7 @@ import javafx.scene.control.ToggleGroup;
  *
  * @author valuc
  */
-public class importDetailsController implements Initializable {
+public class AlfandegarioController implements Initializable {
 
     @FXML
     private MenuBar menuBar;
@@ -41,39 +40,21 @@ public class importDetailsController implements Initializable {
     @FXML
     private MenuItem miViewPending;
     @FXML
-    private TextField tfImportNumber;
+    private ListView<?> lvImports;
     @FXML
-    private TextField tfImporterName;
+    private Button btnLogout;
     @FXML
-    private TextField tfImportStatus;
+    private RadioButton rbIDImporter;
     @FXML
-    private TextField tfImporterID;
+    private ToggleGroup rbSearch;
     @FXML
-    private TextField tfProductName;
+    private RadioButton rbIDImport;
     @FXML
-    private TextField tfProductHeight;
+    private RadioButton rbDate;
     @FXML
-    private TextField tfProductwidth;
+    private TextField tfSearch;
     @FXML
-    private TextField tfProductRestricted;
-    @FXML
-    private TextField tfProductManufacturer;
-    @FXML
-    private TextField tfProdutcLength;
-    @FXML
-    private TextField tfProductwiegth;
-    @FXML
-    private TextField tfProductLI;
-    @FXML
-    private TextArea taProductDescription;
-    @FXML
-    private TextArea taImportPendig;
-    @FXML
-    private Button btnPending;
-    @FXML
-    private Button btnAlter;
-    @FXML
-    private Button btnDelet;
+    private Button btnSearch;
 
     /**
      * Initializes the controller class.
@@ -100,15 +81,11 @@ public class importDetailsController implements Initializable {
     }
 
     @FXML
-    private void btnPendingAction(ActionEvent event) {
+    private void logout(ActionEvent event) {
     }
 
     @FXML
-    private void btnAlter(ActionEvent event) {
-    }
-
-    @FXML
-    private void btnDeletAction(ActionEvent event) {
+    private void ntnSearchAction(ActionEvent event) {
     }
     
 }

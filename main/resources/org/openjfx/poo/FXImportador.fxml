@@ -45,7 +45,7 @@
                      <children>
                         <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" StackPane.alignment="CENTER">
                            <children>
-                              <StackPane prefHeight="598.0" prefWidth="563.0">
+                              <StackPane minWidth="600.0" prefHeight="598.0" prefWidth="563.0">
                                  <children>
                                     <ListView fx:id="lvImports" minHeight="100.0" minWidth="-Infinity" prefHeight="500.0" prefWidth="560.0" stylesheets="@css/list.css" />
                                  </children>
