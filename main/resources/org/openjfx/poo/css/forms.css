@@ -66,6 +66,53 @@
 }
 
 
+.combo-box {
+    -fx-background-color: #cccccc;
+    -fx-border-radius: 6;
+    -fx-background-radius: 6;
+    -fx-border-color: #616161;
+    -fx-prompt-text-fill: #363636;
+    -fx-text-fill: #000;
+    -fx-font-size: 20px;
+}
+
+/* ======== Quando o ComboBox está focado ======== */
+.combo-box:focused {
+    -fx-background-color: #bbbbbb;
+    -fx-border-color: #000000;
+    -fx-effect: dropshadow(three-pass-box, rgba(74,144,226,0.4), 5, 0, 0, 0);
+}
+
+/* ======== Estilo do botão da seta ======== */
+.combo-box .arrow-button {
+    -fx-background-color: transparent;
+    -fx-border-radius: 0 6 6 0;
+    -fx-background-radius: 0 6 6 0;
+}
+
+/* ======== Quando o mouse passa sobre o botão da seta ======== */
+.combo-box .arrow-button:hover {
+    -fx-background-color: rgba(0, 0, 0, 0.1);
+}
+
+/* ======== Estilo da lista suspensa ======== */
+.combo-box-popup .list-view {
+    -fx-background-color: #cccccc;
+    -fx-border-color: #616161;
+    -fx-background-radius: 6;
+    -fx-border-radius: 6;
+}
+
+/* ======== Itens dentro da lista ======== */
+.combo-box-popup .list-cell {
+    -fx-text-fill: #000;
+}
+
+.combo-box-popup .list-cell:hover {
+    -fx-background-color: #bbbbbb;
+}
+
+
 .plain-content {
     -fx-background-color: transparent;
     -fx-border-color: transparent;
