@@ -10,21 +10,20 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
-import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
-import javafx.scene.control.ToggleGroup;
+import javafx.scene.layout.StackPane;
 
 /**
  * FXML Controller class
  *
  * @author valuc
  */
-public class ImportDetailsController implements Initializable {
+public class ImportActionController implements Initializable {
 
     @FXML
     private MenuBar menuBar;
@@ -69,11 +68,15 @@ public class ImportDetailsController implements Initializable {
     @FXML
     private TextArea taImportPendig;
     @FXML
-    private Button btnPending;
-    @FXML
     private Button btnAlter;
     @FXML
     private Button btnDelet;
+    @FXML
+    private ComboBox<?> cbStatus;
+    @FXML
+    private StackPane stOutherStatus;
+    @FXML
+    private TextField tfOutherStatus;
 
     /**
      * Initializes the controller class.
@@ -97,10 +100,6 @@ public class ImportDetailsController implements Initializable {
 
     @FXML
     private void viewPending(ActionEvent event) {
-    }
-
-    @FXML
-    private void btnPendingAction(ActionEvent event) {
     }
 
     @FXML

@@ -21,7 +21,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" minHeight="400.0" minWidth="400.0" prefHeight="730.0" prefWidth="1300.0" stylesheets="@css/general.css" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.openjfx.poo.Controller.importDetailsController">
+<AnchorPane id="AnchorPane" minHeight="400.0" minWidth="400.0" prefHeight="730.0" prefWidth="1300.0" stylesheets="@css/general.css" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.openjfx.poo.Controller.ImportDetailsController">
    <children>
       <ScrollPane fitToHeight="true" fitToWidth="true" layoutX="143.0" layoutY="108.0" minViewportHeight="450.0" minViewportWidth="450.0" prefHeight="200.0" prefViewportHeight="450.0" prefViewportWidth="800.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <content>
@@ -90,7 +90,7 @@
                                           </GridPane>
                                           <Separator prefWidth="200.0">
                                              <VBox.margin>
-                                                <Insets bottom="10.0" top="10.0" />
+                                                <Insets bottom="10.0" right="30.0" top="10.0" />
                                              </VBox.margin>
                                           </Separator>
                                           <StackPane maxHeight="-Infinity" minHeight="-Infinity" prefHeight="40.0" prefWidth="200.0">
