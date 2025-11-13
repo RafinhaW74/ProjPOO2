@@ -50,19 +50,19 @@ public class RegisterAdmController implements Initializable {
     @FXML
     private TextField tfPassword;
     @FXML
-    private ToggleButton tbtnPassword;
-    @FXML
     private TextField tfID;
     @FXML
     private PasswordField pfCheckPassword;
     @FXML
     private TextField tfCheckPassword;
     @FXML
-    private ToggleButton tbtnCheckPassword;
-    @FXML
     private Button btnRegister;
     @FXML
     private Button btnLogout;
+    @FXML
+    private ToggleButton tbPassword;
+    @FXML
+    private ToggleButton tbCheckPassword;
 
     /**
      * Initializes the controller class.
@@ -88,13 +88,6 @@ public class RegisterAdmController implements Initializable {
     private void viewPending(ActionEvent event) {
     }
 
-    @FXML
-    private void tbtnPasswordAction(ActionEvent event) {
-    }
-
-    @FXML
-    private void tbtnCheckPasswordAction(ActionEvent event) {
-    }
 
     @FXML
     private void btnRegisterAction(ActionEvent event) {
@@ -102,6 +95,14 @@ public class RegisterAdmController implements Initializable {
 
     @FXML
     private void logout(ActionEvent event) {
+    }
+
+    @FXML
+    private void tbPasswordAction(ActionEvent event) {
+    }
+
+    @FXML
+    private void tbCheckPasswordAction(ActionEvent event) {
     }
     
 }

@@ -1,13 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.Menu?>
-<?import javafx.scene.control.MenuBar?>
-<?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TextArea?>
@@ -28,28 +24,6 @@
          <content>
             <VBox prefHeight="200.0" prefWidth="100.0">
                <children>
-                  <MenuBar fx:id="menuBar" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="40.0">
-                     <menus>
-                        <Menu fx:id="mnName" mnemonicParsing="false" onAction="#User" text="Nome do Importador gonsalves da silva" />
-                        <Menu fx:id="mnRequestImport" mnemonicParsing="false" text="Importação">
-                           <items>
-                              <MenuItem fx:id="miRequest" mnemonicParsing="false" onAction="#RequestImport" text="Solicitar" />
-                              <MenuItem fx:id="miView" mnemonicParsing="false" onAction="#viewImport" text="Visualizar" />
-                           </items>
-                        </Menu>
-                        <Menu fx:id="mnViewPending" mnemonicParsing="false" onAction="#viewPending" text="Pedencias">
-                           <items>
-                              <MenuItem fx:id="miViewPending" mnemonicParsing="false" onAction="#viewPending" text="Visualiar" />
-                           </items>
-                        </Menu>
-                     </menus>
-                     <cursor>
-                        <Cursor fx:constant="DEFAULT" />
-                     </cursor>
-                     <padding>
-                        <Insets left="10.0" top="4.0" />
-                     </padding>
-                  </MenuBar>
                   <StackPane prefHeight="150.0" prefWidth="1298.0" stylesheets="@css/forms.css" VBox.vgrow="ALWAYS">
                      <children>
                         <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" StackPane.alignment="CENTER">

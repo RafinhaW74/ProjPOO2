@@ -98,7 +98,7 @@
                                                             <TextField fx:id="tfPassword" visible="false" />
                                                          </children>
                                                       </StackPane>
-                                                      <ToggleButton fx:id="tbtnPassword" mnemonicParsing="false" onAction="#tbtnPasswordAction" prefWidth="0.0" styleClass="btnViewPassword" stylesheets="@css/btn.css">
+                                                      <ToggleButton fx:id="tbPassword" mnemonicParsing="false" onAction="#tbPasswordAction" prefWidth="0.0" styleClass="btnViewPassword" stylesheets="@css/btn.css">
                                                          <graphic>
                                                             <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                                                                <viewport>
@@ -121,7 +121,7 @@
                                                             <TextField fx:id="tfCheckPassword" visible="false" />
                                                          </children>
                                                       </StackPane>
-                                                      <ToggleButton fx:id="tbtnCheckPassword" mnemonicParsing="false" onAction="#tbtnCheckPasswordAction" prefWidth="0.0" styleClass="btnViewPassword" stylesheets="@css/btn.css">
+                                                      <ToggleButton fx:id="tbCheckPassword" mnemonicParsing="false" onAction="#tbCheckPasswordAction" prefWidth="0.0" styleClass="btnViewPassword" stylesheets="@css/btn.css">
                                                          <graphic>
                                                             <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                                                                <viewport>
