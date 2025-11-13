@@ -35,20 +35,6 @@ import javafx.scene.control.ToggleGroup;
 public class ImportDetailsController implements Initializable {
 
     @FXML
-    private MenuBar menuBar;
-    @FXML
-    private Menu mnName;
-    @FXML
-    private Menu mnRequestImport;
-    @FXML
-    private MenuItem miRequest;
-    @FXML
-    private MenuItem miView;
-    @FXML
-    private Menu mnViewPending;
-    @FXML
-    private MenuItem miViewPending;
-    @FXML
     private TextField tfImportNumber;
     @FXML
     private TextField tfImporterName;
@@ -116,21 +102,6 @@ public class ImportDetailsController implements Initializable {
         }
     }    
 
-    @FXML
-    private void User(ActionEvent event) {
-    }
-
-    @FXML
-    private void RequestImport(ActionEvent event) {
-    }
-
-    @FXML
-    private void viewImport(ActionEvent event) {
-    }
-
-    @FXML
-    private void viewPending(ActionEvent event) {
-    }
 
     @FXML
     private void btnPendingAction(ActionEvent event) {
