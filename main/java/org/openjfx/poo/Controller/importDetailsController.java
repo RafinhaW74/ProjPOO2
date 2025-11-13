@@ -127,8 +127,10 @@ public class ImportDetailsController implements Initializable {
     }
 
     public void setFilter(){
-        tfProductwidth.setTextFormatter(new FilterFloat(3));
-        tfProductHeight.setTextFormatter(Filter.getDouble(2));
+        tfProductwidth.setTextFormatter(Filter.getFloat(2));
+        tfProductHeight.setTextFormatter(Filter.getFloat(2));
+        tfProdutcLength.setTextFormatter(Filter.getFloat(2));
+        tfProductwiegth.setTextFormatter(Filter.getFloat(2));
     }
 
     public Importacao getForm(Importacao importacao){
