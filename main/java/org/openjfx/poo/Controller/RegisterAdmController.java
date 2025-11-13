@@ -17,6 +17,8 @@ import javafx.scene.control.MenuItem;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleButton;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 
 /**
  * FXML Controller class
@@ -63,13 +65,24 @@ public class RegisterAdmController implements Initializable {
     private ToggleButton tbPassword;
     @FXML
     private ToggleButton tbCheckPassword;
+    @FXML
+    private ImageView ivPassword;
+    @FXML
+    private ImageView ivCheckPassword;
 
+    private Image yey;
+    private Image yeyOff;
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        yey = new Image(getClass().getResource("/org/openjfx/poo/image/yey.png").toExternalForm());
+        yeyOff = new Image(getClass().getResource("/org/openjfx/poo/image/yeyOff.png").toExternalForm());
+        
+        
+        tfPassword.textProperty().bindBidirectional(pfPassword.textProperty());
+        tfCheckPassword.textProperty().bindBidirectional(pfCheckPassword.textProperty());
     }    
 
     @FXML
@@ -99,10 +112,28 @@ public class RegisterAdmController implements Initializable {
 
     @FXML
     private void tbPasswordAction(ActionEvent event) {
+        if(tbPassword.isSelected()){
+            pfPassword.setVisible(false);
+            tfPassword.setVisible(true);
+            ivPassword.setImage(yey);
+        }else{
+            pfPassword.setVisible(true);
+            tfPassword.setVisible(false);
+            ivPassword.setImage(yeyOff);
+        }
     }
 
     @FXML
     private void tbCheckPasswordAction(ActionEvent event) {
+         if(tbCheckPassword.isSelected()){
+            pfCheckPassword.setVisible(false);
+            tfCheckPassword.setVisible(true);
+            ivCheckPassword.setImage(yey);
+        }else{
+            pfCheckPassword.setVisible(true);
+            tfCheckPassword.setVisible(false);
+            ivCheckPassword.setImage(yeyOff);
+        }
     }
     
 }

@@ -31,6 +31,8 @@
     -fx-background-radius: 6;
     -fx-prompt-text-fill: #363636;
     -fx-border-color: #616161;
+    -fx-font-size:20px;
+    -fx-padding: 3 2;
 }
 
 .text-field:focused  {
@@ -38,6 +40,7 @@
     -fx-border-color: #000000;            
     -fx-effect: dropshadow(three-pass-box, rgba(74,144,226,0.4), 5, 0, 0, 0);
     -fx-text-fill: #000; 
+    
 }
 
 .text-area {
@@ -46,6 +49,8 @@
     -fx-background-radius: 6;
     -fx-prompt-text-fill: #4b4b4b;
     -fx-border-color: #616161;
+    -fx-font-size:20px;
+    -fx-padding: 3 2;
 }
 
 .text-area .content {

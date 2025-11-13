@@ -100,7 +100,7 @@
                                                       </StackPane>
                                                       <ToggleButton fx:id="tbPassword" mnemonicParsing="false" onAction="#tbPasswordAction" prefWidth="0.0" styleClass="btnViewPassword" stylesheets="@css/btn.css">
                                                          <graphic>
-                                                            <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                                            <ImageView fx:id="ivPassword" fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                                                                <viewport>
                                                                   <Rectangle2D />
                                                                </viewport>
@@ -123,7 +123,7 @@
                                                       </StackPane>
                                                       <ToggleButton fx:id="tbCheckPassword" mnemonicParsing="false" onAction="#tbCheckPasswordAction" prefWidth="0.0" styleClass="btnViewPassword" stylesheets="@css/btn.css">
                                                          <graphic>
-                                                            <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                                            <ImageView fx:id="ivCheckPassword" fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                                                                <viewport>
                                                                   <Rectangle2D />
                                                                </viewport>
