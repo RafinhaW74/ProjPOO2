@@ -111,7 +111,6 @@
                                                 </TextArea>
                                                 <TextField fx:id="tfName" GridPane.columnIndex="1" />
                                                 <TextField fx:id="tfManufacturer" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-                                                <Label text="Nome do Objeto:" />
                                                 <Label text="Fabricante:" GridPane.rowIndex="4" />
                                                 <Label text="Restrito:" GridPane.rowIndex="5" />
                                                 <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="50.0" GridPane.columnIndex="1" GridPane.rowIndex="5">
