@@ -56,6 +56,28 @@ public class LoginControler implements Initializable {
      */
     
     public static String identificadorGeral;
+    
+    public static String nome;
+    
+    public static boolean pessoa;
+
+    public static String getNome() {
+        return nome;
+    }
+
+    public static void setNome(String nome) {
+        LoginControler.nome = nome;
+    }
+
+    public static boolean isPessoa() {
+        return pessoa;
+    }
+
+    public static void setPessoa(boolean pessoa) {
+        LoginControler.pessoa = pessoa;
+    }
+    
+    
 
     public static String getIdentificadorGeral() {
         return identificadorGeral;
@@ -88,6 +110,11 @@ public class LoginControler implements Initializable {
     private void login(ActionEvent event) {
         String identificador = tfIdentificator.getText();
         String senha = tfPassword.getText();
+        if(identificador.length() > 11){
+            pessoa = false;
+        }else{
+            pessoa = true;
+        }
         
         if (identificador.isEmpty() || senha.isEmpty()) {
             Alertas.mostrarAlerta("Erro de Login", "Os campos não podem estar vazios.", AlertType.ERROR);
@@ -96,7 +123,7 @@ public class LoginControler implements Initializable {
         
         Argon2 argon2 = Argon2Factory.create();
         if (rbUser.isSelected()) {
-            if(identificador.length() > 11){
+            if(!pessoa){
                 Empresa_importadora empresa = BuscaEmpresa.buscaEmpresa_importadoraBD(identificador);
                 if(empresa == null){
                     Alertas.mostrarAlerta("Erro de Login", "Empresa não encontrada.", AlertType.WARNING);
@@ -104,7 +131,8 @@ public class LoginControler implements Initializable {
                 }
                 if(argon2.verify(empresa.getSenha(), senha)){
                     try{
-                        LoginControler.setIdentificadorGeral(identificador);
+                        nome = empresa.getNome();
+                        identificadorGeral = identificador;
                         App.setRoot("FXImportador");
                     }catch (IOException erro) {
                         System.out.println(erro);
@@ -114,14 +142,15 @@ public class LoginControler implements Initializable {
                     Alertas.mostrarAlerta("Erro de Login", "Senha incorreta.", AlertType.ERROR);
                 }
             }else{
-                Pessoa_importadora pessoa = BuscaPessoa_importadora.buscaPessoa_importadoraBD(identificador);
-                if(pessoa == null){
+                Pessoa_importadora pessoa1 = BuscaPessoa_importadora.buscaPessoa_importadoraBD(identificador);
+                if(pessoa1 == null){
                     Alertas.mostrarAlerta("Erro de Login", "Usuário não encontrado.", AlertType.WARNING);
                     return;
                 }
-                if(argon2.verify(pessoa.getSenha(), senha)){
+                if(argon2.verify(pessoa1.getSenha(), senha)){
                     try{
-                        LoginControler.setIdentificadorGeral(identificador);
+                        nome = pessoa1.getNome();
+                        identificadorGeral = identificador;
                         App.setRoot("FXImportador");
                     }catch (IOException erro) {
                         System.out.println(erro);
@@ -139,13 +168,13 @@ public class LoginControler implements Initializable {
             }
             if(argon2.verify(alfandegario.getSenha(), senha)){
                 try{
-                        LoginControler.setIdentificadorGeral(identificador);
-                        App.setRoot("FXAlfandegario");
-                        
-                    }catch (IOException erro) {
-                        System.out.println(erro);
-                        Alertas.mostrarAlerta("Erro carregar", "Erro ao carregar a tela do ADM.", AlertType.ERROR);
-                    }
+                    nome = alfandegario.getNome();
+                    identificadorGeral = identificador;
+                    App.setRoot("FXAlfandegario"); 
+                }catch (IOException erro) {
+                    System.out.println(erro);
+                    Alertas.mostrarAlerta("Erro carregar", "Erro ao carregar a tela do ADM.", AlertType.ERROR);
+                }
             }else{
                 Alertas.mostrarAlerta("Erro de Login", "Senha incorreta.", AlertType.ERROR);
             }

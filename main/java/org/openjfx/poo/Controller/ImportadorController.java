@@ -4,6 +4,7 @@
  */
 package org.openjfx.poo.Controller;
 
+import java.io.IOException;
 import org.openjfx.poo.Model.Dao.ListaImportacaoPessoa;
 import org.openjfx.poo.Model.Dao.ListaImportacaoEmpresa;
 
@@ -16,6 +17,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
@@ -24,12 +26,14 @@ import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
 import javafx.scene.layout.VBox;
+import org.openjfx.poo.App;
 import org.openjfx.poo.Model.Dao.BuscaEmpresa;
 import org.openjfx.poo.Model.Dao.BuscaPessoa_importadora;
 import org.openjfx.poo.Model.Empresa_importadora;
 import org.openjfx.poo.Model.Importacao;
 import org.openjfx.poo.Model.Pessoa_importadora;
 import org.openjfx.poo.Model.Produtos;
+import org.openjfx.poo.View.Alertas;
 
 /**
  * FXML Controller class
@@ -61,18 +65,19 @@ public class ImportadorController implements Initializable {
      * Initializes the controller class.
      */
     private  boolean pessoa;
+    private String nome;
     private String identificador;
     
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        nome = LoginControler.getNome();
+        pessoa = LoginControler.isPessoa();
         identificador = LoginControler.getIdentificadorGeral();
-        if(identificador.length() > 11){
-            pessoa = false;
-            mnName.setText(BuscaEmpresa.buscaEmpresa_importadoraBD(identificador).getNome());
+        if(!pessoa){
+            mnName.setText(nome);
         }else{
-            pessoa = true;
-            mnName.setText(BuscaPessoa_importadora.buscaPessoa_importadoraBD(identificador).getNome());
+            mnName.setText(nome);
         }
         
         lvImports.setCellFactory(param -> new ListCell<Importacao>(){
@@ -124,6 +129,12 @@ public class ImportadorController implements Initializable {
 
     @FXML
     private void RequestImport(ActionEvent event) {
+        try{
+            App.setRoot("FXRequestImport");
+        }catch (IOException erro) {
+            System.out.println(erro);
+            Alertas.mostrarAlerta("Erro carregar", "Erro ao carregar a tela de solicitar importação.", Alert.AlertType.ERROR);
+        }
     }
 
     @FXML

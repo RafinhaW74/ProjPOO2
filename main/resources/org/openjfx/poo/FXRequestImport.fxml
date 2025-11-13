@@ -81,7 +81,7 @@
                                                 <RowConstraints maxHeight="105.0" minHeight="10.0" prefHeight="49.0" vgrow="SOMETIMES" />
                                             </rowConstraints>
                                              <children>
-                                                <Label text="Nome:" />
+                                                <Label text="Nome do Objeto:" />
                                                 <Label text="Dimensão:" GridPane.rowIndex="2" />
                                                 <Label text="Descrição:" GridPane.rowIndex="1" />
                                                 <GridPane hgap="15.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
@@ -111,7 +111,7 @@
                                                 </TextArea>
                                                 <TextField fx:id="tfName" GridPane.columnIndex="1" />
                                                 <TextField fx:id="tfManufacturer" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-                                                <Label text="Nome:" />
+                                                <Label text="Nome do Objeto:" />
                                                 <Label text="Fabricante:" GridPane.rowIndex="4" />
                                                 <Label text="Restrito:" GridPane.rowIndex="5" />
                                                 <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="50.0" GridPane.columnIndex="1" GridPane.rowIndex="5">

@@ -20,6 +20,8 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.HBox;
+import org.openjfx.poo.Model.Dao.BuscaEmpresa;
+import org.openjfx.poo.Model.Dao.BuscaPessoa_importadora;
 
 /**
  * FXML Controller class
@@ -74,8 +76,20 @@ public class RequestImportController implements Initializable {
     /**
      * Initializes the controller class.
      */
+    private String nome;
+    boolean pessoa;
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        nome = LoginControler.getNome();
+        pessoa = LoginControler.isPessoa();
+        if(!pessoa){
+            mnName.setText(nome);
+        }else{
+            mnName.setText(nome);
+        }
+        
+        
        tgRestricted.selectedToggleProperty().addListener((observable, oldToggle, newToggle)->{
            if(rbYes.isSelected()){
                lbLI.setVisible(true);
