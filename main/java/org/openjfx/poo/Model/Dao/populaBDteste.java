@@ -46,5 +46,11 @@ public class PopulaBDteste {
         InsereImportacao.insereImportacaoBD("2026-01-05", 3, null, "357", "2025-11-25");
         InsereImportacao.insereImportacaoBD("2026-04-23", 4, null, "246", "2025-11-26");
         InsereImportacao.insereImportacaoBD("2026-02-12", 5, "456123", null, "2025-11-29");
+        
+        InsereNotificacao.insereNotificacaoBD("Descricao 6", "Tipo 1", 1);
+        InsereNotificacao.insereNotificacaoBD("Descricao 7", "Tipo 2", 1);
+        InsereNotificacao.insereNotificacaoBD("Descricao 8", "Tipo 3", 1);
+        InsereNotificacao.insereNotificacaoBD("Descricao 9", "Tipo 4", 2);
+        InsereNotificacao.insereNotificacaoBD("Descricao 10", "Tipo 5", 2);
     }
 }

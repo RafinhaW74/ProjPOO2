@@ -12,14 +12,14 @@ import org.openjfx.poo.Model.Notificacoes;
  *
  * @author rafin
  */
-public class BuscaNotificacao {
-    public static Notificacoes BuscaNotificacoesBD(int iD){
+public class BuscaNotificacaoMaisRecente {
+    public static Notificacoes BuscaNotificacaoMaisRecenteBD(int numeroImport){
         Notificacoes a = null;
-        String sql = "SELECT * FROM Notificacao WHERE id = ?";
+        String sql = "SELECT * FROM Notificacao WHERE numeroImportacao = ? ORDER BY Criacao DESC LIMIT 1";
         try {
             Conexao connection = new Conexao();
             PreparedStatement st = connection.get_prepare(sql);
-            st.setInt(1, iD);
+            st.setInt(1, numeroImport);
             ResultSet rs = st.executeQuery();
             if (rs.next()) {
                 a = new Notificacoes();

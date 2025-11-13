@@ -32,6 +32,7 @@ import org.openjfx.poo.Model.Dao.BuscaAlfandegario;
 import org.openjfx.poo.Model.Dao.BuscaImportacaoID;
 import org.openjfx.poo.Model.Dao.ListaImportacaoEmpresa;
 import org.openjfx.poo.Model.Dao.ListaImportacaoPessoa;
+import org.openjfx.poo.Model.Dao.ListaImportacaoSituacao;
 import org.openjfx.poo.Model.Importacao;
 import org.openjfx.poo.View.Alertas;
 
@@ -147,13 +148,16 @@ public class AlfandegarioController implements Initializable {
     @FXML
     private void ntnSearchAction(ActionEvent event) {
         if(rbSituation.isSelected()){
-            
-            
-            
-            
-            
+            List<Importacao> lista;
+            lista = ListaImportacaoSituacao.listaImportacoesPessoaBD(tfSearch.getText());
+            if(lista == null){
+                Alertas.mostrarAlerta("Erro busca", "Nada encontrado.", Alert.AlertType.WARNING);
+            }else{
+                listImportacao.clear();
+                listImportacao.addAll(lista);
+            }
         }else if(rbIDImporter.isSelected()){
-                List<Importacao> lista;
+            List<Importacao> lista;
             if(tfSearch.getText().length() > 11){
                 lista = ListaImportacaoEmpresa.listaImportacoesEmpresaBD(tfSearch.getText());
             }else{
@@ -172,7 +176,7 @@ public class AlfandegarioController implements Initializable {
                     Alertas.mostrarAlerta("Erro busca", "Nada encontrado.", Alert.AlertType.WARNING);
                 }else{
                     listImportacao.clear();
-                    listImportacao.addAll();
+                    listImportacao.addAll(imp);
                 }
             }catch(NumberFormatException e){
                 System.out.println(e);

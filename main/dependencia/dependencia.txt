@@ -15,14 +15,14 @@
     <version>8.0.33</version>
 </dependency>
 
---------------------------------2025/10/11
+--------------------------------2025/11/11
 <dependency>
     <groupId>de.mkammerer</groupId>
     <artifactId>argon2-jvm</artifactId>
     <version>2.12</version>
 </dependency>
 
-
+ --------------------------------2025/11/12
 <properties>
     <db.host>localhost</db.host>
     <db.port>3306</db.port>
