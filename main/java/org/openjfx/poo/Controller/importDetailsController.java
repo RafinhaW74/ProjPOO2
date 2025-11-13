@@ -8,8 +8,10 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import org.openjfx.poo.Model.Importacao;
+import org.openjfx.poo.Model.Notificacoes;
 import org.openjfx.poo.Model.Produtos;
 import org.openjfx.poo.Model.Dao.BuscaImportacaoID;
+import org.openjfx.poo.Model.Dao.BuscaNotificacao;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -84,16 +86,31 @@ public class ImportDetailsController implements Initializable {
 
     private Importacao importacao;
     private boolean pending;
-     
-    
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         importacao = BuscaImportacaoID.buscaImportacaoBD(1);
         
         setImportacao(importacao);
-
         
+        if(pending){
+            Notificacoes notify = BuscaNotificacao.BuscaNotificacoesBD(1);
+            taImportPendig.setText(notify.getDescricao());
+            switch (notify.getTipo()) {
+                case "Pagamento pendente":
+                    btnPending.setText("Pagar");
+                    break;
+            
+                default:
+                    btnPending.setText("Executado");
+                    break;
+            }
+            
+            //qualquer outra coisa de notificaçã
+        }else{
+            taImportPendig.setVisible(false);
+            btnPending.setVisible(false);
+        }
     }    
 
     @FXML
@@ -183,6 +200,7 @@ public class ImportDetailsController implements Initializable {
         tfProductManufacturer.setText(importacao.getProdutos().getFabricante());
         tfProductRestricted.setText(importacao.getProdutos().isEstado() ? "Ativo" : "Inativo");
         taProductDescription.setText(importacao.getProdutos().getDescricao());
+        
         
     }
     
