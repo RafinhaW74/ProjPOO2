@@ -11,13 +11,13 @@ import java.sql.PreparedStatement;
  * @author rafin
  */
 public class InsereNotificacao {
-    public static void insereNotificacaoBD(String descricao, int id, String tipo, int numeroImport){
-        String sql = "INSERT INTO Notificacao(descricao, id, tipo, numeroImportacao) VALUES(?,?,?,?)";
+    public static void insereNotificacaoBD(String descricao, String tipo, int numeroImport){
+        String sql = "INSERT INTO Notificacao(descricao, tipo, numeroImportacao) VALUES(?,?,?)";
         
         try{
             Conexao connection = new Conexao();
             PreparedStatement st = connection.get_prepare(sql);
-            connection.set_param(new Object[]{descricao, id, tipo, numeroImport});
+            connection.set_param(new Object[]{descricao, tipo, numeroImport});
             st.execute();
             connection.close();
 

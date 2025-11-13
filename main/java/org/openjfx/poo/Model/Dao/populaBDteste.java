@@ -46,5 +46,27 @@ public class PopulaBDteste {
         InsereImportacao.insereImportacaoBD("2026-01-05", 3, null, "357", "2025-11-25");
         InsereImportacao.insereImportacaoBD("2026-04-23", 4, null, "246", "2025-11-26");
         InsereImportacao.insereImportacaoBD("2026-02-12", 5, "456123", null, "2025-11-29");
+        
+        InsereNotificacao.insereNotificacaoBD("Decrição incomplete","Dado incompleto", 1);
+        InsereNotificacao.insereNotificacaoBD("Dados errado","Dado incompleto", 1);
+        InsereNotificacao.insereNotificacaoBD("Aguardando apgamento","Pagamento", 1);
+        
+        InsereNotificacao.insereNotificacaoBD("Decrição incomplete","Dado incompleto", 2);
+        try{Thread.sleep(1500);}catch(Exception e){e.printStackTrace();}
+        InsereNotificacao.insereNotificacaoBD("Dados errado","Dado incompleto", 2);
+        try{Thread.sleep(1500);}catch(Exception e){e.printStackTrace();}
+        InsereNotificacao.insereNotificacaoBD("Aguardando apgamento","Pagamento", 2);
+        try{Thread.sleep(1500);}catch(Exception e){e.printStackTrace();}
+        InsereNotificacao.insereNotificacaoBD("Decrição incomplete","Dado incompleto", 2);
+        try{Thread.sleep(1500);}catch(Exception e){e.printStackTrace();}
+        InsereNotificacao.insereNotificacaoBD("Decrição incomplete","Dado incompleto", 3);
+        try{Thread.sleep(1500);}catch(Exception e){e.printStackTrace();}
+        InsereNotificacao.insereNotificacaoBD("Decrição incomplete","Dado incompleto", 4);
+        try{Thread.sleep(1500);}catch(Exception e){e.printStackTrace();}
+        InsereNotificacao.insereNotificacaoBD("Decrição incomplete","Dado incompleto", 5);
+        try{Thread.sleep(1500);}catch(Exception e){e.printStackTrace();}
+        InsereNotificacao.insereNotificacaoBD("Decrição incomplete","Dado incompleto", 6);
+        
+        
     }
 }
