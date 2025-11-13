@@ -89,13 +89,16 @@ public class ImportDetailsController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        setFilter();
         importacao = BuscaImportacaoID.buscaImportacaoBD(1);
+
         
         setImportacao(importacao);
         
         if(pending){
             Notificacoes notify = BuscaNotificacao.BuscaNotificacoesBD(1);
             taImportPendig.setText(notify.getDescricao());
+
             switch (notify.getTipo()) {
                 case "Pagamento pendente":
                     btnPending.setText("Pagar");
@@ -140,39 +143,35 @@ public class ImportDetailsController implements Initializable {
     @FXML
     private void tbAlterAction(ActionEvent event) {
         if(tbAlter.isSelected()){
-            tfImportNumber.getStyleClass().add("plain-content");
-            tfImporterName.getStyleClass().add("plain-content");
-            tfImportStatus.getStyleClass().add("plain-content");
-            tfImporterID.getStyleClass().add("plain-content");
-            tfProductName.getStyleClass().add("plain-content");
-            tfProductHeight.getStyleClass().add("plain-content");
-            tfProductwidth.getStyleClass().add("plain-content");
-            tfProductRestricted.getStyleClass().add("plain-content");
-            tfProductManufacturer.getStyleClass().add("plain-content");
-            tfProdutcLength.getStyleClass().add("plain-content");
-            tfProductwiegth.getStyleClass().add("plain-content");
-            tfProductLI.getStyleClass().add("plain-content");
-            taProductDescription.getStyleClass().add("plain-content");
+            addStyleHidden();
+            
             
             tbAlter.setText("Editar");
 
         }else{
-            tfImportNumber.getStyleClass().remove("plain-content");
-            tfImporterName.getStyleClass().remove("plain-content");
-            tfImportStatus.getStyleClass().remove("plain-content");
-            tfImporterID.getStyleClass().remove("plain-content");
-            tfProductName.getStyleClass().remove("plain-content");
-            tfProductHeight.getStyleClass().remove("plain-content");
-            tfProductwidth.getStyleClass().remove("plain-content");
-            tfProductRestricted.getStyleClass().remove("plain-content");
-            tfProductManufacturer.getStyleClass().remove("plain-content");
-            tfProdutcLength.getStyleClass().remove("plain-content");
-            tfProductwiegth.getStyleClass().remove("plain-content");
-            tfProductLI.getStyleClass().remove("plain-content");
-            taProductDescription.getStyleClass().remove("plain-content");
+            removeStyleHidden();
             
             tbAlter.setText("Salvar");
         }
+    }
+
+    public void setFilter(){
+        tfProductwidth.setTextFormatter(new FilterFloat(3));
+        tfProductHeight.setTextFormatter(Filter.getDouble(2));
+    }
+
+    public Importacao getForm(Importacao importacao){
+        importacao.getProdutos().setNome(tfProductName.getText());
+        importacao.getProdutos().setAltura(Float.parseFloat(tfProductHeight.getText()));
+        importacao.getProdutos().setLargura(Float.parseFloat(tfProductwidth.getText()));
+        importacao.getProdutos().setComprimento(Float.parseFloat(tfProdutcLength.getText()));
+        importacao.getProdutos().setPeso(Float.parseFloat(tfProductwiegth.getText()));
+        importacao.getProdutos().setLI(tfProductLI.getText());
+        importacao.getProdutos().setFabricante(tfProductManufacturer.getText());
+        importacao.getProdutos().setEstado(tfProductRestricted.getText().equalsIgnoreCase("Ativo"));
+        importacao.getProdutos().setDescricao(taProductDescription.getText());
+
+        return importacao;
     }
 
     public void setImportacao(Importacao importacao) {
@@ -200,8 +199,41 @@ public class ImportDetailsController implements Initializable {
         tfProductManufacturer.setText(importacao.getProdutos().getFabricante());
         tfProductRestricted.setText(importacao.getProdutos().isEstado() ? "Ativo" : "Inativo");
         taProductDescription.setText(importacao.getProdutos().getDescricao());
-        
-        
+    }
+
+    public void removeStyleHidden(){
+        tfImportNumber.getStyleClass().remove("plain-content");
+        tfImporterName.getStyleClass().remove("plain-content");
+        tfImportStatus.getStyleClass().remove("plain-content");
+        tfImporterID.getStyleClass().remove("plain-content");
+        tfProductName.getStyleClass().remove("plain-content");
+        tfProductHeight.getStyleClass().remove("plain-content");
+        tfProductwidth.getStyleClass().remove("plain-content");
+        tfProductRestricted.getStyleClass().remove("plain-content");
+        tfProductManufacturer.getStyleClass().remove("plain-content");
+        tfProdutcLength.getStyleClass().remove("plain-content");
+        tfProductwiegth.getStyleClass().remove("plain-content");
+        tfProductLI.getStyleClass().remove("plain-content");
+        taProductDescription.getStyleClass().remove("plain-content");
+    }
+
+    public void addStyleHidden(){
+        tfImportNumber.getStyleClass().add("plain-content");
+        tfImporterName.getStyleClass().add("plain-content");
+        tfImportStatus.getStyleClass().add("plain-content");
+        tfImporterID.getStyleClass().add("plain-content");
+        tfProductName.getStyleClass().add("plain-content");
+        tfProductHeight.getStyleClass().add("plain-content");
+        tfProductwidth.getStyleClass().add("plain-content");
+        tfProductRestricted.getStyleClass().add("plain-content");
+        tfProductManufacturer.getStyleClass().add("plain-content");
+        tfProdutcLength.getStyleClass().add("plain-content");
+        tfProductwiegth.getStyleClass().add("plain-content");
+        tfProductLI.getStyleClass().add("plain-content");
+        taProductDescription.getStyleClass().add("plain-content");
     }
     
 }
+
+
+
