@@ -125,4 +125,11 @@ public class RequestImportController implements Initializable {
     private void btnRegisterAction(ActionEvent event) {
     }
     
+    public void setFilter(){
+        tfWidth.setTextFormatter(Filter.getFloat(2));
+        tfHeight.setTextFormatter(Filter.getFloat(2));
+        tfLength.setTextFormatter(Filter.getFloat(2));
+        tfWeight.setTextFormatter(Filter.getFloat(2));
+    }
+    
 }
