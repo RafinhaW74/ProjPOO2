@@ -28,9 +28,9 @@
                               <MenuItem fx:id="miView" mnemonicParsing="false" onAction="#viewImport" text="Visualizar" />
                            </items>
                       </Menu>
-                        <Menu fx:id="mnViewPending" mnemonicParsing="false" onAction="#viewPending" text="Pedencias">
+                        <Menu fx:id="mnViewPending" mnemonicParsing="false" onAction="#viewPending" text="Pedências">
                            <items>
-                              <MenuItem fx:id="miViewPending" mnemonicParsing="false" onAction="#viewPending" text="Visualiar" />
+                              <MenuItem fx:id="miViewPending" mnemonicParsing="false" onAction="#viewPending" text="Visualizar" />
                            </items>
                         </Menu>
                     </menus>
