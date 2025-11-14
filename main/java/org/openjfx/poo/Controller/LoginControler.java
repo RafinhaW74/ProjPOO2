@@ -111,9 +111,9 @@ public class LoginControler implements Initializable {
         String identificador = tfIdentificator.getText();
         String senha = tfPassword.getText();
         if(identificador.length() > 11){
-            pessoa = false;
+            setPessoa(false);
         }else{
-            pessoa = true;
+            setPessoa(true);
         }
         
         if (identificador.isEmpty() || senha.isEmpty()) {
@@ -131,8 +131,8 @@ public class LoginControler implements Initializable {
                 }
                 if(argon2.verify(empresa.getSenha(), senha)){
                     try{
-                        nome = empresa.getNome();
-                        identificadorGeral = identificador;
+                        setNome(empresa.getNome());
+                        setIdentificadorGeral(identificador);
                         App.setRoot("FXImportador");
                     }catch (IOException erro) {
                         System.out.println(erro);
@@ -149,8 +149,8 @@ public class LoginControler implements Initializable {
                 }
                 if(argon2.verify(pessoa1.getSenha(), senha)){
                     try{
-                        nome = pessoa1.getNome();
-                        identificadorGeral = identificador;
+                        setNome(pessoa1.getNome());
+                        setIdentificadorGeral(identificador);
                         App.setRoot("FXImportador");
                     }catch (IOException erro) {
                         System.out.println(erro);
@@ -168,8 +168,8 @@ public class LoginControler implements Initializable {
             }
             if(argon2.verify(alfandegario.getSenha(), senha)){
                 try{
-                    nome = alfandegario.getNome();
-                    identificadorGeral = identificador;
+                    setNome(alfandegario.getNome());
+                    setIdentificadorGeral(identificador);
                     App.setRoot("FXAlfandegario"); 
                 }catch (IOException erro) {
                     System.out.println(erro);
