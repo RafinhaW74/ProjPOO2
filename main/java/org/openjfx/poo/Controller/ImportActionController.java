@@ -94,10 +94,10 @@ public class ImportActionController implements Initializable {
     }
     
     public void setFilter(){
-        tfProductwidth.setTextFormatter(Filter.getFloat(2));
-        tfProductHeight.setTextFormatter(Filter.getFloat(2));
-        tfProdutcLength.setTextFormatter(Filter.getFloat(2));
-        tfProductwiegth.setTextFormatter(Filter.getFloat(2));
+        tfProductwidth.setTextFormatter(new FilterFloat(2));
+        tfProductHeight.setTextFormatter(new FilterFloat(2));
+        tfProdutcLength.setTextFormatter(new FilterFloat(2));
+        tfProductwiegth.setTextFormatter(new FilterFloat(2));
     }
     public Importacao getForm(Importacao importacao){
         importacao.getProdutos().setNome(tfProductName.getText());

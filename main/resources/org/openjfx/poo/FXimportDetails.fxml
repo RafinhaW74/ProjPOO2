@@ -103,11 +103,11 @@
                                                 <Label text="LI:" GridPane.columnIndex="2" GridPane.rowIndex="3" />
                                                 <TextField fx:id="tfProductName" styleClass="plain-content" GridPane.columnIndex="1" />
                                                 <TextField fx:id="tfProductHeight" styleClass="plain-content" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                                                <TextField fx:id="tfProductwidth" styleClass="plain-content" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                                                <TextField fx:id="tfProductWidth" styleClass="plain-content" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                                                 <TextField fx:id="tfProductRestricted" styleClass="plain-content" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                                                 <TextField fx:id="tfProductManufacturer" styleClass="plain-content" GridPane.columnIndex="3" />
                                                 <TextField fx:id="tfProdutcLength" styleClass="plain-content" GridPane.columnIndex="3" GridPane.rowIndex="1" />
-                                                <TextField fx:id="tfProductwiegth" styleClass="plain-content" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+                                                <TextField fx:id="tfProductWiegth" styleClass="plain-content" GridPane.columnIndex="3" GridPane.rowIndex="2" />
                                                 <TextField fx:id="tfProductLI" styleClass="plain-content" GridPane.columnIndex="3" GridPane.rowIndex="3" />
                                              </children>
                                           </GridPane>

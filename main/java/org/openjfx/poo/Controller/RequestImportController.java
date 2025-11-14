@@ -126,10 +126,10 @@ public class RequestImportController implements Initializable {
     }
     
     public void setFilter(){
-        tfWidth.setTextFormatter(Filter.getFloat(2));
-        tfHeight.setTextFormatter(Filter.getFloat(2));
-        tfLength.setTextFormatter(Filter.getFloat(2));
-        tfWeight.setTextFormatter(Filter.getFloat(2));
+        tfWidth.setTextFormatter(new FilterFloat(2));
+        tfHeight.setTextFormatter(new FilterFloat(2));
+        tfLength.setTextFormatter(new FilterFloat(2));
+        tfWeight.setTextFormatter(new FilterFloat(2));
     }
     
 }
