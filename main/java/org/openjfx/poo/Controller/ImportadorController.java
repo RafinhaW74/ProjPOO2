@@ -127,6 +127,10 @@ public class ImportadorController implements Initializable {
                 try {
                     FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("FXimportDetails.fxml"));
                     Parent root = fxmlLoader.load();
+
+                    ImportDetailsController control = fxmlLoader.getController();
+                    control.setImportacao(newVal);
+                    
                     Stage novaJanela = new Stage();
                     novaJanela.setScene(new Scene(root, 1000, 560));
                     Stage janelaPrincipal = (Stage) lvImports.getScene().getWindow();

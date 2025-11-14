@@ -141,7 +141,7 @@
                                                 <Insets top="40.0" />
                                              </VBox.margin>
                                              <children>
-                                                <TextArea fx:id="taImportPendig" editable="false" prefHeight="200.0" prefWidth="200.0" stylesheets="@css/box.css" wrapText="true">
+                                                <TextArea fx:id="taImportPendig" editable="false" prefHeight="200.0" prefWidth="200.0" stylesheets="@css/box.css" visible="false" wrapText="true">
                                                    <styleClass>
                                                       <String fx:value="information-pending" />
                                                       <String fx:value="plain-content" />
@@ -151,7 +151,7 @@
                                           </StackPane>
                                           <StackPane maxHeight="250.0" minHeight="-Infinity" prefHeight="90.0" prefWidth="300.0" VBox.vgrow="ALWAYS">
                                              <children>
-                                                <Button fx:id="btnPending" mnemonicParsing="false" onAction="#btnPendingAction" styleClass="btn-description" stylesheets="@css/btn.css" text="Ação Pendente" />
+                                                <Button fx:id="btnPending" mnemonicParsing="false" onAction="#btnPendingAction" styleClass="btn-description" stylesheets="@css/btn.css" text="Ação Pendente" visible="false" />
                                              </children>
                                           </StackPane>
                                           <StackPane maxHeight="250.0" minHeight="-Infinity" prefHeight="90.0" prefWidth="200.0" VBox.vgrow="ALWAYS">

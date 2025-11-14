@@ -73,35 +73,13 @@ public class ImportDetailsController implements Initializable {
 
     
     private Importacao importacao;
-    private boolean pending;
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         setFilter();
         importacao = BuscaImportacaoID.buscaImportacaoBD(1);
-
         
-        setImportacao(importacao);
         
-        if(pending){
-            Notificacoes notify = BuscaNotificacao.BuscaNotificacoesBD(1);
-            taImportPendig.setText(notify.getDescricao());
-
-            switch (notify.getTipo()) {
-                case "Pagamento pendente":
-                    btnPending.setText("Pagar");
-                    break;
-            
-                default:
-                    btnPending.setText("Executado");
-                    break;
-            }
-            
-            //qualquer outra coisa de notificaçã
-        }else{
-            taImportPendig.setVisible(false);
-            btnPending.setVisible(false);
-        }
     }    
 
 
@@ -146,7 +124,7 @@ public class ImportDetailsController implements Initializable {
         return importacao;
     }
 
-    public void setImportacao(Importacao importacao) {
+    public void updateField(Importacao importacao) {
         if (importacao == null) return;
 
         // Campos principais da importação
@@ -171,6 +149,15 @@ public class ImportDetailsController implements Initializable {
         tfProductManufacturer.setText(importacao.getProdutos().getFabricante());
         tfProductRestricted.setText(importacao.getProdutos().isEstado() ? "Ativo" : "Inativo");
         taProductDescription.setText(importacao.getProdutos().getDescricao());
+    }
+    
+    public void updatePending(){
+        if(importacao == null){
+            taImportPendig.setVisible(false);
+            btnPending.setVisible(false);
+        }else{
+            
+        }
     }
 
     public void removeStyleHidden(){
@@ -217,6 +204,33 @@ public class ImportDetailsController implements Initializable {
         taProductDescription.setEditable(false);
     }
     
+    public void setImportacao(Importacao importacao){
+        this.importacao = importacao;
+        updateField(importacao);
+    }
+    
+    public void setPending(boolean pending){
+        
+        if(pending){
+            if(importacao != null){
+                taImportPendig.setVisible(true);
+                btnPending.setVisible(true);
+                Notificacoes notify = importacao.getNotificacoes().get(importacao.getNotificacoes().size() -1);//adicionar a parte
+                
+                taImportPendig.setText(notify.getDescricao());
+
+                switch (notify.getTipo()) {
+                    case "Pagamento pendente":
+                        btnPending.setText("Pagar");
+                        break;
+
+                    default:
+                        btnPending.setText("Executado");
+                        break;
+                }
+            }
+        }
+    }
 }
 
 
