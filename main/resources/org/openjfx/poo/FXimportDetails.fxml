@@ -91,6 +91,7 @@
                                                 <RowConstraints minHeight="45.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                                 <RowConstraints minHeight="45.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                                 <RowConstraints minHeight="45.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                <RowConstraints minHeight="45.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                              </rowConstraints>
                                              <children>
                                                 <Label text="Nome:" />
@@ -99,16 +100,18 @@
                                                 <Label text="Comprimento:" GridPane.columnIndex="2" GridPane.rowIndex="1" />
                                                 <Label text="Largura:" GridPane.rowIndex="2" />
                                                 <Label text="Peso:" GridPane.columnIndex="2" GridPane.rowIndex="2" />
-                                                <Label text="Restrito:" GridPane.rowIndex="3" />
-                                                <Label text="LI:" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+                                                <Label text="Restrito:" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+                                                <Label text="LI:" GridPane.rowIndex="4" />
                                                 <TextField fx:id="tfProductName" editable="false" styleClass="plain-content" GridPane.columnIndex="1" />
                                                 <TextField fx:id="tfProductHeight" editable="false" styleClass="plain-content" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                                                 <TextField fx:id="tfProductWidth" editable="false" styleClass="plain-content" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                                                <TextField fx:id="tfProductRestricted" editable="false" styleClass="plain-content" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                                                <TextField fx:id="tfProductRestricted" editable="false" styleClass="plain-content" GridPane.columnIndex="3" GridPane.rowIndex="3" />
                                                 <TextField fx:id="tfProductManufacturer" editable="false" styleClass="plain-content" GridPane.columnIndex="3" />
                                                 <TextField fx:id="tfProdutcLength" editable="false" styleClass="plain-content" GridPane.columnIndex="3" GridPane.rowIndex="1" />
                                                 <TextField fx:id="tfProductWiegth" editable="false" styleClass="plain-content" GridPane.columnIndex="3" GridPane.rowIndex="2" />
-                                                <TextField fx:id="tfProductLI" editable="false" styleClass="plain-content" GridPane.columnIndex="3" GridPane.rowIndex="3" />
+                                                <TextField fx:id="tfProductLI" editable="false" styleClass="plain-content" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                                                <Label text="Quatidade:" GridPane.rowIndex="3" />
+                                                <TextField fx:id="tfProductAmount" styleClass="plain-content" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                                              </children>
                                           </GridPane>
                                           <HBox alignment="CENTER" maxHeight="300.0" minHeight="150.0" prefHeight="100.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
@@ -156,7 +159,7 @@
                                           </StackPane>
                                           <StackPane maxHeight="250.0" minHeight="-Infinity" prefHeight="90.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
                                              <children>
-                                                <ToggleButton fx:id="tbAlter" mnemonicParsing="false" onAction="#tbAlterAction" styleClass="btn-description" stylesheets="@css/btn.css" text="Atualizar" />
+                                                <ToggleButton fx:id="tbAlter" mnemonicParsing="false" onAction="#tbAlterAction" styleClass="btn-description" stylesheets="@css/btn.css" text="Atualizar" visible="false" />
                                              </children>
                                           </StackPane>
                                           <StackPane maxHeight="250.0" minHeight="-Infinity" prefHeight="90.0" prefWidth="300.0" VBox.vgrow="ALWAYS">

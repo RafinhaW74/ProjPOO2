@@ -92,6 +92,7 @@
                                                 <RowConstraints minHeight="45.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                                 <RowConstraints minHeight="45.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                                 <RowConstraints minHeight="45.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                <RowConstraints minHeight="45.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                              </rowConstraints>
                                              <children>
                                                 <Label text="Nome:" />
@@ -100,16 +101,18 @@
                                                 <Label text="Comprimento:" GridPane.columnIndex="2" GridPane.rowIndex="1" />
                                                 <Label text="Largura:" GridPane.rowIndex="2" />
                                                 <Label text="Peso:" GridPane.columnIndex="2" GridPane.rowIndex="2" />
-                                                <Label text="Restrito:" GridPane.rowIndex="3" />
-                                                <Label text="LI:" GridPane.columnIndex="2" GridPane.rowIndex="3" />
-                                                <TextField fx:id="tfProductName" styleClass="plain-content" GridPane.columnIndex="1" />
-                                                <TextField fx:id="tfProductHeight" styleClass="plain-content" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                                                <TextField fx:id="tfProductWidth" styleClass="plain-content" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                                                <TextField fx:id="tfProductRestricted" styleClass="plain-content" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                                                <TextField fx:id="tfProductManufacturer" styleClass="plain-content" GridPane.columnIndex="3" />
-                                                <TextField fx:id="tfProdutcLength" styleClass="plain-content" GridPane.columnIndex="3" GridPane.rowIndex="1" />
-                                                <TextField fx:id="tfProductWiegth" styleClass="plain-content" GridPane.columnIndex="3" GridPane.rowIndex="2" />
-                                                <TextField fx:id="tfProductLI" styleClass="plain-content" GridPane.columnIndex="3" GridPane.rowIndex="3" />
+                                                <Label text="Restrito:" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+                                                <Label text="LI:" GridPane.rowIndex="4" />
+                                                <TextField fx:id="tfProductName" editable="false" styleClass="plain-content" GridPane.columnIndex="1" />
+                                                <TextField fx:id="tfProductHeight" editable="false" styleClass="plain-content" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                                <TextField fx:id="tfProductWidth" editable="false" styleClass="plain-content" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                                                <TextField fx:id="tfProductRestricted" editable="false" styleClass="plain-content" GridPane.columnIndex="3" GridPane.rowIndex="3" />
+                                                <TextField fx:id="tfProductManufacturer" editable="false" styleClass="plain-content" GridPane.columnIndex="3" />
+                                                <TextField fx:id="tfProdutcLength" editable="false" styleClass="plain-content" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+                                                <TextField fx:id="tfProductWiegth" editable="false" styleClass="plain-content" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+                                                <TextField fx:id="tfProductLI" editable="false" styleClass="plain-content" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                                                <Label text="Quatidade:" GridPane.rowIndex="3" />
+                                                <TextField fx:id="tfProductAmount" styleClass="plain-content" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                                              </children>
                                           </GridPane>
                                           <HBox alignment="CENTER" maxHeight="300.0" minHeight="150.0" prefHeight="100.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
@@ -153,13 +156,13 @@
                                                 <Insets top="10.0" />
                                              </VBox.margin>
                                           </StackPane>
-                                          <StackPane fx:id="stOutherStatus" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="40.0" prefWidth="300.0">
-                                             <children>
-                                                <TextField fx:id="tfOutherStatus" visible="false" />
-                                             </children>
+                                          <StackPane fx:id="stOutherStatus" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="89.0" prefWidth="300.0">
                                              <padding>
                                                 <Insets left="30.0" right="30.0" />
                                              </padding>
+                                             <children>
+                                                <Button fx:id="btnStatus" mnemonicParsing="false" onAction="#btnStatusAction" styleClass="btRegister" text="Atualizar Status" />
+                                             </children>
                                           </StackPane>
                                           <StackPane maxHeight="250.0" minHeight="-Infinity" prefHeight="90.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
                                              <children>

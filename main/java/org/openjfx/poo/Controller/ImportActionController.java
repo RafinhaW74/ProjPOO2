@@ -42,14 +42,12 @@ public class ImportActionController implements Initializable {
     private TextField tfProductName;
     @FXML
     private TextField tfProductHeight;
-
     @FXML
     private TextField tfProductRestricted;
     @FXML
     private TextField tfProductManufacturer;
     @FXML
     private TextField tfProdutcLength;
-
     @FXML
     private TextField tfProductLI;
     @FXML
@@ -59,33 +57,36 @@ public class ImportActionController implements Initializable {
     @FXML
     private Button btnDelet;
     @FXML
-    private ComboBox<?> cbStatus;
+    private ComboBox<String> cbStatus;
     @FXML
     private StackPane stOutherStatus;
     @FXML
-    private TextField tfOutherStatus;
-    @FXML
     private ToggleButton tbAlter;
-
-    private Importacao importacao;
-    private boolean pending;
     @FXML
     private TextField tfProductWidth;
     @FXML
     private TextField tfProductWiegth;
+    @FXML
+    private Button btnStatus;
     /**
      * Initializes the controller class.
      */
+    
+    private Importacao importacao;
+    private TextField tfAmount;
+    @FXML
+    private TextField tfProductAmount;
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         setFilter();
         setFilter();
         importacao = BuscaImportacaoID.buscaImportacaoBD(1);
-
-        
         setImportacao(importacao);
         
-        
+        cbStatus.getItems().add("Requer ação");
+        cbStatus.getItems().add("Pagamento pendente");
+        cbStatus.getItems().add("Bloqueado");
+        cbStatus.getItems().add("Confirmado");
 
     }    
 
@@ -112,6 +113,7 @@ public class ImportActionController implements Initializable {
         tfProductHeight.setTextFormatter(new FilterFloat(2));
         tfProdutcLength.setTextFormatter(new FilterFloat(2));
         tfProductWiegth.setTextFormatter(new FilterFloat(2));
+        tfProductAmount.setTextFormatter(new FilterInt());
     }
     public Importacao getForm(Importacao importacao){
         importacao.getProdutos().setNome(tfProductName.getText());
@@ -121,8 +123,8 @@ public class ImportActionController implements Initializable {
         importacao.getProdutos().setPeso(Float.parseFloat(tfProductWiegth.getText()));
         importacao.getProdutos().setLI(tfProductLI.getText());
         importacao.getProdutos().setFabricante(tfProductManufacturer.getText());
-        importacao.getProdutos().setEstado(tfProductRestricted.getText().equalsIgnoreCase("Ativo"));
         importacao.getProdutos().setDescricao(taProductDescription.getText());
+        importacao.getProdutos().setQuantidade((int)tfProductAmount.getTextFormatter().getValue());
 
         return importacao;
     }
@@ -150,8 +152,10 @@ public class ImportActionController implements Initializable {
         tfProductWiegth.setText(String.valueOf(importacao.getProdutos().getPeso()));
         tfProductLI.setText(importacao.getProdutos().getLI());
         tfProductManufacturer.setText(importacao.getProdutos().getFabricante());
-        tfProductRestricted.setText(importacao.getProdutos().isEstado() ? "Ativo" : "Inativo");
+        tfProductRestricted.setText(importacao.getProdutos().getLI().isEmpty() ? "Não" : "Sim");
+        tfProductAmount.setText(String.valueOf(importacao.getProdutos().getQuantidade()));
         taProductDescription.setText(importacao.getProdutos().getDescricao());
+        
     }
 
     public void removeStyleHidden(){
@@ -159,17 +163,18 @@ public class ImportActionController implements Initializable {
         tfProductName.getStyleClass().remove("plain-content");
         tfProductHeight.getStyleClass().remove("plain-content");
         tfProductWidth.getStyleClass().remove("plain-content");
-        tfProductRestricted.getStyleClass().remove("plain-content");
         tfProductManufacturer.getStyleClass().remove("plain-content");
         tfProdutcLength.getStyleClass().remove("plain-content");
         tfProductWiegth.getStyleClass().remove("plain-content");
         tfProductLI.getStyleClass().remove("plain-content");
+        tfProductAmount.getStyleClass().remove("plain-content");
         taProductDescription.getStyleClass().remove("plain-content");
+        
         
         tfProductName.setEditable(true);
         tfProductHeight.setEditable(true);
         tfProductWidth.setEditable(true);
-        tfProductRestricted.setEditable(true);
+        tfProductAmount.setEditable(true);
         tfProductManufacturer.setEditable(true);
         tfProdutcLength.setEditable(true);
         tfProductWiegth.setEditable(true);
@@ -182,22 +187,26 @@ public class ImportActionController implements Initializable {
         tfProductName.getStyleClass().add("plain-content");
         tfProductHeight.getStyleClass().add("plain-content");
         tfProductWidth.getStyleClass().add("plain-content");
-        tfProductRestricted.getStyleClass().add("plain-content");
         tfProductManufacturer.getStyleClass().add("plain-content");
         tfProdutcLength.getStyleClass().add("plain-content");
         tfProductWiegth.getStyleClass().add("plain-content");
         tfProductLI.getStyleClass().add("plain-content");
+        tfProductAmount.getStyleClass().add("plain-content");
         taProductDescription.getStyleClass().add("plain-content");
         
         tfProductName.setEditable(false);
         tfProductHeight.setEditable(false);
         tfProductWidth.setEditable(false);
-        tfProductRestricted.setEditable(false);
         tfProductManufacturer.setEditable(false);
         tfProdutcLength.setEditable(false);
         tfProductWiegth.setEditable(false);
         tfProductLI.setEditable(false);
+        tfProductAmount.setEditable(false);
         taProductDescription.setEditable(false);
+    }
+
+    @FXML
+    private void btnStatusAction(ActionEvent event) {
     }
 
     

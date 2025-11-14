@@ -52,7 +52,6 @@ public class ImportDetailsController implements Initializable {
     private TextField tfProductManufacturer;
     @FXML
     private TextField tfProdutcLength;
-
     @FXML
     private TextField tfProductLI;
     @FXML
@@ -73,13 +72,12 @@ public class ImportDetailsController implements Initializable {
 
     
     private Importacao importacao;
+    @FXML
+    private TextField tfProductAmount;
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        setFilter();
-        importacao = BuscaImportacaoID.buscaImportacaoBD(1);
-        
-        
+        setFilter();        
     }    
 
 
@@ -108,6 +106,7 @@ public class ImportDetailsController implements Initializable {
         tfProductHeight.setTextFormatter(new FilterFloat(2));
         tfProdutcLength.setTextFormatter(new FilterFloat(2));
         tfProductWiegth.setTextFormatter(new FilterFloat(2));
+        tfProductAmount.setTextFormatter(new FilterInt());
     }
 
     public Importacao getForm(Importacao importacao){
@@ -118,8 +117,8 @@ public class ImportDetailsController implements Initializable {
         importacao.getProdutos().setPeso(Float.parseFloat(tfProductWiegth.getText()));
         importacao.getProdutos().setLI(tfProductLI.getText());
         importacao.getProdutos().setFabricante(tfProductManufacturer.getText());
-        importacao.getProdutos().setEstado(tfProductRestricted.getText().equalsIgnoreCase("Ativo"));
         importacao.getProdutos().setDescricao(taProductDescription.getText());
+        importacao.getProdutos().setQuantidade((int)tfProductAmount.getTextFormatter().getValue());
 
         return importacao;
     }
@@ -147,9 +146,12 @@ public class ImportDetailsController implements Initializable {
         tfProductWiegth.setText(String.valueOf(importacao.getProdutos().getPeso()));
         tfProductLI.setText(importacao.getProdutos().getLI());
         tfProductManufacturer.setText(importacao.getProdutos().getFabricante());
-        tfProductRestricted.setText(importacao.getProdutos().isEstado() ? "Ativo" : "Inativo");
+        tfProductRestricted.setText(importacao.getProdutos().getLI().isEmpty() ? "Não" : "Sim");
+        tfProductAmount.setText(String.valueOf(importacao.getProdutos().getQuantidade()));
         taProductDescription.setText(importacao.getProdutos().getDescricao());
     }
+    
+    
     
     public void updatePending(){
         if(importacao == null){
@@ -164,21 +166,21 @@ public class ImportDetailsController implements Initializable {
         tfProductName.getStyleClass().remove("plain-content");
         tfProductHeight.getStyleClass().remove("plain-content");
         tfProductWidth.getStyleClass().remove("plain-content");
-        tfProductRestricted.getStyleClass().remove("plain-content");
         tfProductManufacturer.getStyleClass().remove("plain-content");
         tfProdutcLength.getStyleClass().remove("plain-content");
         tfProductWiegth.getStyleClass().remove("plain-content");
         tfProductLI.getStyleClass().remove("plain-content");
+        tfProductAmount.getStyleClass().remove("plain-content");
         taProductDescription.getStyleClass().remove("plain-content");
         
         tfProductName.setEditable(true);
         tfProductHeight.setEditable(true);
         tfProductWidth.setEditable(true);
-        tfProductRestricted.setEditable(true);
         tfProductManufacturer.setEditable(true);
         tfProdutcLength.setEditable(true);
         tfProductWiegth.setEditable(true);
         tfProductLI.setEditable(true);
+        tfProductAmount.setEditable(false);
         taProductDescription.setEditable(true);
     }
 
@@ -186,49 +188,54 @@ public class ImportDetailsController implements Initializable {
         tfProductName.getStyleClass().add("plain-content");
         tfProductHeight.getStyleClass().add("plain-content");
         tfProductWidth.getStyleClass().add("plain-content");
-        tfProductRestricted.getStyleClass().add("plain-content");
         tfProductManufacturer.getStyleClass().add("plain-content");
         tfProdutcLength.getStyleClass().add("plain-content");
         tfProductWiegth.getStyleClass().add("plain-content");
         tfProductLI.getStyleClass().add("plain-content");
+        tfProductAmount.getStyleClass().add("plain-content");
         taProductDescription.getStyleClass().add("plain-content");
         
         tfProductName.setEditable(false);
         tfProductHeight.setEditable(false);
         tfProductWidth.setEditable(false);
-        tfProductRestricted.setEditable(false);
         tfProductManufacturer.setEditable(false);
         tfProdutcLength.setEditable(false);
         tfProductWiegth.setEditable(false);
         tfProductLI.setEditable(false);
+        tfProductAmount.setEditable(true);
         taProductDescription.setEditable(false);
     }
     
     public void setImportacao(Importacao importacao){
         this.importacao = importacao;
         updateField(importacao);
+        setUpdateButton();
     }
     
     public void setPending(boolean pending){
         
         if(pending){
-            if(importacao != null){
-                taImportPendig.setVisible(true);
+            
+            taImportPendig.setVisible(true);
+            btnPending.setVisible(true);
+
+            Notificacoes notify = BuscaNotificacaoMaisRecente.BuscaNotificacaoMaisRecenteBD(importacao.getNumero());
+
+            taImportPendig.setText(notify.getDescricao());
+            taImportPendig.setVisible(true);
+
+            if(notify.getTipo().equalsIgnoreCase("Pagamento pendente")){
+                btnPending.setText("Pagar");
                 btnPending.setVisible(true);
-                Notificacoes notify = BuscaNotificacaoMaisRecente.BuscaNotificacaoMaisRecenteBD(importacao.getNumero());
-                
-                taImportPendig.setText(notify.getDescricao());
-
-                switch (notify.getTipo()) {
-                    case "Pagamento pendente":
-                        btnPending.setText("Pagar");
-                        break;
-
-                    default:
-                        btnPending.setText("Executado");
-                        break;
-                }
             }
+            
+        }
+    }
+    
+    public void setUpdateButton(){
+        System.out.println("Hora: " +importacao.getCriacao().getHours());
+        if(importacao.getAtualizacao().getTime() < 24*60*60*100){
+            tbAlter.setVisible(true);
         }
     }
 }
