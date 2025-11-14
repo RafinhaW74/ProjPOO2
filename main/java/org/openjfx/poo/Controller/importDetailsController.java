@@ -115,10 +115,10 @@ public class ImportDetailsController implements Initializable {
         importacao.getProdutos().setLargura(Float.parseFloat(tfProductWidth.getText()));
         importacao.getProdutos().setComprimento(Float.parseFloat(tfProdutcLength.getText()));
         importacao.getProdutos().setPeso(Float.parseFloat(tfProductWiegth.getText()));
-        importacao.getProdutos().setLI(tfProductLI.getText());
         importacao.getProdutos().setFabricante(tfProductManufacturer.getText());
         importacao.getProdutos().setDescricao(taProductDescription.getText());
         importacao.getProdutos().setQuantidade((int)tfProductAmount.getTextFormatter().getValue());
+        importacao.getProdutos().setLI(tfProductLI.getText());
 
         return importacao;
     }
@@ -233,8 +233,7 @@ public class ImportDetailsController implements Initializable {
     }
     
     public void setUpdateButton(){
-        System.out.println("Hora: " +importacao.getCriacao().getHours());
-        if(importacao.getAtualizacao().getTime() < 24*60*60*100){
+        if(importacao.getCriacao().getTime() < 24*60*60*100){
             tbAlter.setVisible(true);
         }
     }

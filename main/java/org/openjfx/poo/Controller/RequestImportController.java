@@ -157,12 +157,12 @@ public class RequestImportController implements Initializable {
                 if(tfLI.getText().trim().isEmpty()){
                     Alertas.mostrarAlerta("Erro campo vazio", "Todos os campos devem ser preenchidos.", Alert.AlertType.ERROR);
                 }else{
-                    InsereProduto.insereProdutoBD((Float) tfLength.getTextFormatter().getValue(), (Float) tfWidth.getTextFormatter().getValue(), (Float) tfLength.getTextFormatter().getValue(), taDescription.getText(), tfLI.getText(), tfManufacturer.getText(), 0, (Float) tfWeight.getTextFormatter().getValue(), tfName.getText());
+                    int numeroProd = InsereProduto.insereProdutoBD((Float) tfLength.getTextFormatter().getValue(), (Float) tfWidth.getTextFormatter().getValue(), (Float) tfHeight.getTextFormatter().getValue(), taDescription.getText(), tfLI.getText(), tfManufacturer.getText(), 0, (Float) tfWeight.getTextFormatter().getValue(), tfName.getText());
                     if(pessoa){
-                        //InsereImportacao.insereImportacaoBD( 0, identificador, nome, nome);
+                        InsereImportacao.insereImportacaoBD(numeroProd, identificador, null);
+                    }else{
+                        InsereImportacao.insereImportacaoBD(numeroProd, null, identificador);
                     }
-                    
-                    
                     try{
                         App.setRoot("FXImportador");
                     }catch (IOException erro) {
@@ -171,10 +171,12 @@ public class RequestImportController implements Initializable {
                     }
                 }
             }else if(rbNot.isSelected()){
-                InsereProduto.insereProdutoBD((Float) tfLength.getTextFormatter().getValue(), (Float) tfWidth.getTextFormatter().getValue(), (Float) tfLength.getTextFormatter().getValue(), taDescription.getText(), null, tfManufacturer.getText(), 0, (Float) tfWeight.getTextFormatter().getValue(), tfName.getText());
-
-                
-                
+                int numeroProd = InsereProduto.insereProdutoBD((Float) tfLength.getTextFormatter().getValue(), (Float) tfWidth.getTextFormatter().getValue(), (Float) tfHeight.getTextFormatter().getValue(), taDescription.getText(), "", tfManufacturer.getText(), 0, (Float) tfWeight.getTextFormatter().getValue(), tfName.getText());
+                if(pessoa){
+                    InsereImportacao.insereImportacaoBD(numeroProd, identificador, null);
+                }else{
+                    InsereImportacao.insereImportacaoBD(numeroProd, null, identificador);
+                }
                 try{
                     App.setRoot("FXImportador");
                 }catch (IOException erro) {

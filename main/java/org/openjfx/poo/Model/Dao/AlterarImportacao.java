@@ -13,12 +13,12 @@ import java.sql.PreparedStatement;
  */
 public class AlterarImportacao {
     public static void alteraImportacaoBD(int Numero, int NumeroProduto, String CPF_Importador, String CNPJ_Importador, String atualizacao){
-        String sql = "UPDATE Importacao SET NumeroProduto = ?, CPF_Importador = ?, CNPJ_Importador = ?, Atualizacao = ? WHERE Numero = ?";
+        String sql = "UPDATE Importacao SET NumeroProduto = ?, CPF_Importador = ?, CNPJ_Importador = ?, Atualizacao = CURRENT_TIMESTAMP WHERE Numero = ?";
         
         try{
             Conexao connection = new Conexao();
             PreparedStatement st = connection.get_prepare(sql);
-            connection.set_param(new Object[]{NumeroProduto, CPF_Importador, CNPJ_Importador, Date.valueOf(atualizacao), Numero});
+            connection.set_param(new Object[]{NumeroProduto, CPF_Importador, CNPJ_Importador, Numero});
             st.execute();
             connection.close();
 
