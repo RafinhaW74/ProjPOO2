@@ -14,7 +14,6 @@ public class CriaTabelaImportacao {
     public static void criaTabelaImportacaoBD() {
         String sql = "CREATE TABLE IF NOT EXISTS Importacao ("
         + "Numero INT AUTO_INCREMENT PRIMARY KEY, "
-        + "Previsao DATE NOT NULL, "
         + "NumeroProduto INT NOT NULL, "
         + "Situacao VARCHAR(30) DEFAULT 'Em análise', "
         + "CPF_Importador CHAR(11) NULL, "

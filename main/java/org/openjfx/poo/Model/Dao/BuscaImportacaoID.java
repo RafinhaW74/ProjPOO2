@@ -29,7 +29,6 @@ public class BuscaImportacaoID {
                 a = new Importacao();
                 a.setSituacao(rs.getString("Situacao"));
                 a.setNumero(rs.getInt("Numero"));
-                a.setPrevisao(rs.getDate("Previsao"));
                 a.setEstado(rs.getBoolean("Estado"));
                 a.setImportador(BuscaPessoa_importadora.buscaPessoa_importadoraBD(rs.getString("CPF_Importador")));
                 a.setProdutos(BuscaProdutos.buscaProdutosBD(rs.getInt("NumeroProduto")));

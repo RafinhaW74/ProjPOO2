@@ -41,11 +41,11 @@ public class PopulaBDteste {
         InsereProduto.insereProdutoBD(7.0f, 5.0f, 4.8f, "Descricao 4", "986", "Fabricante 4", 2, 7, "Produto 4");
         InsereProduto.insereProdutoBD(4.9f, 66.2f, 5.6f, "Descricao 5", "412", "Fabricante 5", 7, 8, "Produto 5");
         
-        InsereImportacao.insereImportacaoBD("2025-11-20", 1, "123789", null, "2025-11-20");
-        InsereImportacao.insereImportacaoBD("2025-12-10", 2, "123789", null, "2025-11-22");
-        InsereImportacao.insereImportacaoBD("2026-01-05", 3, null, "357", "2025-11-25");
-        InsereImportacao.insereImportacaoBD("2026-04-23", 4, null, "246", "2025-11-26");
-        InsereImportacao.insereImportacaoBD("2026-02-12", 5, "456123", null, "2025-11-29");
+        InsereImportacao.insereImportacaoBD(1, "123789", null, "2025-11-20");
+        InsereImportacao.insereImportacaoBD(2, "123789", null, "2025-11-22");
+        InsereImportacao.insereImportacaoBD(3, null, "357", "2025-11-25");
+        InsereImportacao.insereImportacaoBD(4, null, "246", "2025-11-26");
+        InsereImportacao.insereImportacaoBD(5, "456123", null, "2025-11-29");
         
         InsereNotificacao.insereNotificacaoBD("Decrição incomplete","Dado incompleto", 1);
         try{Thread.sleep(1500);}catch(Exception e){e.printStackTrace();}

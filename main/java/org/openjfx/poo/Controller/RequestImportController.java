@@ -6,6 +6,7 @@ package org.openjfx.poo.Controller;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
 import javafx.beans.InvalidationListener;
 import javafx.event.ActionEvent;
@@ -20,6 +21,7 @@ import javafx.scene.control.MenuItem;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.control.TextInputControl;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.HBox;
 import org.openjfx.poo.App;
@@ -28,6 +30,8 @@ import static org.openjfx.poo.Controller.LoginControler.setNome;
 import org.openjfx.poo.Model.Dao.BuscaEmpresa;
 import org.openjfx.poo.Model.Dao.BuscaPessoa_importadora;
 import org.openjfx.poo.View.Alertas;
+import org.openjfx.poo.Model.Dao.InsereImportacao;
+import org.openjfx.poo.Model.Dao.InsereProduto;
 
 /**
  * FXML Controller class
@@ -84,11 +88,14 @@ public class RequestImportController implements Initializable {
      */
     private String nome;
     boolean pessoa;
+    private String identificador;
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        setFilter();
         nome = LoginControler.getNome();
         pessoa = LoginControler.isPessoa();
+        identificador = LoginControler.getIdentificadorGeral();
         if(!pessoa){
             mnName.setText(nome);
         }else{
@@ -96,7 +103,7 @@ public class RequestImportController implements Initializable {
         }
         
         
-       tgRestricted.selectedToggleProperty().addListener((observable, oldToggle, newToggle)->{
+        tgRestricted.selectedToggleProperty().addListener((observable, oldToggle, newToggle)->{
            if(rbYes.isSelected()){
                lbLI.setVisible(true);
                tfLI.setVisible(true);
@@ -142,6 +149,45 @@ public class RequestImportController implements Initializable {
 
     @FXML
     private void btnRegisterAction(ActionEvent event) {
+        List<TextInputControl> campos = List.of(tfName, taDescription, tfHeight, tfWidth, tfLength, tfWeight, tfManufacturer);
+        if(campos.stream().anyMatch(tf -> tf.getText().trim().isEmpty())){
+            Alertas.mostrarAlerta("Erro campo vazio", "Todos os campos devem ser preenchidos.", Alert.AlertType.ERROR);
+        }else{
+            if(rbYes.isSelected()){
+                if(tfLI.getText().trim().isEmpty()){
+                    Alertas.mostrarAlerta("Erro campo vazio", "Todos os campos devem ser preenchidos.", Alert.AlertType.ERROR);
+                }else{
+                    InsereProduto.insereProdutoBD((Float) tfLength.getTextFormatter().getValue(), (Float) tfWidth.getTextFormatter().getValue(), (Float) tfLength.getTextFormatter().getValue(), taDescription.getText(), tfLI.getText(), tfManufacturer.getText(), 0, (Float) tfWeight.getTextFormatter().getValue(), tfName.getText());
+                    if(pessoa){
+                        //InsereImportacao.insereImportacaoBD( 0, identificador, nome, nome);
+                    }
+                    
+                    
+                    try{
+                        App.setRoot("FXImportador");
+                    }catch (IOException erro) {
+                        System.out.println(erro);
+                        Alertas.mostrarAlerta("Erro carregar", "Erro ao carregar a tela do importador.", Alert.AlertType.ERROR);
+                    }
+                }
+            }else if(rbNot.isSelected()){
+                InsereProduto.insereProdutoBD((Float) tfLength.getTextFormatter().getValue(), (Float) tfWidth.getTextFormatter().getValue(), (Float) tfLength.getTextFormatter().getValue(), taDescription.getText(), null, tfManufacturer.getText(), 0, (Float) tfWeight.getTextFormatter().getValue(), tfName.getText());
+
+                
+                
+                try{
+                    App.setRoot("FXImportador");
+                }catch (IOException erro) {
+                    System.out.println(erro);
+                    Alertas.mostrarAlerta("Erro carregar", "Erro ao carregar a tela do importador.", Alert.AlertType.ERROR);
+                }
+            }else{
+                Alertas.mostrarAlerta("Erro restrito não selecionadao", "Selecione se é restrito ou não.", Alert.AlertType.ERROR);
+            }
+        }
+        
+        
+        
     }
     
     public void setFilter(){

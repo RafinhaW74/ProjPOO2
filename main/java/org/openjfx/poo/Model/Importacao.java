@@ -16,7 +16,6 @@ import java.util.List;
 public class Importacao {
     private String situacao;
     private int numero; 
-    private Date previsao;
     private Date atualizacao;
     private Produtos produtos;
     private Pessoa_importadora importador;
@@ -29,10 +28,9 @@ public class Importacao {
         this.Estado = true;
     }
 
-    public Importacao(String situacao, int numero, Date previsao, Produtos produtos, Pessoa_importadora importador, Empresa_importadora empresa, Date atualizacao, List<Notificacoes> notificacoes,Date criacao) {
+    public Importacao(String situacao, int numero, Produtos produtos, Pessoa_importadora importador, Empresa_importadora empresa, Date atualizacao, List<Notificacoes> notificacoes,Date criacao) {
         this.situacao = situacao;
         this.numero = numero;
-        this.previsao = previsao;
         this.produtos = produtos;
         this.importador = importador;
         this.empresa = empresa;
@@ -56,14 +54,6 @@ public class Importacao {
 
     public void setNumero(int numero) {
         this.numero = numero;
-    }
-
-    public Date getPrevisao() {
-        return previsao;
-    }
-
-    public void setPrevisao(Date previsao) {
-        this.previsao = previsao;
     }
 
     public Produtos getProdutos() {
