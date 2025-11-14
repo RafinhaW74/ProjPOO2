@@ -36,6 +36,7 @@ public class ListaImportacaoPessoa {
                 a.setProdutos(BuscaProdutos.buscaProdutosBD(rs.getInt("NumeroProduto")));
                 a.setEmpresa(BuscaEmpresa.buscaEmpresa_importadoraBD(rs.getString("CNPJ_Importador")));
                 a.setAtualizacao(rs.getDate("Atualizacao"));
+                a.setCriacao(rs.getDate("Criacao"));
                 lista.add(a);
             }
 

@@ -36,6 +36,7 @@ public class BuscaImportacaoID {
                 a.setEmpresa(BuscaEmpresa.buscaEmpresa_importadoraBD(rs.getString("CNPJ_Importador")));
                 a.setAtualizacao(rs.getDate("Atualizacao"));
                 a.setNotificacoes(BuscaListaNotificacoes.BuscaListaNotificacoesBD(Numero));
+                a.setCriacao(rs.getDate("Criacao"));
             }
 
             rs.close();

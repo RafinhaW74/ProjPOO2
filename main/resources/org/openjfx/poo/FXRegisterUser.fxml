@@ -33,7 +33,7 @@
                            <children>
                               <StackPane minHeight="-Infinity" prefHeight="60.0" prefWidth="959.0">
                                  <children>
-                                    <Label styleClass="title" text="Register-se">
+                                    <Label styleClass="title" text="Registre-se">
                                        <font>
                                           <Font size="11.0" />
                                        </font>
@@ -88,10 +88,10 @@
                                     <RowConstraints minHeight="45.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                  </rowConstraints>
                                  <children>
-                                    <Label text="CNPJ:" GridPane.columnIndex="2" />
+                                    <Label text="CNPJ:" GridPane.columnIndex="2" GridPane.rowIndex="1" />
                                     <Label text="Habilitação:" GridPane.rowIndex="1" />
                                     <Label GridPane.columnIndex="2" GridPane.rowIndex="1" />
-                                    <TextField fx:id="tfEnterpriseCNPJ" GridPane.columnIndex="3" />
+                                    <TextField fx:id="tfEnterpriseCNPJ" GridPane.columnIndex="3" GridPane.rowIndex="1" />
                                     <TextField fx:id="tfEnterpriseHabilitation" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                                     <TextField fx:id="tfInterpriseName" GridPane.columnIndex="1" />
                                     <Label text="Nome:" />

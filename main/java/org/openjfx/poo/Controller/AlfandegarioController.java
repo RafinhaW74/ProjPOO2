@@ -12,8 +12,11 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -27,6 +30,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.control.Toggle;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 import org.openjfx.poo.App;
 
 
@@ -123,7 +127,24 @@ public class AlfandegarioController implements Initializable {
        
         //isso que é chamado quando clicla em um produto do listaaa
         lvImports.getSelectionModel().selectedItemProperty().addListener((obs, oldVal, newVal) -> {
-            System.out.println("Selecionado: " + newVal.getProdutos().getNome());
+            if (newVal != null) {
+                try {
+                    FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("FXimportDetails.fxml"));
+                    Parent root = fxmlLoader.load();
+
+                    ImportDetailsController control = fxmlLoader.getController();
+                    control.setImportacao(newVal);
+                    
+                    Stage novaJanela = new Stage();
+                    novaJanela.setScene(new Scene(root, 1000, 560));
+                    Stage janelaPrincipal = (Stage) lvImports.getScene().getWindow();
+                    novaJanela.initOwner(janelaPrincipal);
+                    SalvaTelasSobressalentes.getInstance().adicionaLista(novaJanela);
+                    novaJanela.show();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
         });
     }    
 
