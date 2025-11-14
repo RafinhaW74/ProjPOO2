@@ -89,6 +89,8 @@ public class RequestImportController implements Initializable {
     private String nome;
     boolean pessoa;
     private String identificador;
+    @FXML
+    private TextField tfAmount;
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -195,6 +197,7 @@ public class RequestImportController implements Initializable {
         tfHeight.setTextFormatter(new FilterFloat(2));
         tfLength.setTextFormatter(new FilterFloat(2));
         tfWeight.setTextFormatter(new FilterFloat(2));
+        tfAmount.setTextFormatter(new FilterInt());
     }
     
 }
