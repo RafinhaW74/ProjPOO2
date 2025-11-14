@@ -42,16 +42,14 @@ public class ImportActionController implements Initializable {
     private TextField tfProductName;
     @FXML
     private TextField tfProductHeight;
-    @FXML
-    private TextField tfProductwidth;
+
     @FXML
     private TextField tfProductRestricted;
     @FXML
     private TextField tfProductManufacturer;
     @FXML
     private TextField tfProdutcLength;
-    @FXML
-    private TextField tfProductwiegth;
+
     @FXML
     private TextField tfProductLI;
     @FXML
@@ -71,6 +69,10 @@ public class ImportActionController implements Initializable {
 
     private Importacao importacao;
     private boolean pending;
+    @FXML
+    private TextField tfProductWidth;
+    @FXML
+    private TextField tfProductWiegth;
     /**
      * Initializes the controller class.
      */
@@ -93,18 +95,30 @@ public class ImportActionController implements Initializable {
     private void btnDeletAction(ActionEvent event) {
     }
     
+    @FXML
+    private void tbAlterAction(ActionEvent event) {
+        if(tbAlter.isSelected()){
+            removeStyleHidden();
+            tbAlter.setText("Editar");
+
+        }else{
+            addStyleHidden();
+            tbAlter.setText("Salvar");
+        }
+    }
+    
     public void setFilter(){
-        tfProductwidth.setTextFormatter(new FilterFloat(2));
+        tfProductWidth.setTextFormatter(new FilterFloat(2));
         tfProductHeight.setTextFormatter(new FilterFloat(2));
         tfProdutcLength.setTextFormatter(new FilterFloat(2));
-        tfProductwiegth.setTextFormatter(new FilterFloat(2));
+        tfProductWiegth.setTextFormatter(new FilterFloat(2));
     }
     public Importacao getForm(Importacao importacao){
         importacao.getProdutos().setNome(tfProductName.getText());
         importacao.getProdutos().setAltura(Float.parseFloat(tfProductHeight.getText()));
-        importacao.getProdutos().setLargura(Float.parseFloat(tfProductwidth.getText()));
+        importacao.getProdutos().setLargura(Float.parseFloat(tfProductWidth.getText()));
         importacao.getProdutos().setComprimento(Float.parseFloat(tfProdutcLength.getText()));
-        importacao.getProdutos().setPeso(Float.parseFloat(tfProductwiegth.getText()));
+        importacao.getProdutos().setPeso(Float.parseFloat(tfProductWiegth.getText()));
         importacao.getProdutos().setLI(tfProductLI.getText());
         importacao.getProdutos().setFabricante(tfProductManufacturer.getText());
         importacao.getProdutos().setEstado(tfProductRestricted.getText().equalsIgnoreCase("Ativo"));
@@ -131,9 +145,9 @@ public class ImportActionController implements Initializable {
 
         tfProductName.setText(importacao.getProdutos().getNome());
         tfProductHeight.setText(String.valueOf(importacao.getProdutos().getAltura()));
-        tfProductwidth.setText(String.valueOf(importacao.getProdutos().getLargura()));
+        tfProductWidth.setText(String.valueOf(importacao.getProdutos().getLargura()));
         tfProdutcLength.setText(String.valueOf(importacao.getProdutos().getComprimento()));
-        tfProductwiegth.setText(String.valueOf(importacao.getProdutos().getPeso()));
+        tfProductWiegth.setText(String.valueOf(importacao.getProdutos().getPeso()));
         tfProductLI.setText(importacao.getProdutos().getLI());
         tfProductManufacturer.setText(importacao.getProdutos().getFabricante());
         tfProductRestricted.setText(importacao.getProdutos().isEstado() ? "Ativo" : "Inativo");
@@ -141,38 +155,50 @@ public class ImportActionController implements Initializable {
     }
 
     public void removeStyleHidden(){
-        tfImportNumber.getStyleClass().remove("plain-content");
-        tfImporterName.getStyleClass().remove("plain-content");
-        tfImportStatus.getStyleClass().remove("plain-content");
-        tfImporterID.getStyleClass().remove("plain-content");
+        
         tfProductName.getStyleClass().remove("plain-content");
         tfProductHeight.getStyleClass().remove("plain-content");
-        tfProductwidth.getStyleClass().remove("plain-content");
+        tfProductWidth.getStyleClass().remove("plain-content");
         tfProductRestricted.getStyleClass().remove("plain-content");
         tfProductManufacturer.getStyleClass().remove("plain-content");
         tfProdutcLength.getStyleClass().remove("plain-content");
-        tfProductwiegth.getStyleClass().remove("plain-content");
+        tfProductWiegth.getStyleClass().remove("plain-content");
         tfProductLI.getStyleClass().remove("plain-content");
         taProductDescription.getStyleClass().remove("plain-content");
+        
+        tfProductName.setEditable(true);
+        tfProductHeight.setEditable(true);
+        tfProductWidth.setEditable(true);
+        tfProductRestricted.setEditable(true);
+        tfProductManufacturer.setEditable(true);
+        tfProdutcLength.setEditable(true);
+        tfProductWiegth.setEditable(true);
+        tfProductLI.setEditable(true);
+        taProductDescription.setEditable(true);
     }
 
     public void addStyleHidden(){
-        tfImportNumber.getStyleClass().add("plain-content");
-        tfImporterName.getStyleClass().add("plain-content");
-        tfImportStatus.getStyleClass().add("plain-content");
-        tfImporterID.getStyleClass().add("plain-content");
+        
         tfProductName.getStyleClass().add("plain-content");
         tfProductHeight.getStyleClass().add("plain-content");
-        tfProductwidth.getStyleClass().add("plain-content");
+        tfProductWidth.getStyleClass().add("plain-content");
         tfProductRestricted.getStyleClass().add("plain-content");
         tfProductManufacturer.getStyleClass().add("plain-content");
         tfProdutcLength.getStyleClass().add("plain-content");
-        tfProductwiegth.getStyleClass().add("plain-content");
+        tfProductWiegth.getStyleClass().add("plain-content");
         tfProductLI.getStyleClass().add("plain-content");
         taProductDescription.getStyleClass().add("plain-content");
+        
+        tfProductName.setEditable(false);
+        tfProductHeight.setEditable(false);
+        tfProductWidth.setEditable(false);
+        tfProductRestricted.setEditable(false);
+        tfProductManufacturer.setEditable(false);
+        tfProdutcLength.setEditable(false);
+        tfProductWiegth.setEditable(false);
+        tfProductLI.setEditable(false);
+        taProductDescription.setEditable(false);
     }
 
-    @FXML
-    private void tbAlterAction(ActionEvent event) {
-    }
+    
 }

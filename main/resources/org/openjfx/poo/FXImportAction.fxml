@@ -57,10 +57,10 @@
                                                 <Label text="Estado:" GridPane.columnIndex="2" />
                                                 <Label text="Nome:" GridPane.rowIndex="1" />
                                                 <Label text="CPF/CNPJ:" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-                                                <TextField fx:id="tfImportNumber" styleClass="plain-content" GridPane.columnIndex="1" />
-                                                <TextField fx:id="tfImporterName" styleClass="plain-content" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                                                <TextField fx:id="tfImportStatus" styleClass="plain-content" GridPane.columnIndex="3" />
-                                                <TextField fx:id="tfImporterID" styleClass="plain-content" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+                                                <TextField fx:id="tfImportNumber" editable="false" styleClass="plain-content" GridPane.columnIndex="1" />
+                                                <TextField fx:id="tfImporterName" editable="false" styleClass="plain-content" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                                <TextField fx:id="tfImportStatus" editable="false" styleClass="plain-content" GridPane.columnIndex="3" />
+                                                <TextField fx:id="tfImporterID" editable="false" styleClass="plain-content" GridPane.columnIndex="3" GridPane.rowIndex="1" />
                                              </children>
                                           </GridPane>
                                           <Separator prefWidth="200.0">
@@ -104,11 +104,11 @@
                                                 <Label text="LI:" GridPane.columnIndex="2" GridPane.rowIndex="3" />
                                                 <TextField fx:id="tfProductName" styleClass="plain-content" GridPane.columnIndex="1" />
                                                 <TextField fx:id="tfProductHeight" styleClass="plain-content" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                                                <TextField fx:id="tfProductwidth" styleClass="plain-content" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                                                <TextField fx:id="tfProductWidth" styleClass="plain-content" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                                                 <TextField fx:id="tfProductRestricted" styleClass="plain-content" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                                                 <TextField fx:id="tfProductManufacturer" styleClass="plain-content" GridPane.columnIndex="3" />
                                                 <TextField fx:id="tfProdutcLength" styleClass="plain-content" GridPane.columnIndex="3" GridPane.rowIndex="1" />
-                                                <TextField fx:id="tfProductwiegth" styleClass="plain-content" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+                                                <TextField fx:id="tfProductWiegth" styleClass="plain-content" GridPane.columnIndex="3" GridPane.rowIndex="2" />
                                                 <TextField fx:id="tfProductLI" styleClass="plain-content" GridPane.columnIndex="3" GridPane.rowIndex="3" />
                                              </children>
                                           </GridPane>

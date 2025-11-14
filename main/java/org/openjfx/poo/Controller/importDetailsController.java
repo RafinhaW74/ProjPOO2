@@ -116,14 +116,11 @@ public class ImportDetailsController implements Initializable {
     @FXML
     private void tbAlterAction(ActionEvent event) {
         if(tbAlter.isSelected()){
-            addStyleHidden();
-            
-            
+            removeStyleHidden();
             tbAlter.setText("Editar");
 
         }else{
-            removeStyleHidden();
-            
+            addStyleHidden();
             tbAlter.setText("Salvar");
         }
     }
@@ -177,10 +174,6 @@ public class ImportDetailsController implements Initializable {
     }
 
     public void removeStyleHidden(){
-        tfImportNumber.getStyleClass().remove("plain-content");
-        tfImporterName.getStyleClass().remove("plain-content");
-        tfImportStatus.getStyleClass().remove("plain-content");
-        tfImporterID.getStyleClass().remove("plain-content");
         tfProductName.getStyleClass().remove("plain-content");
         tfProductHeight.getStyleClass().remove("plain-content");
         tfProductWidth.getStyleClass().remove("plain-content");
@@ -190,13 +183,19 @@ public class ImportDetailsController implements Initializable {
         tfProductWiegth.getStyleClass().remove("plain-content");
         tfProductLI.getStyleClass().remove("plain-content");
         taProductDescription.getStyleClass().remove("plain-content");
+        
+        tfProductName.setEditable(true);
+        tfProductHeight.setEditable(true);
+        tfProductWidth.setEditable(true);
+        tfProductRestricted.setEditable(true);
+        tfProductManufacturer.setEditable(true);
+        tfProdutcLength.setEditable(true);
+        tfProductWiegth.setEditable(true);
+        tfProductLI.setEditable(true);
+        taProductDescription.setEditable(true);
     }
 
     public void addStyleHidden(){
-        tfImportNumber.getStyleClass().add("plain-content");
-        tfImporterName.getStyleClass().add("plain-content");
-        tfImportStatus.getStyleClass().add("plain-content");
-        tfImporterID.getStyleClass().add("plain-content");
         tfProductName.getStyleClass().add("plain-content");
         tfProductHeight.getStyleClass().add("plain-content");
         tfProductWidth.getStyleClass().add("plain-content");
@@ -206,6 +205,16 @@ public class ImportDetailsController implements Initializable {
         tfProductWiegth.getStyleClass().add("plain-content");
         tfProductLI.getStyleClass().add("plain-content");
         taProductDescription.getStyleClass().add("plain-content");
+        
+        tfProductName.setEditable(false);
+        tfProductHeight.setEditable(false);
+        tfProductWidth.setEditable(false);
+        tfProductRestricted.setEditable(false);
+        tfProductManufacturer.setEditable(false);
+        tfProdutcLength.setEditable(false);
+        tfProductWiegth.setEditable(false);
+        tfProductLI.setEditable(false);
+        taProductDescription.setEditable(false);
     }
     
 }
