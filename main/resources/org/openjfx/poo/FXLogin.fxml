@@ -67,8 +67,8 @@
                                     </Label>
                                     <Label text="Senha:" GridPane.rowIndex="1" />
                                     <Label text="Tipo:" GridPane.rowIndex="2" />
-                                    <PasswordField fx:id="tfPassword" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
                                     <TextField fx:id="tfIdentificator" GridPane.columnIndex="1" />
+                                    <PasswordField fx:id="tfPassword" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
                                  </children>
                                  <StackPane.margin>
                                     <Insets />
