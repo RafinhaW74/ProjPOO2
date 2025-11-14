@@ -11,7 +11,7 @@ import org.openjfx.poo.Model.Importacao;
 import org.openjfx.poo.Model.Notificacoes;
 import org.openjfx.poo.Model.Produtos;
 import org.openjfx.poo.Model.Dao.BuscaImportacaoID;
-import org.openjfx.poo.Model.Dao.BuscaNotificacao;
+import org.openjfx.poo.Model.Dao.BuscaNotificacaoMaisRecente;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -215,7 +215,7 @@ public class ImportDetailsController implements Initializable {
             if(importacao != null){
                 taImportPendig.setVisible(true);
                 btnPending.setVisible(true);
-                Notificacoes notify = importacao.getNotificacoes().get(importacao.getNotificacoes().size() -1);//adicionar a parte
+                Notificacoes notify = BuscaNotificacaoMaisRecente.BuscaNotificacaoMaisRecenteBD(importacao.getNumero());
                 
                 taImportPendig.setText(notify.getDescricao());
 

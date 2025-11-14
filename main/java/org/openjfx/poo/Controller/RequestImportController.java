@@ -4,12 +4,14 @@
  */
 package org.openjfx.poo.Controller;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.beans.InvalidationListener;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.Menu;
@@ -20,8 +22,12 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.HBox;
+import org.openjfx.poo.App;
+import static org.openjfx.poo.Controller.LoginControler.setIdentificadorGeral;
+import static org.openjfx.poo.Controller.LoginControler.setNome;
 import org.openjfx.poo.Model.Dao.BuscaEmpresa;
 import org.openjfx.poo.Model.Dao.BuscaPessoa_importadora;
+import org.openjfx.poo.View.Alertas;
 
 /**
  * FXML Controller class
@@ -111,6 +117,12 @@ public class RequestImportController implements Initializable {
 
     @FXML
     private void viewImport(ActionEvent event) {
+        try{
+            App.setRoot("FXImportador");
+        }catch (IOException erro) {
+            System.out.println(erro);
+            Alertas.mostrarAlerta("Erro carregar", "Erro ao carregar a tela do importador.", Alert.AlertType.ERROR);
+        }
     }
 
     @FXML
@@ -119,6 +131,13 @@ public class RequestImportController implements Initializable {
 
     @FXML
     private void logout(ActionEvent event) {
+        SalvaTelasSobressalentes.getInstance().fecharTodasJanelasExtras();
+        try{
+            App.setRoot("FXLogin");
+        }catch (IOException erro) {
+            System.out.println(erro);
+            Alertas.mostrarAlerta("Erro carregar", "Erro ao carregar a tela de login.", Alert.AlertType.ERROR);
+        }
     }
 
     @FXML

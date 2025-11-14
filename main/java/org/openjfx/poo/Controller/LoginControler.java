@@ -55,11 +55,11 @@ public class LoginControler implements Initializable {
      * Initializes the controller class.
      */
     
-    public static String identificadorGeral;
+    private static String identificadorGeral;
     
-    public static String nome;
+    private static String nome;
     
-    public static boolean pessoa;
+    private static boolean pessoa;
 
     public static String getNome() {
         return nome;

@@ -4,11 +4,13 @@
  */
 package org.openjfx.poo.Controller;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.Menu;
@@ -19,6 +21,8 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import org.openjfx.poo.App;
+import org.openjfx.poo.View.Alertas;
 
 /**
  * FXML Controller class
@@ -108,6 +112,13 @@ public class RegisterAdmController implements Initializable {
 
     @FXML
     private void logout(ActionEvent event) {
+        SalvaTelasSobressalentes.getInstance().fecharTodasJanelasExtras();
+        try{
+            App.setRoot("FXLogin");
+        }catch (IOException erro) {
+            System.out.println(erro);
+            Alertas.mostrarAlerta("Erro carregar", "Erro ao carregar a tela de login.", Alert.AlertType.ERROR);
+        }
     }
 
     @FXML

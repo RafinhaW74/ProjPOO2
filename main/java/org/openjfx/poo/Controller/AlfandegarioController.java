@@ -4,6 +4,7 @@
  */
 package org.openjfx.poo.Controller;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -26,6 +27,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.control.Toggle;
 import javafx.scene.layout.VBox;
+import org.openjfx.poo.App;
 
 
 import org.openjfx.poo.Model.Dao.BuscaAlfandegario;
@@ -143,6 +145,13 @@ public class AlfandegarioController implements Initializable {
 
     @FXML
     private void logout(ActionEvent event) {
+        SalvaTelasSobressalentes.getInstance().fecharTodasJanelasExtras();
+        try{
+            App.setRoot("FXLogin");
+        }catch (IOException erro) {
+            System.out.println(erro);
+            Alertas.mostrarAlerta("Erro carregar", "Erro ao carregar a tela de login.", Alert.AlertType.ERROR);
+        }
     }
 
     @FXML

@@ -10,6 +10,8 @@ import org.openjfx.poo.Model.Dao.ListaImportacaoEmpresa;
 
 import java.net.URL;
 import java.sql.Date;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -38,6 +40,7 @@ import org.openjfx.poo.Model.Importacao;
 import org.openjfx.poo.Model.Pessoa_importadora;
 import org.openjfx.poo.Model.Produtos;
 import org.openjfx.poo.View.Alertas;
+
 
 /**
  * FXML Controller class
@@ -71,7 +74,6 @@ public class ImportadorController implements Initializable {
     private  boolean pessoa;
     private String nome;
     private String identificador;
-    
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -135,6 +137,7 @@ public class ImportadorController implements Initializable {
                     novaJanela.setScene(new Scene(root, 1000, 560));
                     Stage janelaPrincipal = (Stage) lvImports.getScene().getWindow();
                     novaJanela.initOwner(janelaPrincipal);
+                    SalvaTelasSobressalentes.getInstance().adicionaLista(novaJanela);
                     novaJanela.show();
                 } catch (IOException e) {
                     e.printStackTrace();
@@ -167,6 +170,13 @@ public class ImportadorController implements Initializable {
 
     @FXML
     private void logout(ActionEvent event) {
+        SalvaTelasSobressalentes.getInstance().fecharTodasJanelasExtras();
+        try{
+            App.setRoot("FXLogin");
+        }catch (IOException erro) {
+            System.out.println(erro);
+            Alertas.mostrarAlerta("Erro carregar", "Erro ao carregar a tela de login.", Alert.AlertType.ERROR);
+        }
     }
     
 }
