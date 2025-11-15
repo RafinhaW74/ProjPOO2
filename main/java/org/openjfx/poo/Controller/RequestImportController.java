@@ -151,20 +151,21 @@ public class RequestImportController implements Initializable {
 
     @FXML
     private void btnRegisterAction(ActionEvent event) {
-        List<TextInputControl> campos = List.of(tfName, taDescription, tfHeight, tfWidth, tfLength, tfWeight, tfManufacturer);
-        if(campos.stream().anyMatch(tf -> tf.getText().trim().isEmpty())){
+        List<TextInputControl> campos = List.of(tfName, taDescription, tfManufacturer);
+        if(campos.stream().anyMatch(tf -> tf.getText().trim().isEmpty()) || (Float) tfLength.getTextFormatter().getValue() == 0 || (Float) tfHeight.getTextFormatter().getValue() == 0 || (Float) tfWidth.getTextFormatter().getValue() == 0 || (Float) tfWeight.getTextFormatter().getValue() == 0 || (int) tfAmount.getTextFormatter().getValue() == 0){
             Alertas.mostrarAlerta("Erro campo vazio", "Todos os campos devem ser preenchidos.", Alert.AlertType.ERROR);
         }else{
             if(rbYes.isSelected()){
                 if(tfLI.getText().trim().isEmpty()){
                     Alertas.mostrarAlerta("Erro campo vazio", "Todos os campos devem ser preenchidos.", Alert.AlertType.ERROR);
                 }else{
-                    int numeroProd = InsereProduto.insereProdutoBD((Float) tfLength.getTextFormatter().getValue(), (Float) tfWidth.getTextFormatter().getValue(), (Float) tfHeight.getTextFormatter().getValue(), taDescription.getText(), tfLI.getText(), tfManufacturer.getText(), 0, (Float) tfWeight.getTextFormatter().getValue(), tfName.getText());
+                    int numeroProd = InsereProduto.insereProdutoBD((Float) tfLength.getTextFormatter().getValue(), (Float) tfWidth.getTextFormatter().getValue(), (Float) tfHeight.getTextFormatter().getValue(), taDescription.getText(), tfLI.getText(), tfManufacturer.getText(), (int) tfAmount.getTextFormatter().getValue(), (Float) tfWeight.getTextFormatter().getValue(), tfName.getText());
                     if(pessoa){
                         InsereImportacao.insereImportacaoBD(numeroProd, identificador, null);
                     }else{
                         InsereImportacao.insereImportacaoBD(numeroProd, null, identificador);
                     }
+                    Alertas.mostrarAlerta("Confirma importacao", "Solicitação feita com sucesso.", Alert.AlertType.CONFIRMATION);
                     try{
                         App.setRoot("FXImportador");
                     }catch (IOException erro) {
@@ -173,12 +174,13 @@ public class RequestImportController implements Initializable {
                     }
                 }
             }else if(rbNot.isSelected()){
-                int numeroProd = InsereProduto.insereProdutoBD((Float) tfLength.getTextFormatter().getValue(), (Float) tfWidth.getTextFormatter().getValue(), (Float) tfHeight.getTextFormatter().getValue(), taDescription.getText(), "", tfManufacturer.getText(), 0, (Float) tfWeight.getTextFormatter().getValue(), tfName.getText());
+                int numeroProd = InsereProduto.insereProdutoBD((Float) tfLength.getTextFormatter().getValue(), (Float) tfWidth.getTextFormatter().getValue(), (Float) tfHeight.getTextFormatter().getValue(), taDescription.getText(), "", tfManufacturer.getText(), (int) tfAmount.getTextFormatter().getValue(), (Float) tfWeight.getTextFormatter().getValue(), tfName.getText());
                 if(pessoa){
                     InsereImportacao.insereImportacaoBD(numeroProd, identificador, null);
                 }else{
                     InsereImportacao.insereImportacaoBD(numeroProd, null, identificador);
                 }
+                Alertas.mostrarAlerta("Confirma importacao", "Solicitação feita com sucesso.", Alert.AlertType.CONFIRMATION);
                 try{
                     App.setRoot("FXImportador");
                 }catch (IOException erro) {
