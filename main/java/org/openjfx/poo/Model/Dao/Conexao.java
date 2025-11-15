@@ -70,7 +70,7 @@ public class Conexao {
     
     public PreparedStatement get_prepare(String sql) throws SQLException{
         if(pst == null){
-            pst =  get_conn().prepareStatement(sql);
+            pst =  get_conn().prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
         }
         return pst;
     }
