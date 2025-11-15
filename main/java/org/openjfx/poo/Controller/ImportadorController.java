@@ -74,6 +74,7 @@ public class ImportadorController implements Initializable {
     private  boolean pessoa;
     private String nome;
     private String identificador;
+    private ObservableList<Importacao> listImportacao;
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -114,13 +115,16 @@ public class ImportadorController implements Initializable {
             }
         });
         
-        ObservableList<Importacao> listImportacao = FXCollections.observableArrayList();
+        listImportacao = FXCollections.observableArrayList();
         lvImports.setItems(listImportacao);
-        
+        List<Importacao> listaBD;
         if(pessoa){
-            listImportacao.addAll(ListaImportacaoPessoa.listaImportacoesPessoaBD(identificador));
+            listaBD = ListaImportacaoPessoa.listaImportacoesPessoaBD(identificador);
         }else{
-            listImportacao.addAll(ListaImportacaoEmpresa.listaImportacoesEmpresaBD(identificador));
+            listaBD = ListaImportacaoEmpresa.listaImportacoesEmpresaBD(identificador);  
+        }
+        if (listaBD != null) {
+            listaBD.stream().filter(importacao -> importacao.isEstado()).forEach(listImportacao::add);
         }
         
         //isso que é chamado quando clicla em um produto do listaaa
@@ -162,10 +166,30 @@ public class ImportadorController implements Initializable {
 
     @FXML
     private void viewImport(ActionEvent event) {
+        List<Importacao> listaBD;
+        listImportacao.clear();
+        if(pessoa){
+            listaBD = ListaImportacaoPessoa.listaImportacoesPessoaBD(identificador);
+        }else{
+            listaBD = ListaImportacaoEmpresa.listaImportacoesEmpresaBD(identificador);  
+        }
+        if (listaBD != null) {
+            listaBD.stream().filter(importacao -> importacao.isEstado()).forEach(listImportacao::add);
+        }
     }
 
     @FXML
     private void viewPending(ActionEvent event) {
+        List<Importacao> listaBD;
+        listImportacao.clear();
+        if(pessoa){
+            listaBD = ListaImportacaoPessoa.listaImportacoesPessoaBD(identificador);
+        }else{
+            listaBD = ListaImportacaoEmpresa.listaImportacoesEmpresaBD(identificador);  
+        }
+        if (listaBD != null) {
+            listaBD.stream().filter(Importacao::isEstado).filter(importacao -> "Requer ação".equals(importacao.getSituacao())).forEach(listImportacao::add);
+        }
     }
 
     @FXML
