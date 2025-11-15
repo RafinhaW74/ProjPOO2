@@ -185,6 +185,12 @@ public class LoginControler implements Initializable {
 
     @FXML
     private void register(ActionEvent event) {
+        try{
+            App.setRoot("FXRegisterUser");
+        }catch (IOException erro) {
+            System.out.println(erro);
+            Alertas.mostrarAlerta("Erro carregar", "Erro ao carregar a tela do cadastro.", AlertType.ERROR);
+        }
     }
 
     
