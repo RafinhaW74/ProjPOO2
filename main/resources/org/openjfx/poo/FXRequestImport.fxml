@@ -83,7 +83,7 @@
                                             </rowConstraints>
                                              <children>
                                                 <Label text="Nome do Objeto:" />
-                                                <Label text="Dimensões:" GridPane.rowIndex="2" />
+                                                <Label text="Dimensões (cm):" GridPane.rowIndex="2" />
                                                 <Label text="Descrição:" GridPane.rowIndex="1" />
                                                 <GridPane hgap="15.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
                                                   <columnConstraints>
@@ -126,7 +126,7 @@
                                                 </HBox>
                                                 <TextField fx:id="tfLI" visible="false" GridPane.columnIndex="1" GridPane.rowIndex="7" />
                                                 <Label fx:id="lbLI" text="licença de importação" visible="false" GridPane.rowIndex="7" />
-                                                <Label text="Peso:" GridPane.rowIndex="4" />
+                                                <Label text="Peso (kg):" GridPane.rowIndex="4" />
                                                 <TextField fx:id="tfWeight" GridPane.columnIndex="1" GridPane.rowIndex="4" />
                                                 <Label text="Quantidade:" GridPane.rowIndex="3" />
                                                 <TextField fx:id="tfAmount" GridPane.columnIndex="1" GridPane.rowIndex="3" />

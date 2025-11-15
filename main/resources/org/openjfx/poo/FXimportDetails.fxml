@@ -96,10 +96,10 @@
                                              <children>
                                                 <Label text="Nome:" />
                                                 <Label text="Fabricante:" GridPane.columnIndex="2" />
-                                                <Label text="Altura:" GridPane.rowIndex="1" />
-                                                <Label text="Comprimento:" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-                                                <Label text="Largura:" GridPane.rowIndex="2" />
-                                                <Label text="Peso:" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                                                <Label text="Altura (cm):" GridPane.rowIndex="1" />
+                                                <Label text="Comprimento (cm):" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                                                <Label text="Largura (cm):" GridPane.rowIndex="2" />
+                                                <Label text="Peso (Kg):" GridPane.columnIndex="2" GridPane.rowIndex="2" />
                                                 <Label text="Restrito:" GridPane.columnIndex="2" GridPane.rowIndex="3" />
                                                 <Label text="LI:" GridPane.rowIndex="4" />
                                                 <TextField fx:id="tfProductName" editable="false" styleClass="plain-content" GridPane.columnIndex="1" />
