@@ -17,6 +17,7 @@ import org.openjfx.poo.Model.Dao.BuscaNotificacaoMaisRecente;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.Menu;
@@ -28,8 +29,11 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 import org.openjfx.poo.Model.Dao.AlterarImportacao;
 import org.openjfx.poo.Model.Dao.AlterarProduto;
+import org.openjfx.poo.Model.Dao.ExcluiImportacao;
+import org.openjfx.poo.View.Alertas;
 
 /**
  * FXML Controller class
@@ -95,6 +99,11 @@ public class ImportDetailsController implements Initializable {
 
     @FXML
     private void btnDeletAction(ActionEvent event) {
+        if(Alertas.mostrarAlerta("Confirmar", "Deseja realmete exluir essa importação?", Alert.AlertType.CONFIRMATION)){
+            ExcluiImportacao.ExcluiImportacaoBD(importacao);
+            Stage stage = (Stage)btnDelet.getScene().getWindow();
+            stage.close();
+        }
     }
 
     @FXML
