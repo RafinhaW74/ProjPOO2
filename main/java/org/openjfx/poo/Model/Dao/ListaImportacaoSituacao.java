@@ -9,6 +9,7 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 import org.openjfx.poo.Model.Importacao;
+import java.util.Date;
 
 /**
  *
@@ -33,9 +34,9 @@ public class ListaImportacaoSituacao {
                 a.setImportador(BuscaPessoa_importadora.buscaPessoa_importadoraBD(rs.getString("CPF_Importador")));
                 a.setProdutos(BuscaProdutos.buscaProdutosBD(rs.getInt("NumeroProduto")));
                 a.setEmpresa(BuscaEmpresa.buscaEmpresa_importadoraBD(rs.getString("CNPJ_Importador")));
-                a.setAtualizacao(rs.getDate("Atualizacao"));
+                a.setAtualizacao(new Date(rs.getTimestamp("Atualizacao").getTime()));
                 a.setNotificacoes(BuscaListaNotificacoes.BuscaListaNotificacoesBD(a.getNumero()));
-                a.setCriacao(rs.getDate("Criacao"));
+                a.setCriacao(new Date(rs.getTimestamp("Criacao").getTime()));
                 lista.add(a);
             }
 

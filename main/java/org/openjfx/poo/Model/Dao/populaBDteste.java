@@ -6,6 +6,7 @@ package org.openjfx.poo.Model.Dao;
 
 import de.mkammerer.argon2.Argon2;
 import de.mkammerer.argon2.Argon2Factory;
+import java.util.Date;
 
 /**
  *
@@ -29,11 +30,11 @@ public class PopulaBDteste {
         InsereEmpresa.insereEmpresaBD("empresa 4", hash, "Bairro4", "Rua4", 0, "4567", "246", "765");
         InsereEmpresa.insereEmpresaBD("empresa 5", hash, "Bairro5", "Rua5", 0, "5678", "468", "654");
         
-        InserePessoa_importadora.inserePessoa_importadoraBD("Pessoa 1", hash, "Bairro6", "Rua6", 0, "6789", "2000-09-02", "2343432" , "123789");
-        InserePessoa_importadora.inserePessoa_importadoraBD("Pessoa 2", hash, "Bairro7", "Rua7", 0, "6789", "2000-09-02", "2883432" , "789123");
-        InserePessoa_importadora.inserePessoa_importadoraBD("Pessoa 3", hash, "Bairro8", "Rua8", 0, "6789", "2000-09-02", "2343123" , "123456");
-        InserePessoa_importadora.inserePessoa_importadoraBD("Pessoa 4", hash, "Bairro9", "Rua9", 0, "6789", "2000-09-02", "2398732" , "456123");
-        InserePessoa_importadora.inserePessoa_importadoraBD("Pessoa 5", hash, "Bairro10", "Rua10", 0, "6789", "2000-09-02", "2342154" , "789456");
+        InserePessoa_importadora.inserePessoa_importadoraBD("Pessoa 1", hash, "Bairro6", "Rua6", 0, "6789", new Date(), "2343432" , "123789");
+        InserePessoa_importadora.inserePessoa_importadoraBD("Pessoa 2", hash, "Bairro7", "Rua7", 0, "6789",new Date(), "2883432" , "789123");
+        InserePessoa_importadora.inserePessoa_importadoraBD("Pessoa 3", hash, "Bairro8", "Rua8", 0, "6789", new Date(), "2343123" , "123456");
+        InserePessoa_importadora.inserePessoa_importadoraBD("Pessoa 4", hash, "Bairro9", "Rua9", 0, "6789", new Date(), "2398732" , "456123");
+        InserePessoa_importadora.inserePessoa_importadoraBD("Pessoa 5", hash, "Bairro10", "Rua10", 0, "6789", new Date(), "2342154" , "789456");
         
         InsereProduto.insereProdutoBD(1.2f, 3.3f, 0.4f, "Descricao 1", "456", "Fabricante 1", 5, 9, "Produto 1");
         InsereProduto.insereProdutoBD(6.1f, 2.1f, 9.4f, "Descricao 2", "656", "Fabricante 2", 3, 2, "Produto 2");

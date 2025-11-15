@@ -5,6 +5,7 @@
 package org.openjfx.poo.Controller;
 
 import java.net.URL;
+import java.util.Date;
 import java.util.ResourceBundle;
 
 import org.openjfx.poo.Model.Importacao;
@@ -26,6 +27,9 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.control.ToggleGroup;
+import javafx.scene.layout.VBox;
+import org.openjfx.poo.Model.Dao.AlterarImportacao;
+import org.openjfx.poo.Model.Dao.AlterarProduto;
 
 /**
  * FXML Controller class
@@ -64,16 +68,20 @@ public class ImportDetailsController implements Initializable {
     private Button btnDelet;
     @FXML
     private ToggleButton tbAlter;
-
     @FXML
     private TextField tfProductWidth;
     @FXML
     private TextField tfProductWiegth;
-
-    
-    private Importacao importacao;
     @FXML
     private TextField tfProductAmount;
+    @FXML
+    private VBox vbPending;
+    @FXML
+    private Label rtPending;
+    
+    
+        
+    private Importacao importacao;
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -93,12 +101,19 @@ public class ImportDetailsController implements Initializable {
     private void tbAlterAction(ActionEvent event) {
         if(tbAlter.isSelected()){
             removeStyleHidden();
-            tbAlter.setText("Editar");
-
+            tbAlter.setText("Salvar");
         }else{
             addStyleHidden();
-            tbAlter.setText("Salvar");
+            tbAlter.setText("Editar");
+            
+            updateProducImport();
         }
+    }
+    
+    public void updateProducImport(){
+        importacao = getForm(importacao);
+        
+        AlterarProduto.alteraProdutoBD(importacao.getProdutos());
     }
 
     public void setFilter(){
@@ -150,17 +165,6 @@ public class ImportDetailsController implements Initializable {
         tfProductAmount.setText(String.valueOf(importacao.getProdutos().getQuantidade()));
         taProductDescription.setText(importacao.getProdutos().getDescricao());
     }
-    
-    
-    
-    public void updatePending(){
-        if(importacao == null){
-            taImportPendig.setVisible(false);
-            btnPending.setVisible(false);
-        }else{
-            
-        }
-    }
 
     public void removeStyleHidden(){
         tfProductName.getStyleClass().remove("plain-content");
@@ -210,17 +214,17 @@ public class ImportDetailsController implements Initializable {
         this.importacao = importacao;
         updateField(importacao);
         setUpdateButton();
+        setPending();
     }
     
-    public void setPending(boolean pending){
-        
-        if(pending){
+    public void setPending(){
+        Notificacoes notify = BuscaNotificacaoMaisRecente.BuscaNotificacaoMaisRecenteBD(importacao.getNumero());
+
+        if(notify != null && notify.isEstado() && !notify.isResolvido()){
+            vbPending.setVisible(true);
             
-            taImportPendig.setVisible(true);
-            btnPending.setVisible(true);
-
-            Notificacoes notify = BuscaNotificacaoMaisRecente.BuscaNotificacaoMaisRecenteBD(importacao.getNumero());
-
+            rtPending.setText(notify.getTipo());
+            
             taImportPendig.setText(notify.getDescricao());
             taImportPendig.setVisible(true);
 
@@ -228,12 +232,17 @@ public class ImportDetailsController implements Initializable {
                 btnPending.setText("Pagar");
                 btnPending.setVisible(true);
             }
-            
+        }else{
+            vbPending.setVisible(false);
+            vbPending.setManaged(false);
         }
     }
     
     public void setUpdateButton(){
-        if(importacao.getCriacao().getTime() < 24*60*60*100){
+        long dateCriation = importacao.getCriacao().getTime();
+        long dateToday = new Date().getTime();
+        long oneDay = dateToday - 24*60*60*100;
+        if(dateCriation > oneDay){
             tbAlter.setVisible(true);
         }
     }

@@ -9,6 +9,7 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import org.openjfx.poo.Model.Notificacoes;
 import org.openjfx.poo.Model.Importacao;
+import java.util.Date;
 
 import java.util.List;
 
@@ -33,7 +34,7 @@ public class BuscaListaNotificacoes {
                 a.setEstado(rs.getBoolean("Estado"));
                 a.setResolvido(rs.getBoolean("Resolvido"));
                 a.setDescricao(rs.getString("descricao"));
-                a.setCriacao(rs.getDate("Criacao"));
+                a.setCriacao(new Date(rs.getTimestamp("Criacao").getTime()));
                 noti.add(a);
             }
 

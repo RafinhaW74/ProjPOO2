@@ -6,19 +6,25 @@ package org.openjfx.poo.Model.Dao;
 
 import java.sql.Date;
 import java.sql.PreparedStatement;
+import org.openjfx.poo.Model.Importacao;
 
 /**
  *
  * @author rafin
  */
 public class AlterarImportacao {
-    public static void alteraImportacaoBD(int Numero, int NumeroProduto, String CPF_Importador, String CNPJ_Importador, String situacao){
-        String sql = "UPDATE Importacao SET NumeroProduto = ?, CPF_Importador = ?, CNPJ_Importador = ?, Situacao = ?, Atualizacao = CURRENT_TIMESTAMP WHERE Numero = ?";
+    public static void alteraImportacaoBD(Importacao importacao){
         
+        String sql = "UPDATE Importacao SET NumeroProduto = ?, CPF_Importador = ?, CNPJ_Importador = ?, Atualizacao = CURRENT_TIMESTAMP, Situacao = ? WHERE Numero = ?";
+       
         try{
             Conexao connection = new Conexao();
             PreparedStatement st = connection.get_prepare(sql);
-            connection.set_param(new Object[]{NumeroProduto, CPF_Importador, CNPJ_Importador, situacao, Numero});
+            if(importacao.getImportador() != null){
+                connection.set_param(new Object[]{importacao.getProdutos().getNumero() , importacao.getImportador().getCPF(), null, importacao.getSituacao() , importacao.getNumero()});
+            }else{
+                connection.set_param(new Object[]{importacao.getProdutos().getNumero() , null, importacao.getEmpresa().getCNPJ(), importacao.getSituacao(), importacao.getNumero()});
+            }
             st.execute();
             connection.close();
 

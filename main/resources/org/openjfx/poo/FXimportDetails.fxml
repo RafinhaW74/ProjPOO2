@@ -34,14 +34,14 @@
                                        <children>
                                           <StackPane maxHeight="-Infinity" minHeight="-Infinity" prefHeight="40.0" prefWidth="900.0">
                                              <children>
-                                                <Label styleClass="sub-title" text="Importador">
+                                                <Label styleClass="sub-title" text="Importação">
                                                    <StackPane.margin>
                                                       <Insets bottom="10.0" />
                                                    </StackPane.margin>
                                                 </Label>
                                              </children>
                                           </StackPane>
-                                          <GridPane alignment="CENTER" hgap="10.0" prefHeight="90.0" prefWidth="881.0">
+                                          <GridPane alignment="CENTER" hgap="10.0" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="30.0" prefWidth="918.0">
                                             <columnConstraints>
                                                 <ColumnConstraints hgrow="SOMETIMES" maxWidth="130.0" minWidth="130.0" prefWidth="130.0" />
                                                 <ColumnConstraints hgrow="SOMETIMES" maxWidth="600.0" minWidth="100.0" prefWidth="250.0" />
@@ -50,22 +50,48 @@
                                             </columnConstraints>
                                             <rowConstraints>
                                                 <RowConstraints minHeight="45.0" percentHeight="50.0" prefHeight="40.0" vgrow="SOMETIMES" />
-                                              <RowConstraints minHeight="45.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                             </rowConstraints>
                                              <children>
                                                 <Label text="Numero:" />
                                                 <Label text="Estado:" GridPane.columnIndex="2" />
-                                                <Label text="Nome:" GridPane.rowIndex="1" />
-                                                <Label text="CPF/CNPJ:" GridPane.columnIndex="2" GridPane.rowIndex="1" />
                                                 <TextField fx:id="tfImportNumber" editable="false" styleClass="plain-content" GridPane.columnIndex="1" />
-                                                <TextField fx:id="tfImporterName" editable="false" styleClass="plain-content" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                                                 <TextField fx:id="tfImportStatus" editable="false" styleClass="plain-content" GridPane.columnIndex="3" />
-                                                <TextField fx:id="tfImporterID" editable="false" styleClass="plain-content" GridPane.columnIndex="3" GridPane.rowIndex="1" />
                                              </children>
                                           </GridPane>
                                           <Separator prefWidth="200.0">
                                              <VBox.margin>
-                                                <Insets bottom="10.0" right="30.0" top="10.0" />
+                                                <Insets bottom="10.0" top="20.0" />
+                                             </VBox.margin>
+                                          </Separator>
+                                          <StackPane maxHeight="-Infinity" minHeight="-Infinity" prefHeight="40.0" prefWidth="900.0">
+                                             <children>
+                                                <Label styleClass="sub-title" text="Importador">
+                                                   <StackPane.margin>
+                                                      <Insets bottom="10.0" />
+                                                   </StackPane.margin>
+                                                </Label>
+                                             </children>
+                                          </StackPane>
+                                          <GridPane alignment="CENTER" hgap="10.0" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="30.0" prefWidth="881.0">
+                                             <columnConstraints>
+                                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="130.0" minWidth="130.0" prefWidth="130.0" />
+                                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="600.0" minWidth="100.0" prefWidth="250.0" />
+                                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="130.0" minWidth="130.0" prefWidth="130.0" />
+                                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="600.0" minWidth="100.0" prefWidth="250.0" />
+                                             </columnConstraints>
+                                             <rowConstraints>
+                                                <RowConstraints minHeight="45.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                             </rowConstraints>
+                                             <children>
+                                                <Label text="Nome:" />
+                                                <Label text="CPF/CNPJ:" GridPane.columnIndex="2" />
+                                                <TextField fx:id="tfImporterName" editable="false" styleClass="plain-content" GridPane.columnIndex="1" />
+                                                <TextField fx:id="tfImporterID" editable="false" styleClass="plain-content" GridPane.columnIndex="3" />
+                                             </children>
+                                          </GridPane>
+                                          <Separator prefWidth="200.0">
+                                             <VBox.margin>
+                                                <Insets bottom="10.0" top="20.0" />
                                              </VBox.margin>
                                           </Separator>
                                           <StackPane maxHeight="-Infinity" minHeight="-Infinity" prefHeight="40.0" prefWidth="200.0">
@@ -134,29 +160,51 @@
                                        </padding>
                                     </VBox>
                                  </children>
+                                 <padding>
+                                    <Insets right="40.0" />
+                                 </padding>
                               </StackPane>
                               <StackPane minWidth="300.0" prefHeight="648.0" prefWidth="300.0" HBox.hgrow="ALWAYS">
                                  <children>
                                     <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0">
                                        <children>
-                                          <StackPane minHeight="200.0" minWidth="300.0" prefHeight="150.0" prefWidth="40.0">
-                                             <VBox.margin>
-                                                <Insets top="40.0" />
-                                             </VBox.margin>
+                                          <VBox fx:id="vbPending" prefHeight="200.0" prefWidth="100.0">
                                              <children>
-                                                <TextArea fx:id="taImportPendig" editable="false" prefHeight="200.0" prefWidth="200.0" stylesheets="@css/box.css" visible="false" wrapText="true">
-                                                   <styleClass>
-                                                      <String fx:value="information-pending" />
-                                                      <String fx:value="plain-content" />
-                                                   </styleClass>
-                                                </TextArea>
+                                                <StackPane prefHeight="36.0" prefWidth="300.0">
+                                                   <children>
+                                                      <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
+                                                         <children>
+                                                            <Label text="Pendencia:" />
+                                                            <Label fx:id="rtPending" />
+                                                         </children>
+                                                      </HBox>
+                                                   </children>
+                                                </StackPane>
+                                                <StackPane minHeight="200.0" minWidth="300.0" prefHeight="150.0" prefWidth="40.0">
+                                                   <VBox.margin>
+                                                      <Insets top="10.0" />
+                                                   </VBox.margin>
+                                                   <children>
+                                                      <VBox prefHeight="200.0" prefWidth="100.0">
+                                                         <children>
+                                                            <Label text="Descrição:" />
+                                                            <TextArea fx:id="taImportPendig" editable="false" prefHeight="200.0" prefWidth="200.0" stylesheets="@css/box.css" wrapText="true">
+                                                               <styleClass>
+                                                                  <String fx:value="information-pending" />
+                                                                  <String fx:value="plain-content" />
+                                                               </styleClass>
+                                                            </TextArea>
+                                                         </children>
+                                                      </VBox>
+                                                   </children>
+                                                </StackPane>
+                                                <StackPane maxHeight="250.0" minHeight="-Infinity" prefHeight="90.0" prefWidth="300.0" VBox.vgrow="ALWAYS">
+                                                   <children>
+                                                      <Button fx:id="btnPending" mnemonicParsing="false" onAction="#btnPendingAction" styleClass="btn-description" stylesheets="@css/btn.css" text="Ação Pendente" visible="false" />
+                                                   </children>
+                                                </StackPane>
                                              </children>
-                                          </StackPane>
-                                          <StackPane maxHeight="250.0" minHeight="-Infinity" prefHeight="90.0" prefWidth="300.0" VBox.vgrow="ALWAYS">
-                                             <children>
-                                                <Button fx:id="btnPending" mnemonicParsing="false" onAction="#btnPendingAction" styleClass="btn-description" stylesheets="@css/btn.css" text="Ação Pendente" visible="false" />
-                                             </children>
-                                          </StackPane>
+                                          </VBox>
                                           <StackPane maxHeight="250.0" minHeight="-Infinity" prefHeight="90.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
                                              <children>
                                                 <ToggleButton fx:id="tbAlter" mnemonicParsing="false" onAction="#tbAlterAction" styleClass="btn-description" stylesheets="@css/btn.css" text="Atualizar" visible="false" />
@@ -168,6 +216,9 @@
                                              </children>
                                           </StackPane>
                                        </children>
+                                       <StackPane.margin>
+                                          <Insets top="40.0" />
+                                       </StackPane.margin>
                                     </VBox>
                                  </children>
                               </StackPane>

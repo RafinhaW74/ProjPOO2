@@ -7,6 +7,7 @@ package org.openjfx.poo.Model.Dao;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import org.openjfx.poo.Model.Notificacoes;
+import java.util.Date;
 
 /**
  *
@@ -29,7 +30,7 @@ public class BuscaNotificacaoMaisRecente {
                 a.setEstado(rs.getBoolean("Estado"));
                 a.setResolvido(rs.getBoolean("Resolvido"));
                 a.setDescricao(rs.getString("descricao"));
-                a.setCriacao(rs.getDate("Criacao"));
+                a.setCriacao(new Date(rs.getTimestamp("Criacao").getTime()));
             }
 
             rs.close();
