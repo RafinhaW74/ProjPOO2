@@ -233,6 +233,7 @@ public class ImportDetailsController implements Initializable {
     }
     
     public void setUpdateButton(){
+        System.out.println("Data: "+importacao.getCriacao() );
         if(importacao.getCriacao().getTime() < 24*60*60*100){
             tbAlter.setVisible(true);
         }

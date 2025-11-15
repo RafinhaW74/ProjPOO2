@@ -10,6 +10,7 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
+import java.util.Date;
 
 /**
  *
@@ -34,8 +35,8 @@ public class ListaImportacaoPessoa {
                 a.setImportador(BuscaPessoa_importadora.buscaPessoa_importadoraBD(rs.getString("CPF_Importador")));
                 a.setProdutos(BuscaProdutos.buscaProdutosBD(rs.getInt("NumeroProduto")));
                 a.setEmpresa(BuscaEmpresa.buscaEmpresa_importadoraBD(rs.getString("CNPJ_Importador")));
-                a.setAtualizacao(rs.getDate("Atualizacao"));
-                a.setCriacao(rs.getDate("Criacao"));
+                a.setAtualizacao(new Date(rs.getTimestamp("Atualizacao").getTime()));
+                a.setCriacao(new Date(rs.getTimestamp("Criacao").getTime()));
                 lista.add(a);
             }
 

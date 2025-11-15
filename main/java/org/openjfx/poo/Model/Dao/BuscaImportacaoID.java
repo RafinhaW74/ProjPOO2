@@ -7,6 +7,7 @@ package org.openjfx.poo.Model.Dao;
 import org.openjfx.poo.Model.Importacao;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.Date;
 
 /**
  *
@@ -33,9 +34,9 @@ public class BuscaImportacaoID {
                 a.setImportador(BuscaPessoa_importadora.buscaPessoa_importadoraBD(rs.getString("CPF_Importador")));
                 a.setProdutos(BuscaProdutos.buscaProdutosBD(rs.getInt("NumeroProduto")));
                 a.setEmpresa(BuscaEmpresa.buscaEmpresa_importadoraBD(rs.getString("CNPJ_Importador")));
-                a.setAtualizacao(rs.getDate("Atualizacao"));
+                a.setAtualizacao(new Date(rs.getTimestamp("Atualizacao").getTime()));
                 a.setNotificacoes(BuscaListaNotificacoes.BuscaListaNotificacoesBD(Numero));
-                a.setCriacao(rs.getDate("Criacao"));
+                a.setCriacao(new Date(rs.getTimestamp("Criacao").getTime()));
             }
 
             rs.close();
