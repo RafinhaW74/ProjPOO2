@@ -101,6 +101,10 @@ public class ImportDetailsController implements Initializable {
     private void btnDeletAction(ActionEvent event) {
         if(Alertas.mostrarAlerta("Confirmar", "Deseja realmete exluir essa importação?", Alert.AlertType.CONFIRMATION)){
             ExcluiImportacao.ExcluiImportacaoBD(importacao);
+            importacao.setSituacao("Excluído");
+            AlterarImportacao.alteraImportacaoBD(importacao);
+            
+            ImportadorController.removeImport.accept(importacao);
             Stage stage = (Stage)btnDelet.getScene().getWindow();
             stage.close();
         }
@@ -193,7 +197,7 @@ public class ImportDetailsController implements Initializable {
         tfProdutcLength.setEditable(true);
         tfProductWiegth.setEditable(true);
         tfProductLI.setEditable(true);
-        tfProductAmount.setEditable(false);
+        tfProductAmount.setEditable(true);
         taProductDescription.setEditable(true);
     }
 
@@ -215,7 +219,7 @@ public class ImportDetailsController implements Initializable {
         tfProdutcLength.setEditable(false);
         tfProductWiegth.setEditable(false);
         tfProductLI.setEditable(false);
-        tfProductAmount.setEditable(true);
+        tfProductAmount.setEditable(false);
         taProductDescription.setEditable(false);
     }
     
