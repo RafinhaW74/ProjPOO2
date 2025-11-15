@@ -24,9 +24,7 @@ import javafx.scene.control.Alert;
 import org.openjfx.poo.View.Alertas;
 
 public class FilterDate extends TextFormatter<Date> {
-    private static String oldText;
     private static final DateTimeFormatter FORMATTER =DateTimeFormatter.ofPattern("dd/MM/yyyy");
-    private Consumer<Void> invalidField;
 
     public FilterDate() {
         super(
@@ -110,23 +108,14 @@ public class FilterDate extends TextFormatter<Date> {
                     change.setText(formatted);
                     change.setRange(0, change.getControlText().length());
                     
-                    int newCaret = Math.min(oldCaret + moveCaret, formatted.length());
-                    System.out.println("\nOldCaret: "+ oldCaret);
-                    System.out.println("Move: "+moveCaret);
-                    System.out.println("newCaretn: "+ newCaret);
-                    
+                    int newCaret = Math.min(oldCaret + moveCaret, formatted.length());                    
                     change.setCaretPosition(newCaret);
                     change.setAnchor(newCaret);
-                    oldText = formatted;
                     return change;
                 }else{
                     return change;
                 }  
             }
         );
-    }
-    
-    public void setInvalidFliend(Consumer<Void> c){
-        this.invalidField = c;
     }
 }

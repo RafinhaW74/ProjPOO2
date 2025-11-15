@@ -91,8 +91,8 @@
                                     <Label text="CNPJ:" GridPane.columnIndex="2" GridPane.rowIndex="1" />
                                     <Label text="Habilitação:" GridPane.rowIndex="1" />
                                     <Label GridPane.columnIndex="2" GridPane.rowIndex="1" />
-                                    <TextField fx:id="tfEnterpriseCNPJ" GridPane.columnIndex="3" GridPane.rowIndex="1" />
-                                    <TextField fx:id="tfEnterpriseHabilitation" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                    <TextField fx:id="tfInterpriseCNPJ" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+                                    <TextField fx:id="tfInterpriseHabilitation" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                                     <TextField fx:id="tfInterpriseName" GridPane.columnIndex="1" />
                                     <Label text="Nome:" />
                                  </children>
@@ -115,10 +115,10 @@
                                     <Label text="Confirme Senha:" GridPane.columnIndex="2" GridPane.rowIndex="2" />
                                     <Label text="Bairro:" GridPane.rowIndex="1" />
                                     <Label text="Número" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-                                    <TextField fx:id="tfCEP1" GridPane.columnIndex="1" />
-                                    <TextField fx:id="tfProductRestrictetfd1" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                                    <TextField fx:id="tfStreet1" GridPane.columnIndex="3" />
-                                    <TextField fx:id="tfNumber1" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+                                    <TextField fx:id="tfCEP" GridPane.columnIndex="1" />
+                                    <TextField fx:id="tfNeighborhood" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                    <TextField fx:id="tfStreet" GridPane.columnIndex="3" />
+                                    <TextField fx:id="tfNumber" GridPane.columnIndex="3" GridPane.rowIndex="1" />
                                     <Label text="Rua:" GridPane.columnIndex="2" />
                                     <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
                                        <children>
@@ -169,6 +169,11 @@
                               <StackPane prefHeight="93.0" prefWidth="958.0">
                                  <children>
                                     <Button fx:id="btnRegister" mnemonicParsing="false" onAction="#btnRegisterAction" styleClass="btSubmit" stylesheets="@css/forms.css" text="Registrar" />
+                                 </children>
+                              </StackPane>
+                              <StackPane prefHeight="150.0" prefWidth="200.0">
+                                 <children>
+                                    <Button fx:id="btnLoginBack" mnemonicParsing="false" onAction="#btnLoginBackAction" styleClass="btSubmit" stylesheets="@css/forms.css" text="Voltar para login" />
                                  </children>
                               </StackPane>
                            </children>
