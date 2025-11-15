@@ -246,5 +246,6 @@ public class RegisterUserController implements Initializable {
         tfPersonRG.setTextFormatter(new FilterInt());
         tfPersonCPF.setTextFormatter(new FilterInt());
         tfInterpriseCNPJ.setTextFormatter(new FilterInt());
+        tfCEP.setTextFormatter(new FilterInt());
     }
 }

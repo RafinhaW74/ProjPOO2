@@ -5,19 +5,20 @@
 package org.openjfx.poo.Model.Dao;
 
 import java.sql.PreparedStatement;
+import org.openjfx.poo.Model.Produtos;
 
 /**
  *
  * @author rafin
  */
 public class AlterarProduto {
-    public static void alteraProdutoBD(int Numero, float Largura, float Comprimento, float Altura, String Descricao, String LI, String Fabricante, int quantidade, float peso, String nome){
+    public static void alteraProdutoBD(Produtos prod){
         String sql = "UPDATE Produto SET Largura = ?, Comprimento = ?, Altura = ?, Descricao = ?, LI = ?, Fabricante = ?, Quantidade = ?, Peso = ?, Nome = ? WHERE Numero = ?";
         
         try{
             Conexao connection = new Conexao();
             PreparedStatement st = connection.get_prepare(sql);
-            connection.set_param(new Object[]{Largura, Comprimento, Altura, Descricao, LI, Fabricante, quantidade, Numero, peso, nome});
+            connection.set_param(new Object[]{prod.getLargura(), prod.getComprimento(), prod.getAltura(), prod.getDescricao(), prod.getLI(), prod.getFabricante(), prod.getQuantidade(), prod.getPeso(),prod.getNome(),prod.getNumero()});
             st.execute();
             connection.close();
 

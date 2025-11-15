@@ -5,19 +5,20 @@
 package org.openjfx.poo.Model.Dao;
 
 import java.sql.PreparedStatement;
+import org.openjfx.poo.Model.Importacao;
 
 /**
  *
  * @author rafin
  */
 public class ExcluiImportacao {
-    public static void ExcluiImportacaoBD(int Numero){
+    public static void ExcluiImportacaoBD(Importacao importacao){
         String sql = "UPDATE Importacao SET Estado = FALSE WHERE Numero = ?";
 
         try{
             Conexao connection = new Conexao();
             PreparedStatement st = connection.get_prepare(sql);
-            connection.set_param(new Object[]{Numero});
+            connection.set_param(new Object[]{importacao.getNumero()});
             st.execute();
             connection.close();
         }catch(Exception erro){
