@@ -91,7 +91,7 @@ public class RegisterUserController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         swichForm();
-        
+        tfPersonDateBirh.setTextFormatter(new FilterDate());
         tfPassword.textProperty().bindBidirectional(pfPassword.textProperty());
         tfCheckPassword.textProperty().bindBidirectional(pfCheckPassword.textProperty());
         
@@ -122,6 +122,7 @@ public class RegisterUserController implements Initializable {
 
     @FXML
     private void btnRegisterAction(ActionEvent event) {
+        System.out.println("Data: "+tfPersonDateBirh.getText());
     }
 
     @FXML

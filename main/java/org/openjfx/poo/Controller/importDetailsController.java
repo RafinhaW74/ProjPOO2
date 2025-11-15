@@ -5,6 +5,7 @@
 package org.openjfx.poo.Controller;
 
 import java.net.URL;
+import java.util.Date;
 import java.util.ResourceBundle;
 
 import org.openjfx.poo.Model.Importacao;
@@ -233,7 +234,6 @@ public class ImportDetailsController implements Initializable {
     }
     
     public void setUpdateButton(){
-        System.out.println("Data: "+importacao.getCriacao() );
         if(importacao.getCriacao().getTime() < 24*60*60*100){
             tbAlter.setVisible(true);
         }
