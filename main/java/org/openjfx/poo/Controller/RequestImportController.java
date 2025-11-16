@@ -191,9 +191,6 @@ public class RequestImportController implements Initializable {
                 Alertas.mostrarAlerta("Erro restrito não selecionadao", "Selecione se é restrito ou não.", Alert.AlertType.ERROR);
             }
         }
-        
-        
-        
     }
     
     public void setFilter(){
