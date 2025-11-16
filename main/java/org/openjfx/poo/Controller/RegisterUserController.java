@@ -165,7 +165,7 @@ public class RegisterUserController implements Initializable {
                 Alertas.mostrarAlerta("Erro CPF", "CPF inválido", Alert.AlertType.ERROR);
                 return;
             }
-            if (tfPersonRG.getText().trim().isEmpty() || tfPersonRG.getText().length() != 9) {
+            if (tfPersonRG.getText().trim().isEmpty() || tfPersonRG.getText().length() != 8) {
                 Alertas.mostrarAlerta("Erro RG", "RG inválido.", Alert.AlertType.ERROR);
                 return;
             }

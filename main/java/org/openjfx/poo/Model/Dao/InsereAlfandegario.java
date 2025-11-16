@@ -4,12 +4,17 @@
  */
 package org.openjfx.poo.Model.Dao;
 import java.sql.PreparedStatement;
+import org.openjfx.poo.Model.Alfandegario;
 /**
  *
  * @author rafin
  */
 public class InsereAlfandegario {
-    public static void insereAlfandegarioBD(String Nome, String CPF, String SIAPE, String Senha){
+    public static void insereAlfandegarioBD(Alfandegario alfa){
+        String Nome = alfa.getNome();
+        String CPF = alfa.getCPF();
+        String SIAPE = alfa.getSIAPE();
+        String Senha = alfa.getSenha();
         String sql = "INSERT INTO Alfandegario(Nome,CPF, SIAPE, Senha) VALUES(?,?,?,?)";
         
         try{

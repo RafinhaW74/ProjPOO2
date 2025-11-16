@@ -18,7 +18,8 @@ public class Alfandegario extends Usuario{
         super();
     }
 
-    public Alfandegario(String CPF, String SIAPE) {
+    public Alfandegario(String nome, String senha, String CPF, String SIAPE) {
+        super(nome, senha);
         this.CPF = CPF;
         this.SIAPE = SIAPE;
     }
