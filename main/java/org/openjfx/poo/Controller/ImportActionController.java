@@ -4,8 +4,11 @@
  */
 package org.openjfx.poo.Controller;
 
+import org.openjfx.poo.Model.Service.SalvaTelasSobressalentes;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -29,6 +32,8 @@ import org.openjfx.poo.Model.Notificacoes;
 import org.openjfx.poo.View.Alertas;
 import org.openjfx.poo.Model.Dao.AlterarImportacao;
 import org.openjfx.poo.Model.Dao.AlterarProduto;
+import org.openjfx.poo.Model.Dao.InsereNotificacao;
+import org.openjfx.poo.Model.Dao.BuscaNotificacaoMaisRecente;
 
 /**
  * FXML Controller class
@@ -237,6 +242,8 @@ public class ImportActionController implements Initializable {
         }else{
             importacao.setSituacao(cbStatus.getValue());
             AlterarImportacao.alteraImportacaoBD(importacao);
+            //ImportadorController.removeImport.accept(importacao);
+            SalvaTelasSobressalentes.getInstance().fecharTodasJanelasExtras();
         }
     }
     
@@ -252,5 +259,26 @@ public class ImportActionController implements Initializable {
         }
     }
 
-    
+    ///////
+    //////
+    ///////
+    //////
+    ////
+    ///////
+    public void prototipoLancarNotificacao(){//trocar cbStatus pelo combo box novo e correto de notificacao
+        if(cbStatus.getValue().equals("Selecione o tipo")){//corrigir para quanto tiver o combo box de tipo de notificacao
+            Alertas.mostrarAlerta("Erro atualiza tipo", "Selecione um tipo de notificação antes envia-la.", Alert.AlertType.ERROR);
+        }else if(taImportPendig.getText().isEmpty()){
+            Alertas.mostrarAlerta("Erro atualiza descricao notiicao", "Faça uma breve descrição da notificação antes envia-la.", Alert.AlertType.ERROR);
+        }else{
+            InsereNotificacao.insereNotificacaoBD(taImportPendig.getText(), cbStatus.getValue(), importacao.getNumero());
+            List<Notificacoes> lista = importacao.getNotificacoes();
+            if (lista == null) {
+                lista = new ArrayList<>();
+            }
+            lista.add(BuscaNotificacaoMaisRecente.BuscaNotificacaoMaisRecenteBD(importacao.getNumero()));
+            importacao.setNotificacoes(lista);
+            AlterarImportacao.alteraImportacaoBD(importacao);
+        }
+    }
 }
