@@ -7,6 +7,7 @@ package org.openjfx.poo.Controller;
 import java.net.URL;
 import java.util.Date;
 import java.util.ResourceBundle;
+import java.util.function.Consumer;
 
 import org.openjfx.poo.Model.Importacao;
 import org.openjfx.poo.Model.Notificacoes;
@@ -86,6 +87,7 @@ public class ImportDetailsController implements Initializable {
     
         
     private Importacao importacao;
+    private Consumer<Importacao> onUpdate;
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -103,8 +105,9 @@ public class ImportDetailsController implements Initializable {
             ExcluiImportacao.ExcluiImportacaoBD(importacao);
             importacao.setSituacao("Excluído");
             AlterarImportacao.alteraImportacaoBD(importacao);
-            
-            ImportadorController.removeImport.accept(importacao);
+            if (onUpdate != null) {
+                onUpdate.accept(importacao);
+            }
             Stage stage = (Stage)btnDelet.getScene().getWindow();
             stage.close();
         }
@@ -119,6 +122,9 @@ public class ImportDetailsController implements Initializable {
             addStyleHidden();
             tbAlter.setText("Editar");
             updateProducImport();
+            if (onUpdate != null) {
+                onUpdate.accept(importacao);
+            }
         }
     }
     
@@ -259,6 +265,10 @@ public class ImportDetailsController implements Initializable {
         } else {
             tbAlter.setVisible(true);
         }
+    }
+    
+    public void setOnUpdate(Consumer<Importacao> onUpdate) {
+        this.onUpdate = onUpdate;
     }
 }
 
