@@ -5,13 +5,22 @@
 package org.openjfx.poo.Model.Dao;
 
 import java.sql.PreparedStatement;
+import org.openjfx.poo.Model.Empresa_importadora;
 
 /**
  *
  * @author rafin
  */
 public class InsereEmpresa {
-    public static void insereEmpresaBD(String Nome, String Senha, String Bairro, String Rua, int Numero, String CEP, String CNPJ, String Habilitacao){
+    public static void insereEmpresaBD(Empresa_importadora empresa){
+        String Nome = empresa.getNome();
+        String Senha = empresa.getSenha();
+        String Bairro = empresa.getBairro();
+        String Rua = empresa.getRua();
+        int Numero = empresa.getNumero();
+        String CEP = empresa.getCep();
+        String CNPJ = empresa.getCNPJ();
+        String Habilitacao = empresa.getHabilitacao();
         String sql = "INSERT INTO Empresa(Nome, Senha, Bairro, Rua, Numero, CEP, CNPJ, Habilitacao) VALUES(?,?,?,?,?,?,?,?)";
         
         try{

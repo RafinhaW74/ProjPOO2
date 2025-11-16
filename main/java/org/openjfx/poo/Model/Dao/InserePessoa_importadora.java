@@ -6,13 +6,25 @@ package org.openjfx.poo.Model.Dao;
 
 import java.sql.PreparedStatement;
 import java.util.Date;
+import org.openjfx.poo.Model.Pessoa_importadora;
+
 
 /**
  *
  * @author rafin
  */
 public class InserePessoa_importadora {
-    public static void inserePessoa_importadoraBD(String Nome, String Senha, String Bairro, String Rua, int Numero, String CEP, Date Data_Nascimento, String RG, String CPF){
+    public static void inserePessoa_importadoraBD(Pessoa_importadora pessoa){
+        String Nome = pessoa.getNome();
+        String Senha = pessoa.getSenha();
+        String Bairro = pessoa.getBairro();
+        String Rua = pessoa.getRua();
+        int Numero = pessoa.getNumero();
+        String CEP = pessoa.getCep();
+        Date Data_Nascimento = pessoa.getData_nascimento();
+        String RG = pessoa.getRG();
+        String CPF = pessoa.getCPF();
+        
         String sql = "INSERT INTO Pessoa_importadora(Nome, Senha, Bairro, Rua, Numero, CEP, Data_Nascimento, RG, CPF) VALUES(?,?,?,?,?,?,?,?,?)";
         try{
             Conexao connection = new Conexao();

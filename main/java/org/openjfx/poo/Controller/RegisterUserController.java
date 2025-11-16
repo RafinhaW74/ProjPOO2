@@ -5,6 +5,9 @@ package org.openjfx.poo.Controller;
  * Click nbfs://nbhost/SystemFileSystem/Templates/javafx/FXMLController.java to edit this template
  */
 
+import org.openjfx.poo.Model.Service.FilterInt;
+import org.openjfx.poo.Model.Service.FilterNumberString;
+import org.openjfx.poo.Model.Service.FilterDate;
 import de.mkammerer.argon2.Argon2;
 import de.mkammerer.argon2.Argon2Factory;
 import java.io.IOException;
@@ -37,6 +40,8 @@ import org.openjfx.poo.App;
 import org.openjfx.poo.View.Alertas;
 import org.openjfx.poo.Model.Dao.InserePessoa_importadora;
 import org.openjfx.poo.Model.Dao.InsereEmpresa;
+import org.openjfx.poo.Model.Pessoa_importadora;
+import org.openjfx.poo.Model.Empresa_importadora;
 
 /**
  * FXML Controller class
@@ -126,43 +131,81 @@ public class RegisterUserController implements Initializable {
     @FXML
     private void btnRegisterAction(ActionEvent event) {
         Argon2 argon2 = Argon2Factory.create();
-        if(rbNaturalPerson.isSelected()){
-            List<TextInputControl> campos = List.of(tfPersonName, tfPersonCPF, tfPersonRG, tfPersonDateBirh, tfCEP, tfNeighborhood, tfStreet, pfCheckPassword, pfPassword);
-            if(campos.stream().anyMatch(tf -> tf.getText().trim().isEmpty()) || (int) tfNumber.getTextFormatter().getValue() == 0){
-                Alertas.mostrarAlerta("Erro campo vazio", "Todos os campos devem ser preenchidos.", Alert.AlertType.ERROR);
-            }else{
-                if(!pfCheckPassword.getText().equals(pfPassword.getText())){
-                    Alertas.mostrarAlerta("Erro senhas distintas", "As senhas digitadas são diferentes.", Alert.AlertType.ERROR);
-                }else{
-                    InserePessoa_importadora.inserePessoa_importadoraBD(tfPersonName.getText(), argon2.hash(2, 65536, 2, pfPassword.getText()), tfNeighborhood.getText(), tfStreet.getText(), (int) tfNumber.getTextFormatter().getValue(), tfCEP.getText(), (Date)tfPersonDateBirh.getTextFormatter().getValue(), tfPersonRG.getText(), tfPersonCPF.getText());
-                    Alertas.mostrarAlerta("Confirma cadastro", "Cadastro feito com sucesso.", Alert.AlertType.CONFIRMATION);
-                    try{
-                        App.setRoot("FXLogin");
-                    }catch (IOException erro) {
-                        System.out.println(erro);
-                        Alertas.mostrarAlerta("Erro carregar", "Erro ao carregar a tela de login.", Alert.AlertType.ERROR);
-                    }
-                }
-
+        if (tfCEP.getText().trim().isEmpty() || tfCEP.getText().length() != 8) {
+            Alertas.mostrarAlerta("Erro CEP", "CEP inválido.", Alert.AlertType.ERROR);
+            return;
+        }
+        if (tfNeighborhood.getText().trim().isEmpty()) {
+            Alertas.mostrarAlerta("Erro bairro", "O bairro deve ser preenchido.", Alert.AlertType.ERROR);
+            return;
+        }
+        if (tfStreet.getText().trim().isEmpty()) {
+            Alertas.mostrarAlerta("Erro rua", "A rua deve ser preenchida.", Alert.AlertType.ERROR);
+            return;
+        }
+        if ((int) tfNumber.getTextFormatter().getValue() == 0) {
+            Alertas.mostrarAlerta("Erro número", "O número deve ser maior que zero.", Alert.AlertType.ERROR);
+            return;
+        }
+        if (pfPassword.getText().trim().isEmpty()) {
+            Alertas.mostrarAlerta("Erro senha", "A senha deve ser preenchida.", Alert.AlertType.ERROR);
+            return;
+        }
+        if (!pfCheckPassword.getText().equals(pfPassword.getText())) {
+            Alertas.mostrarAlerta("Erro senhas distintas", "As senhas digitadas são diferentes.", Alert.AlertType.ERROR);
+            return;
+        }
+        //especifico pessoa
+        if (rbNaturalPerson.isSelected()) {
+            if (tfPersonName.getText().trim().isEmpty()) {
+                Alertas.mostrarAlerta("Erro nome", "O nome deve ser preenchido.", Alert.AlertType.ERROR);
+                return;
             }
-        }else{
-            List<TextInputControl> campos = List.of(tfInterpriseCNPJ, tfInterpriseHabilitation, tfInterpriseName, tfCEP, tfNeighborhood, tfStreet, tfNumber, pfCheckPassword, pfPassword);
-            if(campos.stream().anyMatch(tf -> tf.getText().trim().isEmpty())){
-                Alertas.mostrarAlerta("Erro campo vazio", "Todos os campos devem ser preenchidos.", Alert.AlertType.ERROR);
-            }else{
-                if(!pfCheckPassword.getText().equals(pfPassword.getText())){
-                    Alertas.mostrarAlerta("Erro senhas distintas", "As senhas digitadas são diferentes.", Alert.AlertType.ERROR);
-                }else{
-                    InsereEmpresa.insereEmpresaBD(tfInterpriseName.getText(), argon2.hash(2, 65536, 2, pfPassword.getText()), tfNeighborhood.getText(), tfStreet.getText(), (int) tfNumber.getTextFormatter().getValue(), tfCEP.getText(), tfInterpriseCNPJ.getText(), tfInterpriseHabilitation.getText());
-                    Alertas.mostrarAlerta("Confirma cadastro", "Cadastro feito com sucesso.", Alert.AlertType.CONFIRMATION);                   
-                    try{
-                        App.setRoot("FXLogin");
-                    }catch (IOException erro) {
-                        System.out.println(erro);
-                        Alertas.mostrarAlerta("Erro carregar", "Erro ao carregar a tela de login.", Alert.AlertType.ERROR);
-                    }
-                }
+            if (tfPersonCPF.getText().trim().isEmpty() || tfPersonCPF.getText().length() != 11) {
+                Alertas.mostrarAlerta("Erro CPF", "CPF inválido", Alert.AlertType.ERROR);
+                return;
             }
+            if (tfPersonRG.getText().trim().isEmpty() || tfPersonRG.getText().length() != 9) {
+                Alertas.mostrarAlerta("Erro RG", "RG inválido.", Alert.AlertType.ERROR);
+                return;
+            }
+            if (tfPersonDateBirh.getText().trim().isEmpty()) {
+                Alertas.mostrarAlerta("Erro data", "A data de nascimento deve ser preenchida.", Alert.AlertType.ERROR);
+                return;
+            }
+            Pessoa_importadora pessoa = new Pessoa_importadora((Date) tfPersonDateBirh.getTextFormatter().getValue(),tfPersonRG.getText(),tfPersonCPF.getText(),tfStreet.getText(),tfNeighborhood.getText(),(int) tfNumber.getTextFormatter().getValue(),tfCEP.getText(),tfPersonName.getText(),argon2.hash(2, 65536, 2, pfPassword.getText()));
+            InserePessoa_importadora.inserePessoa_importadoraBD(pessoa);
+            Alertas.mostrarAlerta("Confirma cadastro", "Cadastro realizado com sucesso.", Alert.AlertType.CONFIRMATION);
+            try {
+                App.setRoot("FXLogin");
+            } catch (IOException erro) {
+                System.out.println(erro);
+                Alertas.mostrarAlerta("Erro carregar", "Erro ao carregar a tela de login.", Alert.AlertType.ERROR);
+            }
+            return; // fim da parte de pessoa física
+        }
+        
+        if (tfInterpriseName.getText().trim().isEmpty()) {
+            Alertas.mostrarAlerta("Erro nome", "O nome da empresa deve ser preenchido.", Alert.AlertType.ERROR);
+            return;
+        }
+        if (tfInterpriseCNPJ.getText().trim().isEmpty() || tfInterpriseCNPJ.getText().length() != 14) {
+            Alertas.mostrarAlerta("Erro CNPJ", "CNPJ inválido.", Alert.AlertType.ERROR);
+            return;
+        }
+        if (tfInterpriseHabilitation.getText().trim().isEmpty()) {
+            Alertas.mostrarAlerta("Erro habilitação", "A habilitação deve ser preenchida.", Alert.AlertType.ERROR);
+            return;
+        }
+        
+        Empresa_importadora empresa = new Empresa_importadora(tfInterpriseCNPJ.getText(),tfStreet.getText(),tfNeighborhood.getText(),(int) tfNumber.getTextFormatter().getValue(),tfCEP.getText(),tfInterpriseName.getText(),argon2.hash(2, 65536, 2, pfPassword.getText()),tfInterpriseHabilitation.getText());
+        InsereEmpresa.insereEmpresaBD(empresa);
+        Alertas.mostrarAlerta("Confirma cadastro", "Cadastro realizado com sucesso.", Alert.AlertType.CONFIRMATION);
+        try {
+            App.setRoot("FXLogin");
+        } catch (IOException erro) {
+            System.out.println(erro);
+            Alertas.mostrarAlerta("Erro carregar", "Erro ao carregar a tela de login.", Alert.AlertType.ERROR);
         }
     }
 
@@ -221,21 +264,12 @@ public class RegisterUserController implements Initializable {
     public void listenerDateBirh(){
         tfPersonDateBirh.focusedProperty().addListener((object, oldValue, newValue) ->{
             if(!newValue){
-               String txt = tfPersonDateBirh.getText();
-
-            // Se não estiver completa (10 chars), limpar
-            if (txt == null || txt.length() != 10) {
-                tfPersonDateBirh.setText("");
-            }
-
-            // Se estiver completa mas inválida, limpar
-            else {
+                String txt = tfPersonDateBirh.getText();
                 try {
                     LocalDate.parse(txt, DateTimeFormatter.ofPattern("dd/MM/yyyy"));
                 } catch (Exception e) {
                     tfPersonDateBirh.setText("");
                 }
-            }
             }
         });
     }

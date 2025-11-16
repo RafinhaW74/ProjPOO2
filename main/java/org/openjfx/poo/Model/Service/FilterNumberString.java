@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package org.openjfx.poo.Controller;
+package org.openjfx.poo.Model.Service;
 
 import javafx.scene.control.TextFormatter;
 import javafx.util.StringConverter;
@@ -11,26 +11,24 @@ import javafx.util.StringConverter;
  *
  * @author valuc
  */
-public class FilterInt extends TextFormatter<Integer>{
-    public FilterInt() {
+public class FilterNumberString extends TextFormatter<String>{
+    public FilterNumberString() {
         super(
-            new StringConverter<Integer>() {
+            new StringConverter<String>() {
                 @Override
-                public String toString(Integer value) {
-                    return value == null ? "" : value.toString();
+                public String toString(String value) {
+                    return value;
                 }
 
                 @Override
-                public Integer fromString(String text) {
-                    if (text == null || text.isEmpty()) {
-                        return 0;
-                    }
-                    return Integer.parseInt(text);
+                public String fromString(String text) {
+                    return text.replaceAll("[^\\d*]", "");
                 }
             },
-            0, // valor inicial
+            "", 
             change -> {
                 String newText = change.getControlNewText();
+                
                 if (newText.matches("\\d*") || newText.isEmpty()) {
                     return change;
                 }
@@ -38,5 +36,5 @@ public class FilterInt extends TextFormatter<Integer>{
             }
         );
     }
-
+    
 }

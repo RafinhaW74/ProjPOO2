@@ -4,6 +4,8 @@
  */
 package org.openjfx.poo.Controller;
 
+import org.openjfx.poo.Model.Service.FilterInt;
+import org.openjfx.poo.Model.Service.FilterFloat;
 import java.net.URL;
 import java.util.Date;
 import java.util.ResourceBundle;
