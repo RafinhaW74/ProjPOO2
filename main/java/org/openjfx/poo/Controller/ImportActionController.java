@@ -4,12 +4,12 @@
  */
 package org.openjfx.poo.Controller;
 
-import org.openjfx.poo.Model.Service.SalvaTelasSobressalentes;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.function.Consumer;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -85,7 +85,7 @@ public class ImportActionController implements Initializable {
      */
     
     private Importacao importacao;
-    
+    private Consumer<Importacao> onUpdate;
     
     
     private TextField tfAmount;
@@ -109,6 +109,7 @@ public class ImportActionController implements Initializable {
             ExcluiImportacao.ExcluiImportacaoBD(importacao);
             importacao.setSituacao("Excluído");
             AlterarImportacao.alteraImportacaoBD(importacao);
+            if (onUpdate != null) onUpdate.accept(importacao);
             Stage stage = (Stage)btnDelet.getScene().getWindow();
             stage.close();
         }
@@ -129,6 +130,7 @@ public class ImportActionController implements Initializable {
     public void updateProducImport(){
         importacao = getForm(importacao);
         AlterarProduto.alteraProdutoBD(importacao.getProdutos());
+        if (onUpdate != null) onUpdate.accept(importacao);
     }
     
     public void setFilter(){
@@ -242,7 +244,7 @@ public class ImportActionController implements Initializable {
         }else{
             importacao.setSituacao(cbStatus.getValue());
             AlterarImportacao.alteraImportacaoBD(importacao);
-            //ImportadorController.removeImport.accept(importacao);
+            if (onUpdate != null) onUpdate.accept(importacao);
             SalvaTelasSobressalentes.getInstance().fecharTodasJanelasExtras();
         }
     }
@@ -258,6 +260,11 @@ public class ImportActionController implements Initializable {
             tbAlter.setVisible(false);
         }
     }
+    
+    public void setOnUpdate(Consumer<Importacao> onUpdate) {
+        this.onUpdate = onUpdate;
+    }
+   
 
     ///////
     //////

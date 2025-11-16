@@ -132,6 +132,7 @@ public class AlfandegarioController implements Initializable {
                     Parent root = fxmlLoader.load();
 
                     ImportActionController control = fxmlLoader.getController();
+                    control.setOnUpdate(this::updateImportacaoNaLista);
                     control.setImportacao(newVal);
                     
                     Stage novaJanela = new Stage();
@@ -219,6 +220,15 @@ public class AlfandegarioController implements Initializable {
             }
         }else{
             Alertas.mostrarAlerta("Erro busca", "Nenhuma opção de busca selecionada.", Alert.AlertType.WARNING);
+        }
+    }
+    
+    private void updateImportacaoNaLista(Importacao atualizada) {
+        for (int i = 0; i < listImportacao.size(); i++) {
+            if (listImportacao.get(i).getNumero() == atualizada.getNumero()) {
+                listImportacao.set(i, atualizada); 
+                return;
+            }
         }
     }
     
