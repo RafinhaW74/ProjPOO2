@@ -153,6 +153,12 @@ public class AlfandegarioController implements Initializable {
 
     @FXML
     private void RequestImport(ActionEvent event) {
+        try{
+            App.setRoot("FXRegisterADM");
+        }catch (IOException erro) {
+            System.out.println(erro);
+            Alertas.mostrarAlerta("Erro carregar", "Erro ao carregar a tela de cadastro de ADM.", Alert.AlertType.ERROR);
+        }
     }
 
     @FXML

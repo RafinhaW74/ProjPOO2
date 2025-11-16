@@ -4,8 +4,12 @@
  */
 package org.openjfx.poo.Controller;
 
+import de.mkammerer.argon2.Argon2;
+import de.mkammerer.argon2.Argon2Factory;
 import java.io.IOException;
 import java.net.URL;
+import java.util.Date;
+import java.util.List;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -18,10 +22,12 @@ import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.control.TextInputControl;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import org.openjfx.poo.App;
+import org.openjfx.poo.Model.Dao.InsereAlfandegario;
 import org.openjfx.poo.View.Alertas;
 
 /**
@@ -108,6 +114,25 @@ public class RegisterAdmController implements Initializable {
 
     @FXML
     private void btnRegisterAction(ActionEvent event) {
+        Argon2 argon2 = Argon2Factory.create();
+        List<TextInputControl> campos = List.of(tfName, tfID, tfSiape, pfCheckPassword, pfPassword);
+        
+        if(campos.stream().anyMatch(tf -> tf.getText().trim().isEmpty())){
+                Alertas.mostrarAlerta("Erro campo vazio", "Todos os campos devem ser preenchidos.", Alert.AlertType.ERROR);
+        }else{
+            if(!pfCheckPassword.getText().equals(pfPassword.getText())){
+                Alertas.mostrarAlerta("Erro senhas distintas", "As senhas digitadas são diferentes.", Alert.AlertType.ERROR);
+            }else{
+                InsereAlfandegario.insereAlfandegarioBD(tfName.getText(), tfID.getText(), tfSiape.getText(), argon2.hash(2, 65536, 2, pfPassword.getText()));
+                Alertas.mostrarAlerta("Confirma cadastro", "Cadastro feito com sucesso.", Alert.AlertType.CONFIRMATION);
+                try{
+                    App.setRoot("FXAlfandegario");
+                }catch (IOException erro) {
+                    System.out.println(erro);
+                    Alertas.mostrarAlerta("Erro carregar", "Erro ao carregar a tela de login.", Alert.AlertType.ERROR);
+                }
+            }
+        }
     }
 
     @FXML

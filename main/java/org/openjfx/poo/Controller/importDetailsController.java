@@ -118,7 +118,6 @@ public class ImportDetailsController implements Initializable {
         }else{
             addStyleHidden();
             tbAlter.setText("Editar");
-            
             updateProducImport();
         }
     }
