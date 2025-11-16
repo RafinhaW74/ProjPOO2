@@ -121,7 +121,6 @@ public class ImportDetailsController implements Initializable {
     
     public void updateProducImport(){
         importacao = getForm(importacao);
-        
         AlterarProduto.alteraProdutoBD(importacao.getProdutos());
     }
 

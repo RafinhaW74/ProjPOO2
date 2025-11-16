@@ -5,10 +5,12 @@
 package org.openjfx.poo.Controller;
 
 import java.net.URL;
+import java.util.Date;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Menu;
@@ -18,10 +20,14 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.layout.StackPane;
+import javafx.stage.Stage;
 import org.openjfx.poo.Model.Dao.BuscaImportacaoID;
 import org.openjfx.poo.Model.Dao.BuscaNotificacao;
+import org.openjfx.poo.Model.Dao.ExcluiImportacao;
 import org.openjfx.poo.Model.Importacao;
 import org.openjfx.poo.Model.Notificacoes;
+import org.openjfx.poo.View.Alertas;
+import org.openjfx.poo.Model.Dao.AlterarImportacao;
 
 /**
  * FXML Controller class
@@ -73,27 +79,33 @@ public class ImportActionController implements Initializable {
      */
     
     private Importacao importacao;
+    
+    
+    
     private TextField tfAmount;
     @FXML
     private TextField tfProductAmount;
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         setFilter();
-        setFilter();
-        importacao = BuscaImportacaoID.buscaImportacaoBD(1);
-        setImportacao(importacao);
         
         cbStatus.getItems().add("Requer ação");
         cbStatus.getItems().add("Pagamento pendente");
         cbStatus.getItems().add("Bloqueado");
         cbStatus.getItems().add("Confirmado");
-
     }    
 
 
 
     @FXML
     private void btnDeletAction(ActionEvent event) {
+        if(Alertas.mostrarAlerta("Confirmar", "Deseja realmete exluir essa importação?", Alert.AlertType.CONFIRMATION)){
+            ExcluiImportacao.ExcluiImportacaoBD(importacao);
+            importacao.setSituacao("Excluído");
+            AlterarImportacao.alteraImportacaoBD(importacao);
+            Stage stage = (Stage)btnDelet.getScene().getWindow();
+            stage.close();
+        }
     }
     
     @FXML
@@ -128,8 +140,8 @@ public class ImportActionController implements Initializable {
 
         return importacao;
     }
-
-    public void setImportacao(Importacao importacao) {
+    
+    public void updateField(Importacao importacao){
         if (importacao == null) return;
 
         // Campos principais da importação
@@ -155,6 +167,13 @@ public class ImportActionController implements Initializable {
         tfProductRestricted.setText(importacao.getProdutos().getLI().isEmpty() ? "Não" : "Sim");
         tfProductAmount.setText(String.valueOf(importacao.getProdutos().getQuantidade()));
         taProductDescription.setText(importacao.getProdutos().getDescricao());
+        
+    }
+
+    public void setImportacao(Importacao importacao) {
+        this.importacao = importacao;
+        updateField(importacao);
+        setUpdateButton();
         
     }
 
@@ -207,6 +226,21 @@ public class ImportActionController implements Initializable {
 
     @FXML
     private void btnStatusAction(ActionEvent event) {
+        if(cbStatus.getValue().equals("Selecione o status")){
+            Alertas.mostrarAlerta("Erro atualiza status", "Selecione um status antes de atualiza-lo.", Alert.AlertType.ERROR);
+        }else{
+            importacao.setSituacao(cbStatus.getValue());
+            AlterarImportacao.alteraImportacaoBD(importacao);
+        }
+    }
+    
+    public void setUpdateButton(){
+        long dateCriation = importacao.getCriacao().getTime();
+        long dateToday = new Date().getTime();
+        long oneDay = dateToday - 24*60*60*100;
+        if(dateCriation < oneDay){
+            tbAlter.setVisible(true);
+        }
     }
 
     

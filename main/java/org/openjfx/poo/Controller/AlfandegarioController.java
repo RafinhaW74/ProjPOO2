@@ -125,14 +125,13 @@ public class AlfandegarioController implements Initializable {
         lvImports.setItems(listImportacao);
         
        
-        //isso que é chamado quando clicla em um produto do listaaa
         lvImports.getSelectionModel().selectedItemProperty().addListener((obs, oldVal, newVal) -> {
             if (newVal != null) {
                 try {
-                    FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("FXimportDetails.fxml"));
+                    FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("FXImportAction.fxml"));
                     Parent root = fxmlLoader.load();
 
-                    ImportDetailsController control = fxmlLoader.getController();
+                    ImportActionController control = fxmlLoader.getController();
                     control.setImportacao(newVal);
                     
                     Stage novaJanela = new Stage();
