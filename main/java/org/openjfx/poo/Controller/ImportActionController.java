@@ -245,7 +245,6 @@ public class ImportActionController implements Initializable {
             importacao.setSituacao(cbStatus.getValue());
             AlterarImportacao.alteraImportacaoBD(importacao);
             if (onUpdate != null) onUpdate.accept(importacao);
-            SalvaTelasSobressalentes.getInstance().fecharTodasJanelasExtras();
         }
     }
     

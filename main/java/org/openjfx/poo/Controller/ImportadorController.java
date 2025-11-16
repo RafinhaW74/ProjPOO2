@@ -77,7 +77,7 @@ public class ImportadorController implements Initializable {
     private String nome;
     private String identificador;
     private ObservableList<Importacao> listImportacao;
-    public static Consumer<Importacao> removeImport;
+    public Consumer<Importacao> removeImport;
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -203,6 +203,7 @@ public class ImportadorController implements Initializable {
                     Parent root = fxmlLoader.load();
 
                     ImportDetailsController control = fxmlLoader.getController();
+                    control.setOnUpdate(updated -> updateImportacaoNaLista(updated));
                     control.setImportacao(newVal);
                     
                     Stage novaJanela = new Stage();
@@ -229,5 +230,19 @@ public class ImportadorController implements Initializable {
         setRemoveImport(value ->{
             listImportacao.remove(value);
         });
+    }
+    
+    private void updateImportacaoNaLista(Importacao atualizada) {
+        if (atualizada.getSituacao().equals("Excluído")) {
+            listImportacao.removeIf(i -> i.getNumero() == atualizada.getNumero());
+            return;
+        }
+        
+        for (int i = 0; i < listImportacao.size(); i++) {
+            if (listImportacao.get(i).getNumero() == atualizada.getNumero()) {
+                listImportacao.set(i, atualizada); 
+                return;
+            }
+        }
     }
 }
