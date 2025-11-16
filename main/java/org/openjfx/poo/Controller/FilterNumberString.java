@@ -22,7 +22,7 @@ public class FilterNumberString extends TextFormatter<String>{
 
                 @Override
                 public String fromString(String text) {
-                    return text;
+                    return text.replaceAll("[^\\d*]", "");
                 }
             },
             "", 

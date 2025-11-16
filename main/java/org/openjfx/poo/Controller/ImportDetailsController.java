@@ -35,6 +35,7 @@ import org.openjfx.poo.Model.Dao.AlterarImportacao;
 import org.openjfx.poo.Model.Dao.AlterarProduto;
 import org.openjfx.poo.Model.Dao.ExcluiImportacao;
 import org.openjfx.poo.View.Alertas;
+import org.openjfx.poo.View.ViewQRCode;
 
 /**
  * FXML Controller class
@@ -97,6 +98,8 @@ public class ImportDetailsController implements Initializable {
 
     @FXML
     private void btnPendingAction(ActionEvent event) {
+        ViewQRCode qr = new ViewQRCode();
+        qr.viewQrCode(10);
     }
 
     @FXML
