@@ -92,7 +92,7 @@ public class ImportActionController implements Initializable {
     @FXML
     private TextField tfProductAmount;
     @FXML
-    private ComboBox<?> cbNotify;
+    private ComboBox<String> cbNotify;
     @FXML
     private StackPane stOutherStatus1;
     @FXML
@@ -105,6 +105,10 @@ public class ImportActionController implements Initializable {
         cbStatus.getItems().add("Pagamento pendente");
         cbStatus.getItems().add("Bloqueado");
         cbStatus.getItems().add("Confirmado");
+        
+        cbNotify.getItems().add("Pagamento");
+        cbNotify.getItems().add("Campo inválido");
+        cbNotify.getItems().add("Outro");
     }    
 
 
@@ -273,7 +277,7 @@ public class ImportActionController implements Initializable {
 
     @FXML
     private void btnNotifyAction(ActionEvent event) {
-        if(cbNotify.getValue().equals("Selecione a notificação")){
+        if(cbNotify.getValue() == null){
             Alertas.mostrarAlerta("Erro atualiza tipo", "Selecione um tipo de notificação antes envia-la.", Alert.AlertType.ERROR);
         }else if(taImportPendig.getText().isEmpty()){
             Alertas.mostrarAlerta("Erro atualiza descricao notiicao", "Faça uma breve descrição da notificação antes envia-la.", Alert.AlertType.ERROR);
@@ -286,6 +290,7 @@ public class ImportActionController implements Initializable {
             lista.add(BuscaNotificacaoMaisRecente.BuscaNotificacaoMaisRecenteBD(importacao.getNumero()));
             importacao.setNotificacoes(lista);
             AlterarImportacao.alteraImportacaoBD(importacao);
+            if (onUpdate != null) onUpdate.accept(importacao);
         }
     }
 }
