@@ -46,8 +46,6 @@ public class RegisterAdmController implements Initializable {
     @FXML
     private MenuItem miRequest;
     @FXML
-    private MenuItem miView;
-    @FXML
     private Menu mnViewPending;
     @FXML
     private MenuItem miViewPending;
@@ -103,9 +101,6 @@ public class RegisterAdmController implements Initializable {
     private void RequestImport(ActionEvent event) {
     }
 
-    @FXML
-    private void viewImport(ActionEvent event) {
-    }
 
     @FXML
     private void viewPending(ActionEvent event) {

@@ -29,12 +29,11 @@
                         <Menu fx:id="mnRequestImport" mnemonicParsing="false" text="ADM">
                            <items>
                               <MenuItem fx:id="miRequest" mnemonicParsing="false" onAction="#RequestImport" text="Cadastrar" />
-                              <MenuItem fx:id="miView" mnemonicParsing="false" onAction="#viewImport" text="Listar" />
                            </items>
                         </Menu>
                         <Menu fx:id="mnViewPending" mnemonicParsing="false" onAction="#viewPending" text="Importação">
                            <items>
-                              <MenuItem fx:id="miViewPending" mnemonicParsing="false" onAction="#viewPending" text="Visualiar" />
+                              <MenuItem fx:id="miViewPending" mnemonicParsing="false" onAction="#viewPending" text="Busca" />
                            </items>
                         </Menu>
                      </menus>
