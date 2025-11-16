@@ -115,20 +115,21 @@
                                                 <TextField fx:id="tfProductAmount" styleClass="plain-content" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                                              </children>
                                           </GridPane>
-                                          <HBox alignment="CENTER" maxHeight="300.0" minHeight="150.0" prefHeight="100.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+                                          <HBox alignment="CENTER_LEFT" maxHeight="300.0" minHeight="100.0" prefHeight="100.0" prefWidth="200.0">
                                              <children>
-                                                <StackPane alignment="CENTER_LEFT" maxHeight="300.0" maxWidth="-Infinity" minHeight="100.0" minWidth="-Infinity" prefHeight="250.0" prefWidth="130.0">
+                                                <StackPane alignment="CENTER_LEFT" maxWidth="-Infinity" minWidth="90.0" prefHeight="100.0" prefWidth="130.0">
                                                    <children>
                                                       <Label text="Descrição:" />
                                                    </children>
                                                 </StackPane>
-                                                <StackPane prefHeight="150.0" prefWidth="200.0" HBox.hgrow="ALWAYS">
+                                                <StackPane maxHeight="-Infinity" HBox.hgrow="ALWAYS">
                                                    <children>
-                                                      <TextArea fx:id="taProductDescription" prefHeight="200.0" prefWidth="200.0" styleClass="plain-content" />
+                                                      <TextArea fx:id="taProductDescription" styleClass="plain-content" StackPane.alignment="CENTER" />
                                                    </children>
                                                 </StackPane>
                                              </children>
                                           </HBox>
+                                          <StackPane prefHeight="150.0" prefWidth="200.0" VBox.vgrow="ALWAYS" />
                                        </children>
                                        <padding>
                                           <Insets top="30.0" />
@@ -162,6 +163,19 @@
                                              </padding>
                                              <children>
                                                 <Button fx:id="btnStatus" mnemonicParsing="false" onAction="#btnStatusAction" styleClass="btRegister" text="Atualizar Status" />
+                                             </children>
+                                          </StackPane>
+                                          <StackPane maxHeight="250.0" minHeight="-Infinity" prefHeight="48.0" prefWidth="300.0">
+                                             <children>
+                                                <ComboBox fx:id="cbNotify" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="260.0" promptText="Selecione a notificação" />
+                                             </children>
+                                          </StackPane>
+                                          <StackPane fx:id="stOutherStatus1" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="89.0" prefWidth="300.0">
+                                             <padding>
+                                                <Insets left="30.0" right="30.0" />
+                                             </padding>
+                                             <children>
+                                                <Button fx:id="btnNotify" mnemonicParsing="false" onAction="#btnNotifyAction" styleClass="btRegister" text="Enviar Notificaçõ" />
                                              </children>
                                           </StackPane>
                                           <StackPane maxHeight="250.0" minHeight="-Infinity" prefHeight="90.0" prefWidth="200.0" VBox.vgrow="ALWAYS">

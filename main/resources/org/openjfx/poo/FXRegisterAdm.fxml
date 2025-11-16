@@ -31,16 +31,15 @@
                <children>
                   <MenuBar fx:id="menuBar" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="40.0">
                      <menus>
-                        <Menu fx:id="mnName" mnemonicParsing="false" onAction="#User" text="Nome do Importador gonsalves da silva" />
-                        <Menu fx:id="mnRequestImport" mnemonicParsing="false" text="Importação">
+                        <Menu fx:id="mnName" mnemonicParsing="false" onAction="#User" text="Nome do alfandegario gonsalves da silva" />
+                        <Menu fx:id="mnRequestImport" mnemonicParsing="false" text="ADM">
                            <items>
-                              <MenuItem fx:id="miRequest" mnemonicParsing="false" onAction="#RequestImport" text="Solicitar" />
-                              <MenuItem fx:id="miView" mnemonicParsing="false" onAction="#viewImport" text="Visualizar" />
+                              <MenuItem fx:id="miRequest" mnemonicParsing="false" onAction="#RequestImport" text="Cadastrar" />
                            </items>
                         </Menu>
-                        <Menu fx:id="mnViewPending" mnemonicParsing="false" onAction="#viewPending" text="Pedencias">
+                        <Menu fx:id="mnViewPending" mnemonicParsing="false" onAction="#viewPending" text="Importação">
                            <items>
-                              <MenuItem fx:id="miViewPending" mnemonicParsing="false" onAction="#viewPending" text="Visualiar" />
+                              <MenuItem fx:id="miViewPending" mnemonicParsing="false" onAction="#viewPending" text="Busca" />
                            </items>
                         </Menu>
                      </menus>

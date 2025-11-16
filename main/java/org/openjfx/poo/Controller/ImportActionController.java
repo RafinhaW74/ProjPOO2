@@ -91,6 +91,12 @@ public class ImportActionController implements Initializable {
     private TextField tfAmount;
     @FXML
     private TextField tfProductAmount;
+    @FXML
+    private ComboBox<?> cbNotify;
+    @FXML
+    private StackPane stOutherStatus1;
+    @FXML
+    private Button btnNotify;
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         setFilter();
@@ -286,5 +292,9 @@ public class ImportActionController implements Initializable {
             importacao.setNotificacoes(lista);
             AlterarImportacao.alteraImportacaoBD(importacao);
         }
+    }
+
+    @FXML
+    private void btnNotifyAction(ActionEvent event) {
     }
 }
