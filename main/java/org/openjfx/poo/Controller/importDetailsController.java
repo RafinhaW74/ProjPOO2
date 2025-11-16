@@ -252,9 +252,12 @@ public class ImportDetailsController implements Initializable {
     
     public void setUpdateButton(){
         long dateCriation = importacao.getCriacao().getTime();
-        long dateToday = new Date().getTime();
-        long oneDay = dateToday - 24*60*60*100;
-        if(dateCriation > oneDay){
+        long dateToday = System.currentTimeMillis();
+        long oneDayMillis = 24L * 60 * 60 * 1000; // 24h em ms
+
+        if (dateToday - dateCriation >= oneDayMillis) {
+            tbAlter.setVisible(false);
+        } else {
             tbAlter.setVisible(true);
         }
     }

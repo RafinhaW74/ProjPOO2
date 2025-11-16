@@ -28,6 +28,7 @@ import org.openjfx.poo.Model.Importacao;
 import org.openjfx.poo.Model.Notificacoes;
 import org.openjfx.poo.View.Alertas;
 import org.openjfx.poo.Model.Dao.AlterarImportacao;
+import org.openjfx.poo.Model.Dao.AlterarProduto;
 
 /**
  * FXML Controller class
@@ -112,12 +113,17 @@ public class ImportActionController implements Initializable {
     private void tbAlterAction(ActionEvent event) {
         if(tbAlter.isSelected()){
             removeStyleHidden();
-            tbAlter.setText("Editar");
-
+            tbAlter.setText("Salvar");
         }else{
             addStyleHidden();
-            tbAlter.setText("Salvar");
+            tbAlter.setText("Editar");
+            updateProducImport();
         }
+    }
+    
+    public void updateProducImport(){
+        importacao = getForm(importacao);
+        AlterarProduto.alteraProdutoBD(importacao.getProdutos());
     }
     
     public void setFilter(){
@@ -236,10 +242,13 @@ public class ImportActionController implements Initializable {
     
     public void setUpdateButton(){
         long dateCriation = importacao.getCriacao().getTime();
-        long dateToday = new Date().getTime();
-        long oneDay = dateToday - 24*60*60*100;
-        if(dateCriation < oneDay){
+        long dateToday = System.currentTimeMillis();
+        long oneDayMillis = 24L * 60 * 60 * 1000; // 24h em ms
+
+        if (dateToday - dateCriation >= oneDayMillis) {
             tbAlter.setVisible(true);
+        } else {
+            tbAlter.setVisible(false);
         }
     }
 

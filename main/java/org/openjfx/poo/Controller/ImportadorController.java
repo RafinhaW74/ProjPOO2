@@ -146,7 +146,8 @@ public class ImportadorController implements Initializable {
             listaBD = ListaImportacaoEmpresa.listaImportacoesEmpresaBD(identificador);  
         }
         if (listaBD != null) {
-            listaBD.stream().filter(Importacao::isEstado).filter(importacao -> "Requer ação".equals(importacao.getSituacao())).forEach(listImportacao::add);
+            listaBD.stream().filter(Importacao::isEstado)
+            .filter(importacao ->"Requer ação".equals(importacao.getSituacao()) || "Pagamento pendente".equals(importacao.getSituacao())).forEach(listImportacao::add);
         }
     }
 
