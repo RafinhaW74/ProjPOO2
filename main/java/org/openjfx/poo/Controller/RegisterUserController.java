@@ -243,9 +243,9 @@ public class RegisterUserController implements Initializable {
     public void setFilter(){
         tfPersonDateBirh.setTextFormatter(new FilterDate());
         tfNumber.setTextFormatter(new FilterInt());
-        tfPersonRG.setTextFormatter(new FilterInt());
-        tfPersonCPF.setTextFormatter(new FilterInt());
-        tfInterpriseCNPJ.setTextFormatter(new FilterInt());
-        tfCEP.setTextFormatter(new FilterInt());
+        tfPersonRG.setTextFormatter(new FilterNumberString());
+        tfPersonCPF.setTextFormatter(new FilterNumberString());
+        tfInterpriseCNPJ.setTextFormatter(new FilterNumberString());
+        tfCEP.setTextFormatter(new FilterNumberString());
     }
 }
