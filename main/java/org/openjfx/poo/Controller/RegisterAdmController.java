@@ -27,6 +27,7 @@ import javafx.scene.control.ToggleButton;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import org.openjfx.poo.App;
+import org.openjfx.poo.Model.Dao.BuscaAlfandegario;
 import org.openjfx.poo.Model.Dao.InsereAlfandegario;
 import org.openjfx.poo.View.Alertas;
 
@@ -80,6 +81,7 @@ public class RegisterAdmController implements Initializable {
 
     private Image yey;
     private Image yeyOff;
+    private String identificador;
     /**
      * Initializes the controller class.
      */
@@ -87,6 +89,9 @@ public class RegisterAdmController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         yey = new Image(getClass().getResource("/org/openjfx/poo/image/yey.png").toExternalForm());
         yeyOff = new Image(getClass().getResource("/org/openjfx/poo/image/yeyOff.png").toExternalForm());
+        
+        identificador = LoginControler.getIdentificadorGeral();
+        mnName.setText(BuscaAlfandegario.buscaAlfandegarioBD(identificador).getNome());
         
         
         tfPassword.textProperty().bindBidirectional(pfPassword.textProperty());
@@ -104,6 +109,12 @@ public class RegisterAdmController implements Initializable {
 
     @FXML
     private void viewPending(ActionEvent event) {
+        try{
+            App.setRoot("FXAlfandegario");
+        }catch (IOException erro) {
+            System.out.println(erro);
+            Alertas.mostrarAlerta("Erro carregar", "Erro ao carregar a tela de ADM.", Alert.AlertType.ERROR);
+        }
     }
 
 
