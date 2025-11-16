@@ -13,6 +13,8 @@ import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.function.Consumer;
+import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -75,48 +77,22 @@ public class ImportadorController implements Initializable {
     private String nome;
     private String identificador;
     private ObservableList<Importacao> listImportacao;
+    public static Consumer<Importacao> removeImport;
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        setList();
+        
         nome = LoginControler.getNome();
         pessoa = LoginControler.isPessoa();
         identificador = LoginControler.getIdentificadorGeral();
+        
         if(!pessoa){
             mnName.setText(nome);
         }else{
             mnName.setText(nome);
         }
         
-        lvImports.setCellFactory(param -> new ListCell<Importacao>(){
-            private final Label nomeLabel = new Label();
-            private final Label situacaoLabel = new Label();
-            private final VBox content = new VBox(nomeLabel, situacaoLabel);
-
-            {
-                content.setSpacing(2);
-                content.setPadding(new Insets(4, 6, 4, 6));
-
-
-                nomeLabel.getStyleClass().add("listName");  
-                situacaoLabel.getStyleClass().add("listSituation"); 
-            }
-
-            @Override
-            protected void updateItem(Importacao importacao, boolean empty) {
-                super.updateItem(importacao, empty);
-
-                if (empty || importacao == null) {
-                    setGraphic(null);
-                } else {
-                    nomeLabel.setText(importacao.getProdutos().getNome());
-                    situacaoLabel.setText(importacao.getSituacao());
-                    setGraphic(content);
-                }
-            }
-        });
-        
-        listImportacao = FXCollections.observableArrayList();
-        lvImports.setItems(listImportacao);
         List<Importacao> listaBD;
         if(pessoa){
             listaBD = ListaImportacaoPessoa.listaImportacoesPessoaBD(identificador);
@@ -127,27 +103,9 @@ public class ImportadorController implements Initializable {
             listaBD.stream().filter(importacao -> importacao.isEstado()).forEach(listImportacao::add);
         }
         
-        //isso que é chamado quando clicla em um produto do listaaa
-        lvImports.getSelectionModel().selectedItemProperty().addListener((obs, oldVal, newVal) -> {
-            if (newVal != null) {
-                try {
-                    FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("FXimportDetails.fxml"));
-                    Parent root = fxmlLoader.load();
-
-                    ImportDetailsController control = fxmlLoader.getController();
-                    control.setImportacao(newVal);
-                    
-                    Stage novaJanela = new Stage();
-                    novaJanela.setScene(new Scene(root, 1000, 560));
-                    Stage janelaPrincipal = (Stage) lvImports.getScene().getWindow();
-                    novaJanela.initOwner(janelaPrincipal);
-                    SalvaTelasSobressalentes.getInstance().adicionaLista(novaJanela);
-                    novaJanela.show();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-        });
+        //isso que é chamado quando cliclada em um produto do lista
+        setCelAction();
+        setConsumerList();
     }    
 
     @FXML
@@ -203,4 +161,72 @@ public class ImportadorController implements Initializable {
         }
     }
     
+    private void setList(){
+        lvImports.setCellFactory(param -> new ListCell<Importacao>(){
+            private final Label nomeLabel = new Label();
+            private final Label situacaoLabel = new Label();
+            private final VBox content = new VBox(nomeLabel, situacaoLabel);
+
+            {
+                content.setSpacing(2);
+                content.setPadding(new Insets(4, 6, 4, 6));
+
+
+                nomeLabel.getStyleClass().add("listName");  
+                situacaoLabel.getStyleClass().add("listSituation"); 
+            }
+
+            @Override
+            protected void updateItem(Importacao importacao, boolean empty) {
+                super.updateItem(importacao, empty);
+
+                if (empty || importacao == null) {
+                    setGraphic(null);
+                } else {
+                    nomeLabel.setText(importacao.getProdutos().getNome());
+                    situacaoLabel.setText(importacao.getSituacao());
+                    setGraphic(content);
+                }
+            }
+        });
+        
+        listImportacao = FXCollections.observableArrayList();
+        lvImports.setItems(listImportacao);
+    }
+    
+    private void setCelAction(){
+        lvImports.getSelectionModel().selectedItemProperty().addListener((object, oldVal, newVal) -> {
+            if (newVal != null) {
+                try {
+                    FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("FXimportDetails.fxml"));
+                    Parent root = fxmlLoader.load();
+
+                    ImportDetailsController control = fxmlLoader.getController();
+                    control.setImportacao(newVal);
+                    
+                    Stage novaJanela = new Stage();
+                    novaJanela.setScene(new Scene(root, 1000, 560));
+                    Stage janelaPrincipal = (Stage) lvImports.getScene().getWindow();
+                    novaJanela.initOwner(janelaPrincipal);
+                    SalvaTelasSobressalentes.getInstance().adicionaLista(novaJanela);
+                    novaJanela.show();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                Platform.runLater(() -> {
+                    lvImports.getSelectionModel().clearSelection();
+                });
+            }
+        });
+    }
+    
+    public void setRemoveImport(Consumer<Importacao> importacao){
+        this.removeImport = importacao;
+    }
+    
+    private void setConsumerList(){
+        setRemoveImport(value ->{
+            listImportacao.remove(value);
+        });
+    }
 }
