@@ -6,6 +6,7 @@ package org.openjfx.poo.Model.Dao;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import org.openjfx.poo.Model.Produtos;
 
 /**
  *
@@ -19,6 +20,27 @@ public class InsereProduto {
             Conexao connection = new Conexao();
             PreparedStatement st = connection.get_prepare(sql);
             connection.set_param(new Object[]{Largura, Comprimento, Altura, Descricao, LI, Fabricante, quantidade, nome, peso});
+            st.execute();
+            
+            ResultSet rs = st.getGeneratedKeys();
+            if (rs.next()) {
+                idGerado = rs.getInt(1);
+            }
+            connection.close();
+
+        }catch(Exception erro){
+            System.out.println(erro);
+        }
+        return idGerado;
+    }
+
+    public static int insereProdutoBD(Produtos produto){
+        String sql = "INSERT INTO Produto(Largura, Comprimento, Altura, Descricao, LI, Fabricante, Quantidade, Nome, Peso) VALUES(?,?,?,?,?,?,?,?,?)";
+        int idGerado = -1;
+        try{
+            Conexao connection = new Conexao();
+            PreparedStatement st = connection.get_prepare(sql);
+            connection.set_param(new Object[]{produto.getLargura(), produto.getComprimento(), produto.getAltura(),produto.getDescricao(), produto.getLI(),produto.getFabricante(),produto.getQuantidade(),produto.getNome(),produto.getPeso()});
             st.execute();
             
             ResultSet rs = st.getGeneratedKeys();

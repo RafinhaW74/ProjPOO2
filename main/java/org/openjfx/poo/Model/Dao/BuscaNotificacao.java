@@ -30,6 +30,7 @@ public class BuscaNotificacao {
                 a.setResolvido(rs.getBoolean("Resolvido"));
                 a.setDescricao(rs.getString("descricao"));
                 a.setCriacao(new Date(rs.getTimestamp("Criacao").getTime()));
+                a.setImportacaoID(rs.getInt("numeroImportacao"));
             }
 
             rs.close();

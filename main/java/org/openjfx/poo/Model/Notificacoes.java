@@ -19,19 +19,26 @@ public class Notificacoes {
     private boolean estado;
     private boolean resolvido;
     private Date criacao; 
+    private int importacaoID;
     
     
     public Notificacoes(){
         
     }
 
-    public Notificacoes(String descricao, int iD, String tipo, boolean estado, boolean resolvido, Date criacao) {
+    public Notificacoes(String descricao, int iD, String tipo, boolean estado, boolean resolvido, Date criacao, int importacaoID) {
         this.descricao = descricao;
         this.iD = iD;
         this.tipo = tipo;
         this.estado = estado;
         this.resolvido = resolvido;
         this.criacao = criacao;
+    }
+    public int getImportacaoID() {
+        return importacaoID;
+    }
+    public void setImportacaoID(int importacaoID) {
+        this.importacaoID = importacaoID;
     }
 
     public String getDescricao() {

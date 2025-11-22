@@ -5,6 +5,7 @@
 package org.openjfx.poo.Model.Dao;
 
 import java.sql.PreparedStatement;
+import org.openjfx.poo.Model.Notificacoes;
 
 /**
  *
@@ -18,6 +19,22 @@ public class InsereNotificacao {
             Conexao connection = new Conexao();
             PreparedStatement st = connection.get_prepare(sql);
             connection.set_param(new Object[]{descricao, tipo, numeroImport});
+            st.execute();
+            connection.close();
+
+        }catch(Exception erro){
+            System.out.println(erro);
+        }
+        
+    }
+    
+    public static void insereNotificacaoBD(Notificacoes notificacao){
+        String sql = "INSERT INTO Notificacao(descricao, tipo, numeroImportacao) VALUES(?,?,?)";
+        
+        try{
+            Conexao connection = new Conexao();
+            PreparedStatement st = connection.get_prepare(sql);
+            connection.set_param(new Object[]{notificacao.getDescricao(),notificacao.getTipo(), notificacao.getImportacaoID()});
             st.execute();
             connection.close();
 

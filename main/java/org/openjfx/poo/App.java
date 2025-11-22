@@ -42,8 +42,9 @@ public class App extends Application {
      
 
     public static void main(String[] args) {
+        //DataTest.ClearDB();
         //CriaTodasTabelas.CriaTodasTabelasBD();
-        //PopulaBDteste.populaBD();
+        //DataTest.Insert();
         launch(args);
     }
 

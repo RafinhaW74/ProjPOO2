@@ -11,7 +11,7 @@ import java.sql.PreparedStatement;
  * @author rafin
  */
 public class AlterarNotificacao {
-    public static void alteraImportacaoBD(String descricao, int id, String tipo, int numeroImport, boolean resolvido){
+    public static void alteraImportacaoBD(String descricao, int id, String tipo, int numeroImport, boolean resolvido){  //trocar para notifica����o
         String sql = "UPDATE Notificacao SET descricao = ?, tipo = ?, numeroImportacao = ?, Resolvido WHERE id = ?";
         
         try{
