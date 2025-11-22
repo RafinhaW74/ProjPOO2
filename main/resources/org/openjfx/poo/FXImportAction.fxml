@@ -143,10 +143,28 @@
                                        <children>
                                           <StackPane minHeight="200.0" minWidth="300.0" prefHeight="150.0" prefWidth="40.0">
                                              <VBox.margin>
-                                                <Insets top="40.0" />
+                                                <Insets bottom="20.0" top="40.0" />
                                              </VBox.margin>
                                              <children>
-                                                <TextArea fx:id="taImportPendig" prefHeight="200.0" prefWidth="200.0" styleClass="information-pending" stylesheets="@css/box.css" wrapText="true" />
+                                                <VBox prefHeight="200.0" prefWidth="100.0">
+                                                   <children>
+                                                      <Label text="Descrição da notificação:" />
+                                                      <TextArea fx:id="taImportPendig" prefHeight="200.0" prefWidth="200.0" styleClass="information-pending" stylesheets="@css/box.css" wrapText="true" />
+                                                   </children>
+                                                </VBox>
+                                             </children>
+                                          </StackPane>
+                                          <StackPane maxHeight="250.0" minHeight="-Infinity" prefHeight="48.0" prefWidth="300.0">
+                                             <children>
+                                                <ComboBox fx:id="cbNotify" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="260.0" promptText="Selecione a notificação" />
+                                             </children>
+                                          </StackPane>
+                                          <StackPane fx:id="stOutherStatus1" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="89.0" prefWidth="300.0">
+                                             <padding>
+                                                <Insets left="30.0" right="30.0" />
+                                             </padding>
+                                             <children>
+                                                <Button fx:id="btnNotify" mnemonicParsing="false" onAction="#btnNotifyAction" styleClass="btRegister" text="Enviar Notificação" />
                                              </children>
                                           </StackPane>
                                           <StackPane maxHeight="250.0" minHeight="-Infinity" prefHeight="48.0" prefWidth="300.0" VBox.vgrow="ALWAYS">
@@ -163,19 +181,6 @@
                                              </padding>
                                              <children>
                                                 <Button fx:id="btnStatus" mnemonicParsing="false" onAction="#btnStatusAction" styleClass="btRegister" text="Atualizar Status" />
-                                             </children>
-                                          </StackPane>
-                                          <StackPane maxHeight="250.0" minHeight="-Infinity" prefHeight="48.0" prefWidth="300.0">
-                                             <children>
-                                                <ComboBox fx:id="cbNotify" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="260.0" promptText="Selecione a notificação" />
-                                             </children>
-                                          </StackPane>
-                                          <StackPane fx:id="stOutherStatus1" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="89.0" prefWidth="300.0">
-                                             <padding>
-                                                <Insets left="30.0" right="30.0" />
-                                             </padding>
-                                             <children>
-                                                <Button fx:id="btnNotify" mnemonicParsing="false" onAction="#btnNotifyAction" styleClass="btRegister" text="Enviar Notificação" />
                                              </children>
                                           </StackPane>
                                           <StackPane maxHeight="250.0" minHeight="-Infinity" prefHeight="90.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
