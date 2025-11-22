@@ -22,19 +22,16 @@ public class ViewQRCode {
         dialog.setTitle("Pagamento de Taxa");
         dialog.setHeaderText(null); // Remove o cabeçalho padrão
 
-        // --- 3. Componentes de Layout e Conteúdo ---
-
-        // A. Título Principal
         Label tituloLabel = new Label("Pague a taxa de importação");
         tituloLabel.setFont(Font.font("Arial", FontWeight.BOLD, 18));
 
-        // B. Texto do Valor
-        Label totalLabel = new Label("Total de:");
-        totalLabel.setFont(Font.font("Arial", FontWeight.NORMAL, 14));
 
-        Label valorLabel = new Label(String.format("R$ %.2f", valor));
-        valorLabel.setFont(Font.font("Arial", FontWeight.BOLD, 14));
-        valorLabel.setStyle("-fx-text-fill: #008000;"); 
+        //Label totalLabel = new Label("Total de:");
+        //totalLabel.setFont(Font.font("Arial", FontWeight.NORMAL, 14));
+
+        //Label valorLabel = new Label(String.format("R$ %.2f", valor));
+        //valorLabel.setFont(Font.font("Arial", FontWeight.BOLD, 14));
+        //valorLabel.setStyle("-fx-text-fill: #008000;"); 
 
         ImageView qrCodeView = new ImageView();
         try {
@@ -51,8 +48,8 @@ public class ViewQRCode {
 
 
         GridPane totalGrid = new GridPane();
-        totalGrid.add(totalLabel, 0, 0);
-        totalGrid.add(valorLabel, 1, 0);
+        //totalGrid.add(totalLabel, 0, 0);
+        //totalGrid.add(valorLabel, 1, 0);
         totalGrid.setHgap(5);
         totalGrid.setAlignment(Pos.CENTER);
 
