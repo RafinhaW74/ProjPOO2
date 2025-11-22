@@ -113,6 +113,7 @@ public class ImportDetailsController implements Initializable {
             if (onUpdate != null) {
                 onUpdate.accept(importacao);
             }
+            Alertas.mostrarAlerta("Excluição", "Importacao excluido com sucesso", Alert.AlertType.INFORMATION);
             Stage stage = (Stage)btnDelet.getScene().getWindow();
             stage.close();
         }
@@ -127,6 +128,7 @@ public class ImportDetailsController implements Initializable {
             addStyleHidden();
             tbAlter.setText("Editar");
             updateProducImport();
+            Alertas.mostrarAlerta("Atualização", "Importacao atualizada com sucesso", Alert.AlertType.INFORMATION);
             if (onUpdate != null) {
                 onUpdate.accept(importacao);
             }
@@ -250,7 +252,7 @@ public class ImportDetailsController implements Initializable {
             taImportPendig.setText(notify.getDescricao());
             taImportPendig.setVisible(true);
 
-            if(notify.getTipo().equalsIgnoreCase("Pagamento pendente")){
+            if(notify.getTipo().equalsIgnoreCase("Pagamento")){
                 btnPending.setText("Pagar");
                 btnPending.setVisible(true);
             }

@@ -122,6 +122,7 @@ public class ImportActionController implements Initializable {
             importacao.setSituacao("Excluído");
             AlterarImportacao.alteraImportacaoBD(importacao);
             if (onUpdate != null) onUpdate.accept(importacao);
+            Alertas.mostrarAlerta("Excluição", "Importacao excluido com sucesso", Alert.AlertType.INFORMATION);
             Stage stage = (Stage)btnDelet.getScene().getWindow();
             stage.close();
         }
@@ -136,6 +137,7 @@ public class ImportActionController implements Initializable {
             addStyleHidden();
             tbAlter.setText("Editar");
             updateProducImport();
+            Alertas.mostrarAlerta("Atualização", "Importacao atualizada com sucesso", Alert.AlertType.INFORMATION);
         }
     }
     
@@ -254,6 +256,7 @@ public class ImportActionController implements Initializable {
         if(cbStatus.getValue().equals("Selecione o status")){
             Alertas.mostrarAlerta("Erro atualiza status", "Selecione um status antes de atualiza-lo.", Alert.AlertType.ERROR);
         }else{
+            Alertas.mostrarAlerta("Atualização", "Status atualizada com sucesso", Alert.AlertType.INFORMATION);
             importacao.setSituacao(cbStatus.getValue());
             AlterarImportacao.alteraImportacaoBD(importacao);
             if (onUpdate != null) onUpdate.accept(importacao);
