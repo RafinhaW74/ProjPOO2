@@ -263,7 +263,7 @@ public class ImportDetailsController implements Initializable {
     }
     
     public void setUpdateButton(){
-        long dateCriation = importacao.getCriacao().getTime();
+        long dateCriation = importacao.getAtualizacao().getTime();
         long dateToday = System.currentTimeMillis();
         long oneDayMillis = 24L * 60 * 60 * 1000; // 24h em ms
 
