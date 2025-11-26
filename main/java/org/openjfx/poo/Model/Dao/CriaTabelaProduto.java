@@ -15,7 +15,7 @@ public class CriaTabelaProduto {
     public static void criaTabelaProdutoBD() {
     String sql = "CREATE TABLE IF NOT EXISTS Produto ("
            + "Numero INT AUTO_INCREMENT PRIMARY KEY, "
-           + "Nome VARCHAR(50), "
+           + "Nome VARCHAR(255), "
            + "Peso DECIMAL(10,2) NOT NULL, "
            + "Largura DECIMAL(10,2) NOT NULL, "
            + "Comprimento DECIMAL(10,2) NOT NULL, "
