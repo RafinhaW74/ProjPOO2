@@ -293,6 +293,7 @@ public class ImportActionController implements Initializable {
                 lista = new ArrayList<>();
             }
             lista.add(BuscaNotificacaoMaisRecente.BuscaNotificacaoMaisRecenteBD(importacao.getNumero()));
+            Alertas.mostrarAlerta("Noficação", "Noficação enviada com sucesso", Alert.AlertType.INFORMATION);
             importacao.setNotificacoes(lista);
             AlterarImportacao.alteraImportacaoBD(importacao);
             if (onUpdate != null) onUpdate.accept(importacao);
